@@ -10,23 +10,6 @@ public class InovacaoDTO {
 	private String title;
 	private String responsible;
 	private String area;
-
-	public Hg getHg() {
-		return hg;
-	}
-
-	public void setHg(Hg hg) {
-		this.hg = hg;
-	}
-
-	public Setor getSetor() {
-		return setor;
-	}
-
-	public void setSetor(Setor setor) {
-		this.setor = setor;
-	}
-
 	private Integer mweb;
 	private String ganhosPrevistos;
 	private Integer saving;
@@ -141,6 +124,22 @@ public class InovacaoDTO {
 
 	public void setDivulgacao(String divulgacao) {
 		this.divulgacao = divulgacao;
+	}
+	
+	public Hg getHg() {
+		return hg;
+	}
+
+	public void setHg(Hg hg) {
+		this.hg = hg;
+	}
+
+	public Setor getSetor() {
+		return setor;
+	}
+
+	public void setSetor(Setor setor) {
+		this.setor = setor;
 	}
 
 	public static InovacaoDTO convert(Inovacao inovacao) {

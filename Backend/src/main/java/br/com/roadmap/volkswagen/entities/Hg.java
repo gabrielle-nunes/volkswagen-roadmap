@@ -15,7 +15,6 @@ public class Hg {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private Long Id;
-
 	private String responsable;
 	private Date meeting;
 	

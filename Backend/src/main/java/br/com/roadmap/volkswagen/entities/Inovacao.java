@@ -31,7 +31,7 @@ public class Inovacao {
 	private String pontosEscalacao;
 	private String divulgacao;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Hg hg;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
