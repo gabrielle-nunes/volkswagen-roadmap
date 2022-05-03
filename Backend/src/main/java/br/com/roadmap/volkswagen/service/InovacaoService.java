@@ -24,19 +24,6 @@ public class InovacaoService {
 		Inovacao inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
 		return InovacaoDTO.convert(inovacao);
 	}
-
-	// fazer tratamento de exceção
-	/*public InovacaoDTO excluirInovacao(Long id) throws Exception {
-		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
-		
-		if (!inovacao.isPresent()) {
-			throw new Exception();
-		} 
-		
-		inovacaoRepository.delete(inovacao.get());
-		
-		return null;
-	}*/
 	
 	@DeleteMapping("/{id}")
 	@Transactional
