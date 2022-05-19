@@ -7,5 +7,5 @@ import br.com.roadmap.volkswagen.entities.Inovacao;
 
 @Repository
 public interface InovacaoRepository extends JpaRepository<Inovacao, Long>{
-
+	
 }

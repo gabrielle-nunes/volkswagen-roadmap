@@ -1,14 +1,11 @@
 package br.com.roadmap.volkswagen.service;
 
+import java.util.List;
 import java.util.Optional;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.roadmap.volkswagen.dto.InovacaoDTO;
 import br.com.roadmap.volkswagen.entities.Inovacao;
@@ -24,18 +21,36 @@ public class InovacaoService {
 		Inovacao inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
 		return InovacaoDTO.convert(inovacao);
 	}
-	
-	@DeleteMapping("/{id}")
-	@Transactional
-	public ResponseEntity<InovacaoDTO> excluirInovacao(@PathVariable Long id){
-		
+
+	public ResponseEntity<InovacaoDTO> excluirInovacao(Long id) {
+
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
-		
-		if(inovacao.isPresent()) {
+
+		if (inovacao.isPresent()) {
 			inovacaoRepository.deleteById(id);
 			return ResponseEntity.ok().build();
 		}
-		
+
 		return ResponseEntity.notFound().build();
 	}
+
+	public List<Inovacao> listarInovacao() {
+		List<Inovacao> inovacao = inovacaoRepository.findAll();
+		return inovacao;
+	}
+
+	/*public InovacaoDTO atualizarInovacao(InovacaoDTO inovacaoDTO, Long id) throws Exception {
+		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
+		Inovacao atualizarInovacao = null;
+		try {
+			if (inovacao.isPresent()) {
+				atualizarInovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
+				return InovacaoDTO.convert(atualizarInovacao);
+			}
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		}
+
+		return InovacaoDTO.convert(atualizarInovacao);
+	}*/
 }
