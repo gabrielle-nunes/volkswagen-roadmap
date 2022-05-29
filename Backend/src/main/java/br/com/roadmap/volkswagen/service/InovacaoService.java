@@ -34,23 +34,52 @@ public class InovacaoService {
 		return ResponseEntity.notFound().build();
 	}
 
-	public List<Inovacao> listarInovacao() {
+	public List<Inovacao> listarInovacao() throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findAll();
-		return inovacao;
+		if (!inovacao.isEmpty()) {
+			return inovacao;
+		}
+		throw new Exception("Nenhuma inovação cadastrada.");
+
 	}
 
-	/*public InovacaoDTO atualizarInovacao(InovacaoDTO inovacaoDTO, Long id) throws Exception {
+	public InovacaoDTO atualizarInovacao(InovacaoDTO inovacaoDTO, Long id) throws Exception {
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
-		Inovacao atualizarInovacao = null;
+
 		try {
 			if (inovacao.isPresent()) {
-				atualizarInovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
-				return InovacaoDTO.convert(atualizarInovacao);
+
+				Inovacao in = inovacao.get();
+
+				if (in.getTitle() != null || in.getResponsible() != null || in.getArea() != null || in.getMweb() != null
+						|| in.getGanhosPrevistos() != null || in.getSaving() != null
+						|| in.getRecursosNecessarios() != null || in.getInvest() != null || in.getTimeTrabalho() != null
+						|| in.getParceriasNecessarias() != null || in.getPontosEscalacao() != null
+						|| in.getDivulgacao() != null || in.getHg() != null || in.getSetor() != null) {
+
+					in.setTitle(inovacaoDTO.getTitle());
+					in.setResponsible(inovacaoDTO.getResponsible());
+					in.setArea(inovacaoDTO.getArea());
+					in.setMweb(inovacaoDTO.getMweb());
+					in.setGanhosPrevistos(inovacaoDTO.getGanhosPrevistos());
+					in.setSaving(inovacaoDTO.getSaving());
+					in.setRecursosNecessarios(inovacaoDTO.getRecursosNecessarios());
+					in.setInvest(inovacaoDTO.getInvest());
+					in.setTimeTrabalho(inovacaoDTO.getTimeTrabalho());
+					in.setParceriasNecessarias(inovacaoDTO.getParceriasNecessarias());
+					in.setPontosEscalacao(inovacaoDTO.getPontosEscalacao());
+					in.setDivulgacao(inovacaoDTO.getDivulgacao());
+					in.setHg(inovacaoDTO.getHg());
+					in.setSetor(inovacaoDTO.getSetor());
+				}
+
+				inovacaoRepository.save(in);
+				return InovacaoDTO.convert(in);
 			}
+			throw new Exception("Esta inovação não existe.");
+
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
 		}
-
-		return InovacaoDTO.convert(atualizarInovacao);
-	}*/
+	}
 }

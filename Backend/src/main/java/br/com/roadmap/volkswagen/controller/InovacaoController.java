@@ -44,10 +44,10 @@ public class InovacaoController {
 		return inovacaoService.listarInovacao();
 	}
 	
-	/*@PutMapping("/editar/{id}")
+	@PutMapping("/editar/{id}")
 	@Transactional
-	public InovacaoDTO atualizarInovacao(@RequestBody InovacaoDTO inovacaoDTO, @PathVariable Long id) throws Exception {
+	public InovacaoDTO atualizarInovacao(@RequestBody InovacaoDTO inovacaoDTO, @PathVariable("id") Long id) throws Exception {
 		return inovacaoService.atualizarInovacao(inovacaoDTO, id);
 		
-	}*/
+	}
 }
