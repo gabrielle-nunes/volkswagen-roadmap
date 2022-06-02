@@ -28,7 +28,7 @@ public class InovacaoController {
 	
 	@PostMapping("/cadastro")
 	@Transactional
-	public InovacaoDTO cadastrarInovacao(@RequestBody InovacaoDTO inovacaoDTO) {
+	public InovacaoDTO cadastrarInovacao(@RequestBody InovacaoDTO inovacaoDTO) throws Exception {
 		return inovacaoService.cadastrarInovacao(inovacaoDTO);
 	}
 	

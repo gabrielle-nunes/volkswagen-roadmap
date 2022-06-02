@@ -16,6 +16,7 @@ import br.com.roadmap.volkswagen.dto.InovacaoDTO;
 @Entity
 @Table(name = "tbl_inovacao")
 public class Inovacao {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -31,14 +32,21 @@ public class Inovacao {
 	private String parceriasNecessarias;
 	private String pontosEscalacao;
 	private String divulgacao;
+	private String actualState;
+	private String targetState;
+	private String calculationExplication;
+	private String staircaseElement;
+	private String handlungsfeld;
 
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Hg hg;
-	
-	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Setor setor;
+
+	private String status;
 
 	public Long getId() {
 		return id;
@@ -160,9 +168,57 @@ public class Inovacao {
 		this.divulgacao = divulgacao;
 	}
 
-	public static Inovacao convert(InovacaoDTO inovacaoDTO) {
+	public String getActualState() {
+		return actualState;
+	}
+
+	public void setActualState(String actualState) {
+		this.actualState = actualState;
+	}
+
+	public String getTargetState() {
+		return targetState;
+	}
+
+	public void setTargetState(String targetState) {
+		this.targetState = targetState;
+	}
+
+	public String getCalculationExplication() {
+		return calculationExplication;
+	}
+
+	public void setCalculationExplication(String calculationExplication) {
+		this.calculationExplication = calculationExplication;
+	}
+
+	public String getStaircaseElement() {
+		return staircaseElement;
+	}
+
+	public void setStaircaseElement(String staircaseElement) {
+		this.staircaseElement = staircaseElement;
+	}
+
+	public String getHandlungsfeld() {
+		return handlungsfeld;
+	}
+
+	public void setHandlungsfeld(String handlungsfeld) {
+		this.handlungsfeld = handlungsfeld;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public static Inovacao convert(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = new Inovacao();
-		
+
 		inovacao.setArea(inovacaoDTO.getArea());
 		inovacao.setDivulgacao(inovacaoDTO.getDivulgacao());
 		inovacao.setGanhosPrevistos(inovacaoDTO.getGanhosPrevistos());
@@ -178,7 +234,16 @@ public class Inovacao {
 		inovacao.setSetor(inovacaoDTO.getSetor());
 		inovacao.setTimeTrabalho(inovacaoDTO.getTimeTrabalho());
 		inovacao.setTitle(inovacaoDTO.getTitle());
-		
+
+		if (inovacaoDTO.getStatus().equals("Concluído") || inovacaoDTO.getStatus().equals("No prazo")
+				|| inovacaoDTO.getStatus().equals("Em atraso") || inovacaoDTO.getStatus().equals("Escalação")
+				|| inovacaoDTO.getStatus().equals("Reprovado")) {
+
+			inovacao.setStatus(inovacaoDTO.getStatus());
+		} else {
+			throw new Exception("Selecione um status válido.");
+		}
+
 		return inovacao;
 	}
 }

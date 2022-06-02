@@ -21,6 +21,7 @@ public class InovacaoDTO {
 	private String divulgacao;
 	private Hg hg;
 	private Setor setor;
+	private String status;
 
 	public Long getId() {
 		return id;
@@ -125,7 +126,7 @@ public class InovacaoDTO {
 	public void setDivulgacao(String divulgacao) {
 		this.divulgacao = divulgacao;
 	}
-	
+
 	public Hg getHg() {
 		return hg;
 	}
@@ -142,7 +143,15 @@ public class InovacaoDTO {
 		this.setor = setor;
 	}
 
-	public static InovacaoDTO convert(Inovacao inovacao) {
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public static InovacaoDTO convert(Inovacao inovacao) throws Exception {
 		InovacaoDTO inovacaoDTO = new InovacaoDTO();
 		inovacaoDTO.setArea(inovacao.getArea());
 		inovacaoDTO.setDivulgacao(inovacao.getDivulgacao());
@@ -158,6 +167,14 @@ public class InovacaoDTO {
 		inovacaoDTO.setTimeTrabalho(inovacao.getTimeTrabalho());
 		inovacaoDTO.setTitle(inovacao.getTitle());
 
+		if (inovacao.getStatus().equals("Concluído") || inovacao.getStatus().equals("No prazo")
+				|| inovacao.getStatus().equals("Em atraso") || inovacao.getStatus().equals("Escalação")
+				|| inovacao.getStatus().equals("Reprovado")) {
+
+			inovacaoDTO.setStatus(inovacao.getStatus());
+		} else {
+			throw new Exception("Selecione um status válido.");
+		}
 		return inovacaoDTO;
 
 	}

@@ -17,7 +17,7 @@ public class InovacaoService {
 	@Autowired
 	private InovacaoRepository inovacaoRepository;
 
-	public InovacaoDTO cadastrarInovacao(InovacaoDTO inovacaoDTO) {
+	public InovacaoDTO cadastrarInovacao(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
 		return InovacaoDTO.convert(inovacao);
 	}
@@ -55,7 +55,8 @@ public class InovacaoService {
 						|| in.getGanhosPrevistos() != null || in.getSaving() != null
 						|| in.getRecursosNecessarios() != null || in.getInvest() != null || in.getTimeTrabalho() != null
 						|| in.getParceriasNecessarias() != null || in.getPontosEscalacao() != null
-						|| in.getDivulgacao() != null || in.getHg() != null || in.getSetor() != null) {
+						|| in.getDivulgacao() != null || in.getHg() != null || in.getSetor() != null
+						|| in.getStatus() != null) {
 
 					in.setTitle(inovacaoDTO.getTitle());
 					in.setResponsible(inovacaoDTO.getResponsible());
@@ -71,6 +72,7 @@ public class InovacaoService {
 					in.setDivulgacao(inovacaoDTO.getDivulgacao());
 					in.setHg(inovacaoDTO.getHg());
 					in.setSetor(inovacaoDTO.getSetor());
+					in.setStatus(inovacaoDTO.getStatus());
 				}
 
 				inovacaoRepository.save(in);
