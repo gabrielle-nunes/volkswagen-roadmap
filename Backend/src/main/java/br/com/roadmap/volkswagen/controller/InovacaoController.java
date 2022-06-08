@@ -44,6 +44,11 @@ public class InovacaoController {
 		return inovacaoService.listarInovacao();
 	}
 	
+	@GetMapping("/lista/{id}")
+    public ResponseEntity<Inovacao> retornaUmaInovacao(@PathVariable long id) throws Exception {
+       return inovacaoService.retornaUmaInovacao(id);
+    }
+	
 	@PutMapping("/editar/{id}")
 	@Transactional
 	public InovacaoDTO atualizarInovacao(@RequestBody InovacaoDTO inovacaoDTO, @PathVariable("id") Long id) throws Exception {
