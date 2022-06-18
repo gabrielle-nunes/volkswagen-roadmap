@@ -1,4 +1,4 @@
-import "./styles.css";
+//import "./styles.css";
 import React from "react";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
@@ -9,13 +9,27 @@ import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-import TextField from '@mui/material/TextField';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+
 
 /*const schema = yup.object({
   staircase: yup.string().required(),
 })*/
 
-function Segundo() {
+
+
+function Segundo(posts) {
+  
+  console.log(posts)
 
   const navegar = useNavigate();
 
@@ -32,45 +46,56 @@ function Segundo() {
       console.log("Deu errado")
 
 })
-  //render()
-  //{
+function createData(rpsv, dt,stts, hg) {
+  return { rpsv, dt,stts, hg};
+}
+const rows = [
+  createData("Rafael", "09/03/2022", "ok", 'HG2'),
+  createData('Alan', "13/04/2022", "Em andamento", 'HG4'),
+  createData('Leonardo', "30/05/2022", "ok", 'HG3'),
+  createData('Felipe', "03/06/2022", "Em andamento", 'HG0'),
+  createData('Lucas', "13/06/2022", "Em andamentp", 'HG3'),
+  ];
+
   return (
 
+
+
     <main>
+
+      <h4>
+      <Button size='small' color='success'  align='left' onClick={() => navegar("/menu")}> Voltar</Button>
+      </h4>
 
       <div className="row">
 
         <Form onSubmit={handleSubmit(addPost)}>
 
-          <div className="titulo">
+          <div className="titulo" class="cool">
             <div className="col-sm-6">
               <h1> PU CURITIBA</h1>
               <h2>Innovation Roadmap</h2>
             </div>
           </div>
 
-         
-
-          <div className="mweb"> 
-          <TextField id="mweb" label="M-NR:" variant="standard" type="number" name="mweb" {...register("mweb")} />
-          </div>
-
           <div className="btn-status">
             <div className="col-sm-2">
-              <h5> Status           
+
+
               <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
-                <option>Escalação</option>
-                <option>No prazo</option>
-                <option>Em atraso</option>
-                <option>Concluído</option>
-                <option>Reprovado</option>
+                
+                <option>-</option>
+                <option value="0">Concluido</option>
+                <option value="1">No Prazo</option>
+                <option value="2">Em atraso</option>
+                <option value="3">Escalação</option>
+                <option value="4">Reprovado</option>
               </Form.Select>
-              </h5>  
             </div>
           </div>
 
 
-          <div className="fml-dados">
+          <div className="fml-dados" class="cool">
             <div className="col-sm-3">
 
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -89,7 +114,7 @@ function Segundo() {
           </div>
 
 
-          <div className="fml-escrito">
+          <div className="fml-escrito" class="cool">
             <div className="col-sm-3">
 
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
@@ -110,36 +135,73 @@ function Segundo() {
 
             </div>
           </div>
+         
+      <h7 class ="container">
+        <div  >
+        <Form.Group className="rspv" controlId="rspv">
+                <Form.Label>Insira o nome do Responsavel</Form.Label>
+                <Form.Control type="text" placeholder="Nome do Responsavel" name="rspv" {...register("Rafael Langue")} />
+              
+        </Form.Group>
+        <Form.Group className="data" controlId="dt">
+                <Form.Label>Insira a data da reunião</Form.Label>
+                <Form.Control type="text" placeholder="Data da Reunião" name="dt" {...register("09/06/2022")} />
+              
+        </Form.Group>
+        <Form.Group className="hg" controlId="hg">
+                <Form.Label>Insira qual o numero HG se encontra a inovação</Form.Label>
+                <Form.Control type="int" placeholder="HG" name="hg" {...register("HG2")} />
+              
+        </Form.Group>
+        <Form.Group className="stts" controlId="stts">
+                <Form.Label>Insira qual o Status da Inovação</Form.Label>
+                <Form.Control type="int" placeholder="Status da Inovação" name="stts" {...register("stts")} />
+              
+        </Form.Group>
 
-          <div className="Handlu">
-            <div className="col-sm-3">
-            <h5> Handlungsfeld 
-            <select class="form-select" aria-label="Default select example" type="text" name="handlu" {...register("handlu")}>
-            <option selected></option>
-            <option>SGK</option>
-            <option>Ramp-up Excellence</option>
-            <option>Low-Expenditure Factories of the Future</option>
-            <option>Stable Customer Order Process</option>
-            <option>Team of the Future</option>
-            <option>Sustainable Structures</option>
-            <option>Produtivity</option>
-            <option>Rework-free Products and Processes</option>
-            <option>Zero Impact Factory</option>
-          </select>
-        </h5>
-      </div>
-    </div>
+        </div>
+        <div></div>
+        
+      
+        
+          <TableContainer component={Paper} size = '250px' align="center">
+            <Table sx={{ minWidth: 100 }} aria-label="simple table">
 
-    <div className="fml-gastos">
+              <TableBody>
+              
+              {rows.map((row) => (
+            <TableRow
+             key={row.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }} role="checkbox" hover>
+              <TableCell component="th" scope="row">{row.status}</TableCell>
+              <TableCell align="left">{row.hg} <div>{row.dt}</div>{row.rpsv}</TableCell>
+              <TableCell align="left">{row.stts}</TableCell>
+            </TableRow>
+          ))}
+   
+              </TableBody>
+            </Table>
+          </TableContainer>
+      </h7>
+
+          <div className='btn-post'>
             <div className="col-sm-3">
+              <button type="submit" class="btn btn-primary" name="submit" {...register("submit")}> Cadastrar </button>
+              <button type="button" class="btn btn-danger" onClick={() => navegar("/*")}>Cancelar</button>
+              
+            </div>
+          </div>
+
+          <div className="fml-gastos" class="cool">
+            <div className="col-sm-10">
 
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                <Form.Label>Ganhos Previstos:</Form.Label>
-                <Form.Control as="textarea" rows={3} name="ganhos" {...register("ganhosPrevistos")}/>
+                <Form.Label>Ganhos Previstos:      R$:</Form.Label>
+                <Form.Control as="textarea" rows={6} name="ganhos" {...register("ganhosPrevistos")}/>
                 
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                <Form.Label>Recursos Necessários:</Form.Label>
+                <Form.Label>Recursos Necessários:      R$:</Form.Label>
                 <Form.Control as="textarea" rows={3} name="recursos" {...register("recursosNecessarios")} />
                 
               </Form.Group>
@@ -165,20 +227,12 @@ function Segundo() {
               </Form.Group>
 
             </div>
-            </div>
-         
-
-         
-
-            <div className='btn-post'>
-            
-              <button type="submit" class="btn btn-primary" name="submit" {...register("submit")}> Cadastrar </button>
-              <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Cancelar</button>
-              
           </div>
 
-
         </Form>
+      </div>
+      <div>
+      
       </div>
     </main>
 

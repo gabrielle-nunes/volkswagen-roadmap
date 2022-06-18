@@ -16,26 +16,62 @@ import Stack from '@mui/material/Stack';
 import {useNavigate} from 'react-router-dom';
 import Fade from 'react-bootstrap/Fade';
 import Collapse from 'react-bootstrap/Collapse'
+import Segundo from '../PaginaDois/Segundo';
+import axios from 'axios';
+import "./styles10.css";
+import EditIcon from '@mui/icons-material/Edit';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+
 
 function Inicial() {
     const navegar = useNavigate();
+    const [ posts, setPosts ] = useState([])
+
+  
+    useEffect(() => {
+        axios.get("http://localhost:8080/inovacao/lista")
+        .then((response) => {
+            setPosts(response.data)
+        })
+
+        .catch(() => {
+            console.log("Deu errado")
+        })
+
+      }, [])
+
+      function deletePost(id){
+
+        axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
+
+        setPosts(posts.filter(post => post.id !== id))
+      }
+    /*  {posts.map((post, key) => {
+
+      
+      })}
+
     function createData(status, number, title, responsible, area, hg) {
         return { status, number, title, responsible, area, hg};
       }
       
+   
+      
+
       const rows = [
-        createData('No prazo', 1, "EWPK - Pintura Curitiba", "João Alves", "TI", 2),
-        createData('Reprovado', 2, "DCP IOT", "José Ismael", "TI", 4),
-        createData('Em atraso', 3, "EWPK - Armação Curitiba", "Sandro de Jesus", "TI", 3),
-        createData('Concluído', 4, "EWPK - Montagem Curitiba", "Gabriel Silva", "TI", 0),
-        createData('No prazo', 5, "EWPK - Finish Curitiba", "Joana Maria", "TI", 3),
+      createData("", 1, "EWPK - Pintura Curitiba", "João Alves", "TI", 2),
+      createData('Reprovado', 2, "DCP IOT", "José Ismael", "TI", 4),
+      createData('Em atraso', 3, "EWPK - Armação Curitiba", "Sandro de Jesus", "TI", 3),
+      createData('Concluído', 4, "EWPK - Montagem Curitiba", "Gabriel Silva", "TI", 0),
+      createData('No prazo', 5, "EWPK - Finish Curitiba", "Joana Maria", "TI", 3),
       ];
- 
+ */
    return(
 
     <Container maxWidth="xL">
         <Stack direction="row-reverse" spacing={2}>
-            <Avatar sx={{ bgcolor: blueGrey[200] }} align="right">GN</Avatar>
         </Stack>
         <h2 align="center">Roadmap de Inovações</h2>
     <Container maxWidth="xL">
@@ -43,7 +79,7 @@ function Inicial() {
         <div>
         <Grid container justifyContent="space-around" xs={3}>
             <Button size='large' color='success' variant='contained' align='left' onClick={() => navegar("/cadastro")}> + Novo</Button>
-            <Button size='large' color='primary' variant='contained' align='right'> Visualizar</Button>
+
         </Grid>
       
         </div>
@@ -53,26 +89,34 @@ function Inicial() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table" size='medium'>
         <TableHead>
           <TableRow>
-            <TableCell align="center">Select</TableCell>
-            <TableCell align="left">Status</TableCell>
-            <TableCell align="left">Number</TableCell>
-            <TableCell align="left">Title</TableCell>
-            <TableCell align="left">Responsible</TableCell>
-            <TableCell align="left">Area</TableCell>
-            <TableCell align="left">HG</TableCell>
+            <TableCell align="center"></TableCell>
+            <TableCell align="center">Status</TableCell>
+            <TableCell align="center">Number</TableCell>
+            <TableCell align="center">Title</TableCell>
+            <TableCell align="center">Responsible</TableCell>
+            <TableCell align="center">Area</TableCell>
+            <TableCell align="center">m@web</TableCell>
+            <TableCell align="center">HG</TableCell>
+            <TableCell align="left"></TableCell>
+            <TableCell align="left"></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }} role="checkbox" hover><Checkbox/>
-              <TableCell component="th" scope="row">{row.status}</TableCell>
-              <TableCell align="left">{row.number}</TableCell>
-              <TableCell align="left">{row.title}</TableCell>
-              <TableCell align="left">{row.responsible}</TableCell>
-              <TableCell align="left">{row.area}</TableCell>
-              <TableCell align="left">{row.hg}</TableCell>
+          {posts.map((post, key) => (
+            <TableRow>
+              
+              <VisibilityIcon className="Icone" align="center" color="action" />
+              <TableCell align="center">{post.status}</TableCell>
+              <TableCell align="center">{post.id}</TableCell>
+              <TableCell align="center">{post.title}</TableCell>
+              <TableCell align="center">{post.responsible}</TableCell>
+              <TableCell align="center">{post.area}</TableCell>
+              <TableCell align="center">{post.mweb}</TableCell>
+              <TableCell align="center">{}</TableCell>
+              <EditIcon className="Icone" align="center" color="info" onClick={() => navegar({pathname: `/edit/${post.id}` })} />
+              <TableCell text-align="center">{}</TableCell>
+              <DeleteIcon className="Icone" text-align="center" color="error" onClick={() => deletePost(post.id)} />
+              
             </TableRow>
           ))}
         </TableBody>
@@ -83,6 +127,7 @@ function Inicial() {
 
     
    );
+  
    
    /*function hghg() {
     const [open, setOpen] = useState(false);
@@ -107,5 +152,7 @@ function Inicial() {
   
 //  render(<hghg />);*/
 }
+
+
 
 export default Inicial;
