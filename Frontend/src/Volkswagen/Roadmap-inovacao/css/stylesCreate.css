@@ -1,0 +1,54 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*{
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+#body{
+  background-color: #00235C;
+  height:auto;
+}
+
+.titulo{
+  text-align: center;
+}
+
+.down{
+  height: 500px;
+  width: 500px;
+}
+
+#mainCreate{
+  box-shadow: 1px 30px 50px 5px #222222;
+  margin: auto;
+  width: 900px;
+  height: auto;
+  background-image: linear-gradient(#25487A,#0053C7 );
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.forms{
+  padding: 10px;
+}
+
+.texto{
+  padding-bottom: 10px;
+}
+
+
+.selecao{
+  padding-bottom: 10px;
+}
+
+
+#butao{
+  margin-right: 5px;
+}
+

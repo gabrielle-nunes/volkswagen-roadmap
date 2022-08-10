@@ -1,0 +1,64 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.navigation{
+    position: fixed;
+    width: 60px;
+    height: 100%;
+    background: #003C9C;
+    transition: 0.5s;
+    overflow: hidden;
+    box-shadow: 1px 30px 50px 5px #222222;
+  }
+  
+  .navigation:hover{
+    width: 200px;
+  }
+  
+  .navigation > ul{
+    position: absolute;
+    width: 100%;
+    padding: 0px;
+  }
+  
+  .navigation > ul > li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+  }
+  
+  .navigation > ul > .item:hover{
+    background:#001E50;
+    transition: 0.3s;
+  }
+  
+  .navigation > ul > li >a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: blue;
+  }
+  
+  .navigation > ul > li >a> .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 5px;
+  }
+  
+  .title{
+      position: relative;
+      display: block;
+      height: 60px;
+      line-height: 60px;
+      text-align: start;
+      font-size: 24px;
+      white-space: nowrap;
+      color: white;
+  }

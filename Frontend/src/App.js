@@ -1,22 +1,14 @@
 
 import React from 'react';
 import './App.css';
-import Inicial from "./teste/teste-inicial/Main/Inicial";
-import Segundo from "./teste/teste-inicial/PaginaDois/Segundo";
-import Error from "./teste/teste-inicial/ErroPage/Error";
-import Edit from "./teste/teste-inicial/Edit/Edit";
+import Inicial from "./Volkswagen/Roadmap-inovacao/pages/Inicial";
+import Segundo from "./Volkswagen/Roadmap-inovacao/pages/Create";
+import Error from "./Volkswagen/Roadmap-inovacao/pages/Error";
+import Edit from "./Volkswagen/Roadmap-inovacao/pages/Edit";
+import Visualizar from "./Volkswagen/Roadmap-inovacao/pages/Visualizar";
+import Dashboards from "./Volkswagen/Roadmap-inovacao/pages/Dashboards";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
-/*const express = require('express');
-const cors = require('cors');
-const app = express();
-
-app.use((req, res, next) => {
-  //console.log("acessou")
-  res.header("Access-Control-Aloow-Origin", "*")
-  app.use(cors());
-  next();
-});*/
 function App() {
 
 return (
@@ -24,7 +16,9 @@ return (
       <Routes>
         <Route path="/" element={<Inicial />} />
         <Route path="/cadastro" element={<Segundo />} />
-        <Route path="" element={<Error />} />
+        <Route path="/dashboards" element={<Dashboards />} />
+        <Route path="*" element={<Error />} />
+        <Route path="/visualizar/:id" element={<Visualizar />} />
         <Route path="/edit/:id" element={<Edit />} />
       </Routes>
     </Router>

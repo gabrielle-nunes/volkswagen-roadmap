@@ -1,5 +1,4 @@
-import "./styles.css";
-import React from "react";
+import React, { useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
@@ -7,23 +6,35 @@ import Button from 'react-bootstrap/Button';
 import { useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
+
+
 
 /*const schema = yup.object({
   staircase: yup.string().required(),
 })*/
 
-function Segundo() {
+function Visualizar() {
+
+  const { id } = useParams()
 
   const navegar = useNavigate();
 
-  const { register, handleSubmit, formState:{ errors } } = useForm({
-     //resolver: yupResolver(schema),
-  });
+  const { register, handleSubmit, formState:{ errors }, reset } = useForm({
+    //resolver: yupResolver(schema),
+ });
 
-  const addPost = data => axios.post("http://localhost:8080/inovacao/cadastro", data)
+  useEffect(() => {
+      axios.get(`http://localhost:8080/inovacao/lista/${id}`)
+      .then((response) => {
+        reset(response.data)
+      })
+  }, []) 
+
+ 
+  /*const addPut = data => axios.put(`http://localhost:8080/inovacao/editar/${id}`, data)
   .then(() =>  {
       console.log("Deu certo")
       navegar("/")
@@ -31,7 +42,7 @@ function Segundo() {
 .catch(() => {
       console.log("Deu errado")
 
-})
+})*/
   //render()
   //{
   return (
@@ -40,7 +51,7 @@ function Segundo() {
 
       <div className="row">
 
-        <Form onSubmit={handleSubmit(addPost)}>
+        <Form onSubmit={handleSubmit()}>
 
           <div className="titulo">
             <div className="col-sm-6">
@@ -49,25 +60,27 @@ function Segundo() {
             </div>
           </div>
 
-         
-
           <div className="mweb"> 
           <TextField id="mweb" label="M-NR:" variant="standard" type="number" name="mweb" {...register("mweb")} />
           </div>
 
           <div className="btn-status">
             <div className="col-sm-2">
-              <h5> Status           
+
+            
+            <h6> Status
               <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
                 <option>Escalação</option>
                 <option>No prazo</option>
                 <option>Em atraso</option>
                 <option>Concluído</option>
                 <option>Reprovado</option>
-              </Form.Select>
-              </h5>  
+                </Form.Select>
+              </h6>
             </div>
           </div>
+
+         
 
 
           <div className="fml-dados">
@@ -78,9 +91,10 @@ function Segundo() {
                 <Form.Control type="text" placeholder="Staircase element" name="staircase" {...register("staircase")} />
                 <Form.Label>Responsable</Form.Label>
                 <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
+                <Form.Label>Area</Form.Label>
+                <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
                 <Form.Label>Nome of Measure</Form.Label>
                 <Form.Control type="text" placeholder="Nome of Measure" name="status" {...register("title")} />
-             
                 <h2 class="txt-desc"> OU: VWB : CUR : VWB </h2>
 
               </Form.Group>
@@ -113,7 +127,7 @@ function Segundo() {
 
           <div className="Handlu">
             <div className="col-sm-3">
-            <h5> Handlungsfeld 
+            <h6> Handlungsfeld 
             <select class="form-select" aria-label="Default select example" type="text" name="handlu" {...register("handlu")}>
             <option selected></option>
             <option>SGK</option>
@@ -126,20 +140,25 @@ function Segundo() {
             <option>Rework-free Products and Processes</option>
             <option>Zero Impact Factory</option>
           </select>
-        </h5>
+        </h6>
       </div>
     </div>
 
-    <div className="fml-gastos">
-            <div className="col-sm-3">
+
+         
+
+         
+
+          <div className="fml-gastos">
+          
 
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                <Form.Label>Ganhos Previstos:</Form.Label>
+                <Form.Label>Ganhos Previstos:      R$:</Form.Label>
                 <Form.Control as="textarea" rows={3} name="ganhos" {...register("ganhosPrevistos")}/>
                 
               </Form.Group>
               <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                <Form.Label>Recursos Necessários:</Form.Label>
+                <Form.Label>Recursos Necessários:      R$:</Form.Label>
                 <Form.Control as="textarea" rows={3} name="recursos" {...register("recursosNecessarios")} />
                 
               </Form.Group>
@@ -164,19 +183,14 @@ function Segundo() {
                 
               </Form.Group>
 
-            </div>
-            </div>
-         
-
-         
-
+           
             <div className='btn-post'>
-            
-              <button type="submit" class="btn btn-primary" name="submit" {...register("submit")}> Cadastrar </button>
-              <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Cancelar</button>
+            <div className="col-sm-3">
+              <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Voltar</button>
               
+            </div>
           </div>
-
+          </div>
 
         </Form>
       </div>
@@ -186,4 +200,4 @@ function Segundo() {
 
 }
 
-export default Segundo;
+export default Visualizar;

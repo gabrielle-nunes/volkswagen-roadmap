@@ -1,21 +1,12 @@
-//import "./styles.css";
 import React, { useEffect } from "react";
-import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Button from 'react-bootstrap/Button';
 import { useForm } from 'react-hook-form';
-import * as yup from "yup";
-import { yupResolver } from '@hookform/resolvers/yup';
 import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
+import "../css/styleBar.css";
 
 
-
-/*const schema = yup.object({
-  staircase: yup.string().required(),
-})*/
 
 function Edit() {
 
@@ -92,6 +83,8 @@ function Edit() {
                 <Form.Control type="text" placeholder="Staircase element" name="staircase" {...register("staircase")} />
                 <Form.Label>Responsable</Form.Label>
                 <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
+                <Form.Label>Area</Form.Label>
+                <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
                 <Form.Label>Nome of Measure</Form.Label>
                 <Form.Control type="text" placeholder="Nome of Measure" name="status" {...register("title")} />
                 <h2 class="txt-desc"> OU: VWB : CUR : VWB </h2>
@@ -144,26 +137,6 @@ function Edit() {
     </div>
 
 
-          <div className="btn-hg">
-            <h2 className="txt-hg">Status HG</h2>
-            <ButtonGroup aria-label="Basic example" name="statusHG" {...register("statusHG")}>
-         
-              <Button variant="success">HG 1</Button>
-              <Button variant="success">HG 2</Button>
-              <Button variant="success">HG 3</Button>
-              <Button variant="success">HG 4</Button>
-              <Button variant="success">HG 5</Button>
-            </ButtonGroup>
-          </div>
-
-          <div className='btn-post'>
-            <div className="col-sm-3">
-              <button type="submit" class="btn btn-primary" name="submit" {...register("submit")}> Atualizar </button>
-              <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Cancelar</button>
-              
-            </div>
-          </div>
-
           <div className="fml-gastos">
           
 
@@ -198,7 +171,13 @@ function Edit() {
                 
               </Form.Group>
 
-           
+            <div className='btn-post'>
+            <div className="col-sm-3">
+              <button type="submit" class="btn btn-primary" name="submit" {...register("submit")}> Atualizar </button>
+              <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Cancelar</button>
+              
+            </div>
+          </div>
           </div>
 
         </Form>
