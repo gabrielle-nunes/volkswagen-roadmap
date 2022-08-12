@@ -56,5 +56,10 @@ public class InovacaoController {
 		
 	}
 	
-	//teste branch
+	@GetMapping(value="/{title}")
+	@Transactional
+	public ResponseEntity<Inovacao> buscarPorNome(@PathVariable String title) {
+		return inovacaoService.findTitle(title);
+	}
+	
 }

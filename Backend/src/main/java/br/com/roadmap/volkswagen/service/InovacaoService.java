@@ -3,6 +3,7 @@ package br.com.roadmap.volkswagen.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -92,5 +93,13 @@ public class InovacaoService {
 	            return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
 	        else
 	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+	
+	public ResponseEntity<Inovacao> findTitle(String title) {
+		Optional<Inovacao> nome = inovacaoRepository.findByTitle(title);
+		if(nome.isPresent())
+            return new ResponseEntity<Inovacao>(nome.get(), HttpStatus.OK);
+        else
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 }
