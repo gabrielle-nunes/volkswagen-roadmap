@@ -3,7 +3,11 @@
 
 *{
   font-family: 'Open Sans', sans-serif;
-  color: white;
+  color: black;
+}
+
+h1{
+  color: black;
 }
 
 html {
@@ -11,7 +15,6 @@ html {
 }
 
 #body{
-  background-color: #00235C;
   height:auto;
 }
 

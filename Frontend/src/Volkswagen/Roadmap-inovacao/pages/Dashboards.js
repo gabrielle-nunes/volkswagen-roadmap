@@ -117,8 +117,13 @@ function Dashboards() {
       </div>
   
   
-    <div class="chart">
-      <ReactECharts option={option} />
+    <div class ="chart">
+      <div class="chart1">
+        <ReactECharts option={option} />
+      </div>
+      <div class="chart2">
+        <ReactECharts option={option} />
+      </div>
     </div>
   </main>
 </body>

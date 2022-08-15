@@ -12,5 +12,17 @@
 }
 
 .chart{
-    padding-left: 350px;
+    padding: 50px 0px 20px 250px;
+}
+
+.chart1{
+    width: 525px;
+    height: 250px;
+    display:inline-block;
+}
+
+.chart2{
+    width: 525px;
+    height: 250px;
+    display:inline-block;
 }

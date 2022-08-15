@@ -1,7 +1,8 @@
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import { styled } from '@mui/material/styles';
+import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
@@ -11,10 +12,12 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
+import PropTypes from 'prop-types';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import "../css/stylesInicial.css";
 import "../css/styleBar.css";
+import { pink } from '@mui/material/colors';
 
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block  } from '@mui/icons-material';
 
@@ -22,9 +25,25 @@ import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block  } from 
 
 
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
 
-
-
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
 
 
 
@@ -96,54 +115,49 @@ function Inicial() {
             </li>
           </ul>
       </div>
+      <div>
+        <h2 class="nomeInicio">Roadmap de Inovações</h2>
         <div id="tableRun">
-          <Container maxWidth="xL">
-              <Stack direction="row-reverse" spacing={2}>
-              </Stack>
-              <h2 align="center">Roadmap de Inovações</h2>
-          <Container maxWidth="xL">
               <div class="botao">
-              <Grid>
-                  <Button size='medium' color='success' variant='contained' onClick={() => navegar("/cadastro")}> + Novo</Button>
-              </Grid>
+              <Button size='medium' color='success' variant='contained' onClick={() => navegar("/cadastro")}> + Novo</Button>
               </div>
-          <TableContainer component={Paper} sx={50}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table" size='medium'>
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 600 }} aria-label="customized table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="center"></TableCell>
-                  <TableCell align="center">Status</TableCell>
-                  <TableCell align="center">Number</TableCell>
-                  <TableCell align="center">Title</TableCell>
-                  <TableCell align="center">Responsible</TableCell>
-                  <TableCell align="center">Area</TableCell>
-                  <TableCell align="center">m@web</TableCell>
-                  <TableCell align="center">HG</TableCell>
-                  <TableCell align="left"></TableCell>
-                  <TableCell align="left"></TableCell>
+                  <StyledTableCell align="center"></StyledTableCell>
+                  <StyledTableCell align="center">Status</StyledTableCell>
+                  <StyledTableCell align="center">Number</StyledTableCell>
+                  <StyledTableCell align="center">Title</StyledTableCell>
+                  <StyledTableCell align="center">Responsible</StyledTableCell>
+                  <StyledTableCell align="center">Area</StyledTableCell>
+                  <StyledTableCell align="center">m@web</StyledTableCell>
+                  <StyledTableCell align="center">HG</StyledTableCell>
+                  <StyledTableCell align="left"></StyledTableCell>
+                  <StyledTableCell align="left"></StyledTableCell>
+                  <StyledTableCell align="left"></StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 {posts.map((post, key) => (
-                  <TableRow>
-                    <Visibility className="Iconen" onClick={() => navegar({pathname: `/visualizar/${post.id}` })} />
-                    <TableCell align="center">{post.status}</TableCell>
-                    <TableCell align="center">{post.id}</TableCell>
-                    <TableCell align="center">{post.title}</TableCell>
-                    <TableCell align="center">{post.responsible}</TableCell>
-                    <TableCell align="center">{post.area}</TableCell>
-                    <TableCell align="center">{post.mweb}</TableCell>
-                    <TableCell align="center">{}</TableCell>
-                    <Edit className="Iconen" align="center" color="info" onClick={() => navegar({pathname: `/edit/${post.id}` })} />
-                    <TableCell text-align="center">{}</TableCell>
-                    <Delete className="Icone" text-align="center" color="error" onClick={() => deletePost(post.id)} />
-                  </TableRow>
+                  <StyledTableRow>
+                    <Visibility class="iconesInicial" onClick={() => navegar({pathname: `/visualizar/${post.id}` })} />
+                    <StyledTableCell align="center">{post.status}</StyledTableCell>
+                    <StyledTableCell align="center">{post.id}</StyledTableCell>
+                    <StyledTableCell align="center">{post.title}</StyledTableCell>
+                    <StyledTableCell align="center">{post.responsible}</StyledTableCell>
+                    <StyledTableCell align="center">{post.area}</StyledTableCell>
+                    <StyledTableCell align="center">{post.mweb}</StyledTableCell>
+                    <StyledTableCell align="center">{}</StyledTableCell>
+                    <Edit class="iconesInicial" onClick={() => navegar({pathname: `/edit/${post.id}` })} />
+                    <TableCell class="iconesInicial" text-align="center">{}</TableCell>
+                    <Delete class="iconesInicial" onClick={() => deletePost(post.id)} />
+                  </StyledTableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
-          </Container>
-          </Container>
+        </div>
         </div>
         </section>
     </main>
