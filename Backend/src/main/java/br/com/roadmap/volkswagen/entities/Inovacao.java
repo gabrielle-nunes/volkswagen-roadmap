@@ -243,7 +243,7 @@ public class Inovacao {
 		} else {
 			throw new Exception("Selecione um status válido.");
 		}
-
+		
 		return inovacao;
 	}
 }

@@ -36,6 +36,7 @@ public class InovacaoService {
 		return ResponseEntity.notFound().build();
 	}
 
+	//Lista todas as inovações
 	public List<Inovacao> listarInovacao() throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findAll();
 		if (!inovacao.isEmpty()) {
@@ -44,6 +45,23 @@ public class InovacaoService {
 		throw new Exception("Nenhuma inovação cadastrada.");
 
 	}
+	
+	public List<Inovacao> listarInovacoesConcluidas(String status) throws Exception {
+		List<Inovacao> inovacao = inovacaoRepository.findByStatus("Concluído");
+		if (!inovacao.isEmpty()) {
+			return inovacao;
+		}
+		throw new Exception("Nenhuma inovação cadastrada está concluída.");
+	}
+	
+	public List<Inovacao> listarInovacoesReprovadas(String status) throws Exception {
+		List<Inovacao> inovacao = inovacaoRepository.findByStatus("Reprovado");
+		if (!inovacao.isEmpty()) {
+			return inovacao;
+		}
+		throw new Exception("Nenhuma inovação cadastrada está reprovada.");
+	}
+	
 
 	public InovacaoDTO atualizarInovacao(InovacaoDTO inovacaoDTO, Long id) throws Exception {
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
@@ -95,11 +113,4 @@ public class InovacaoService {
 	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	public ResponseEntity<Inovacao> findTitle(String title) {
-		Optional<Inovacao> nome = inovacaoRepository.findByTitle(title);
-		if(nome.isPresent())
-            return new ResponseEntity<Inovacao>(nome.get(), HttpStatus.OK);
-        else
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	}
 }

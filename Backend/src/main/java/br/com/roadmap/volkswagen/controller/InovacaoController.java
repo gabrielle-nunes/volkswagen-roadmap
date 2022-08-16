@@ -56,10 +56,16 @@ public class InovacaoController {
 		
 	}
 	
-	@GetMapping(value="/{title}")
+	@GetMapping(value="/lista/concluidos")
 	@Transactional
-	public ResponseEntity<Inovacao> buscarPorNome(@PathVariable String title) {
-		return inovacaoService.findTitle(title);
+	public List<Inovacao> listarInovacoesConcluidas() throws Exception{
+		return inovacaoService.listarInovacoesConcluidas("Concluído");
+	}
+	
+	@GetMapping(value="/lista/reprovados")
+	@Transactional
+	public List<Inovacao> listarInovacoesReprovadas() throws Exception{
+		return inovacaoService.listarInovacoesReprovadas("Reprovado");
 	}
 	
 }
