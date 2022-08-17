@@ -115,10 +115,55 @@ public class InovacaoService {
 
 	public ResponseEntity<Inovacao> retornaUmaInovacao(long id) {
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
+    
 		if (inovacao.isPresent())
 			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+		if(inovacao.isPresent())
+			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+
+	public ResponseEntity<Inovacao> findTitle(String title) {
+		Optional<Inovacao> nome = inovacaoRepository.findByTitle(title);
+		if(nome.isPresent())
+			return new ResponseEntity<Inovacao>(nome.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	}
+
+	public ResponseEntity<List<Inovacao>> searchTitle(String title) {
+		List<Inovacao> serviceTitle = inovacaoRepository.searchByTitle(title);
+			return new ResponseEntity<List<Inovacao>>(serviceTitle, HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<Inovacao>> searchResponsible(String responsible) {
+		List<Inovacao> serviceResponsible = inovacaoRepository.searchByResponsible(responsible);
+		return new ResponseEntity<List<Inovacao>>(serviceResponsible, HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<Inovacao>> searchArea(String area) {
+		List<Inovacao> serviceArea = inovacaoRepository.searchByArea(area);
+		return new ResponseEntity<List<Inovacao>>(serviceArea, HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<Inovacao>> searchStatus(String status) {
+		List<Inovacao> serviceStatus = inovacaoRepository.searchByTitle(status);
+		return new ResponseEntity<List<Inovacao>>(serviceStatus, HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<Inovacao>> searchPontosEscalacao(String pontosEscalacao) {
+		List<Inovacao> servicePontosEscalacao = inovacaoRepository.searchByPontosEscalacao(pontosEscalacao);
+		return new ResponseEntity<List<Inovacao>>(servicePontosEscalacao, HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
+		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTitle(timeTrabalho);
+		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
+
 	}
 
 }
