@@ -1,5 +1,7 @@
 package br.com.roadmap.volkswagen.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,6 +12,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
+
+public interface InovacaoRepository extends JpaRepository<Inovacao, Long> {
+
+	List<Inovacao> findByStatus(String status);
+
+	@Query(nativeQuery = true, value = "select * from tbl_inovacao u where u.status = 'Escalação' OR u.status = 'No prazo' OR u.status = 'Em atraso'")
+	List<Inovacao> findByStatusEquals(String status);
+
 public interface InovacaoRepository extends JpaRepository<Inovacao, Long>{
 
     Optional<Inovacao> findByTitle (String title);
@@ -32,6 +42,7 @@ public interface InovacaoRepository extends JpaRepository<Inovacao, Long>{
 
     @Query(value = "select inovacao from Inovacao inovacao where inovacao.timeTrabalho like %?1%")
     List<Inovacao> searchByTimeTrabalho(String timeTrabalho);
+
 
 }
 

@@ -17,7 +17,7 @@ public class InovacaoService {
 
 	@Autowired
 	private InovacaoRepository inovacaoRepository;
-
+	
 	public InovacaoDTO cadastrarInovacao(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
 		return InovacaoDTO.convert(inovacao);
@@ -35,13 +35,40 @@ public class InovacaoService {
 		return ResponseEntity.notFound().build();
 	}
 
+	// Lista todas as inovações
 	public List<Inovacao> listarInovacao() throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findAll();
+
 		if (!inovacao.isEmpty()) {
 			return inovacao;
+
 		}
 		throw new Exception("Nenhuma inovação cadastrada.");
 
+	}
+
+	public List<Inovacao> listarInovacoesConcluidas(String status) throws Exception {
+		List<Inovacao> inovacao = inovacaoRepository.findByStatus("Concluído");
+		if (!inovacao.isEmpty()) {
+			return inovacao;
+		}
+		throw new Exception("Nenhuma inovação cadastrada está concluída.");
+	}
+
+	public List<Inovacao> listarInovacoesReprovadas(String status) throws Exception {
+		List<Inovacao> inovacao = inovacaoRepository.findByStatus("Reprovado");
+		if (!inovacao.isEmpty()) {
+			return inovacao;
+		}
+		throw new Exception("Nenhuma inovação cadastrada está reprovada.");
+	}
+	
+	public List<Inovacao> listarInovacoesEmAndamento (String status) throws Exception {
+		List<Inovacao> inovacao = inovacaoRepository.findByStatusEquals(status);
+		if (!inovacao.isEmpty()) {
+			return inovacao;
+		}
+		throw new Exception("Nenhuma inovação cadastrada está em andamento.");
 	}
 
 	public InovacaoDTO atualizarInovacao(InovacaoDTO inovacaoDTO, Long id) throws Exception {
@@ -88,6 +115,12 @@ public class InovacaoService {
 
 	public ResponseEntity<Inovacao> retornaUmaInovacao(long id) {
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
+    
+		if (inovacao.isPresent())
+			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 		if(inovacao.isPresent())
 			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
 		else
@@ -130,6 +163,7 @@ public class InovacaoService {
 	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
 		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTitle(timeTrabalho);
 		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
+
 	}
 
 }

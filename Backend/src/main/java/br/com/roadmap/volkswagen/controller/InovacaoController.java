@@ -91,4 +91,24 @@ public class InovacaoController {
 	public ResponseEntity<List<Inovacao>> searchPorTimeTrabalho(@RequestParam(name = "timeTrabalho") String timeTrabalho) {
 		return inovacaoService.searchTimeTrabalho(timeTrabalho);
 	}
+	
+	@GetMapping(value="/lista/concluidos")
+	@Transactional
+	public List<Inovacao> listarInovacoesConcluidas() throws Exception{
+		return inovacaoService.listarInovacoesConcluidas("Concluído");
+	}
+	
+	@GetMapping(value="/lista/reprovados")
+	@Transactional
+	public List<Inovacao> listarInovacoesReprovadas() throws Exception{
+		return inovacaoService.listarInovacoesReprovadas("Reprovado");
+	}
+	
+	@GetMapping(value="/lista/emAndamento")
+	@Transactional
+	public List<Inovacao> listarInovacoesEmAndamento() throws Exception{
+		String status = "Escalação\", \"No prazo\", \"Em atraso\"";
+		return inovacaoService.listarInovacoesEmAndamento(status);
+	}
+	
 }
