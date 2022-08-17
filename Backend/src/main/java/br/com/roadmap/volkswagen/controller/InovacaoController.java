@@ -49,13 +49,6 @@ public class InovacaoController {
 
 	}
 
-	@GetMapping(value="/{title}")
-	@Transactional
-	public ResponseEntity<Inovacao> buscarPorNome(@PathVariable String title) {
-		return inovacaoService.findTitle(title);
-	}
-
-//	Buscas
 	@GetMapping(value ="searchTitle")
 	@ResponseBody
 	public ResponseEntity<List<Inovacao>> searchPorTitle(@RequestParam(name = "title") String title) {
