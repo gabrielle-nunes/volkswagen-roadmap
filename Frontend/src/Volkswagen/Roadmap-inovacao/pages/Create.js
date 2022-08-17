@@ -39,31 +39,31 @@ return (
               <img src="https://logodownload.org/wp-content/uploads/2014/02/volkswagen-vw-logo-0.png" alt="logo" height="60px" width="60px"/>
             </li>
             <li class="item">
-              <a href="" onClick={() => navegar("/")}>
+              <a onClick={() => navegar("/")}>
                 <span class="icon"><span><Home/></span></span>
                 <span class="title">Home</span>
               </a>
             </li>
             <li class="item">
-              <a href="" onClick={() => navegar("/dashboards")}>
+              <a onClick={() => navegar("/dashboards")}>
                 <span class="icon"><span><Dashboard/></span></span>
                 <span class="title">Dashboard</span>
               </a>
             </li>
             <li class="item">
-              <a href="google.com">
+              <a>
                 <span class="icon"><span><Person/></span></span>
                 <span class="title">Account</span>
               </a>
             </li>
             <li class="item">
-              <a href="google.com">
+              <a>
                 <span class="icon"><span><Task/></span></span>
                 <span class="title">Accepted</span>
               </a>
             </li>
             <li class="item">
-              <a href="google.com">
+              <a>
                 <span class="icon"><span><Block/></span></span>
                 <span class="title">Refused</span>
               </a>
