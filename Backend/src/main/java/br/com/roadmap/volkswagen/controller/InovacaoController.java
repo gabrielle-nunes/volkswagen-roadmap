@@ -68,4 +68,11 @@ public class InovacaoController {
 		return inovacaoService.listarInovacoesReprovadas("Reprovado");
 	}
 	
+	@GetMapping(value="/lista/emAndamento")
+	@Transactional
+	public List<Inovacao> listarInovacoesEmAndamento() throws Exception{
+		String status = "Escalação\", \"No prazo\", \"Em atraso\"";
+		return inovacaoService.listarInovacoesEmAndamento(status);
+	}
+	
 }

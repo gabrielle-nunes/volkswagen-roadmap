@@ -3,7 +3,6 @@ package br.com.roadmap.volkswagen.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ public class InovacaoService {
 
 	@Autowired
 	private InovacaoRepository inovacaoRepository;
-
+	
 	public InovacaoDTO cadastrarInovacao(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
 		return InovacaoDTO.convert(inovacao);
@@ -36,16 +35,18 @@ public class InovacaoService {
 		return ResponseEntity.notFound().build();
 	}
 
-	//Lista todas as inovações
+	// Lista todas as inovações
 	public List<Inovacao> listarInovacao() throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findAll();
+
 		if (!inovacao.isEmpty()) {
 			return inovacao;
+
 		}
 		throw new Exception("Nenhuma inovação cadastrada.");
 
 	}
-	
+
 	public List<Inovacao> listarInovacoesConcluidas(String status) throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findByStatus("Concluído");
 		if (!inovacao.isEmpty()) {
@@ -53,7 +54,7 @@ public class InovacaoService {
 		}
 		throw new Exception("Nenhuma inovação cadastrada está concluída.");
 	}
-	
+
 	public List<Inovacao> listarInovacoesReprovadas(String status) throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findByStatus("Reprovado");
 		if (!inovacao.isEmpty()) {
@@ -62,6 +63,13 @@ public class InovacaoService {
 		throw new Exception("Nenhuma inovação cadastrada está reprovada.");
 	}
 	
+	public List<Inovacao> listarInovacoesEmAndamento (String status) throws Exception {
+		List<Inovacao> inovacao = inovacaoRepository.findByStatusEquals(status);
+		if (!inovacao.isEmpty()) {
+			return inovacao;
+		}
+		throw new Exception("Nenhuma inovação cadastrada está em andamento.");
+	}
 
 	public InovacaoDTO atualizarInovacao(InovacaoDTO inovacaoDTO, Long id) throws Exception {
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
@@ -106,11 +114,11 @@ public class InovacaoService {
 	}
 
 	public ResponseEntity<Inovacao> retornaUmaInovacao(long id) {
-		 Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
-	        if(inovacao.isPresent())
-	            return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
-	        else
-	            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
+		if (inovacao.isPresent())
+			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+
 }
