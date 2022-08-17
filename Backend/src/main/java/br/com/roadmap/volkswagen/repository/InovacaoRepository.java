@@ -1,7 +1,6 @@
 package br.com.roadmap.volkswagen.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,8 +16,6 @@ public interface InovacaoRepository extends JpaRepository<Inovacao, Long> {
 
 	@Query(nativeQuery = true, value = "select * from tbl_inovacao u where u.status = 'Escalação' OR u.status = 'No prazo' OR u.status = 'Em atraso'")
 	List<Inovacao> findByStatusEquals(String status);
-
-	Optional<Inovacao> findByTitle(String title);
 
 	@Query(value = "select inovacao from Inovacao inovacao where inovacao.title like %?1%")
 	List<Inovacao> searchByTitle(String title);
