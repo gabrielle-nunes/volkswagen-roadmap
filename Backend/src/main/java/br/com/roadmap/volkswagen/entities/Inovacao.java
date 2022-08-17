@@ -234,6 +234,11 @@ public class Inovacao {
 		inovacao.setSetor(inovacaoDTO.getSetor());
 		inovacao.setTimeTrabalho(inovacaoDTO.getTimeTrabalho());
 		inovacao.setTitle(inovacaoDTO.getTitle());
+		inovacao.setActualState(inovacaoDTO.getActualState());
+		inovacao.setStaircaseElement(inovacaoDTO.getStaircaseElement());
+		inovacao.setTargetState(inovacaoDTO.getTargetState());
+		inovacao.setCalculationExplication(inovacaoDTO.getCalculationExplication());
+		inovacao.setHandlungsfeld(inovacaoDTO.getHandlungsfeld());
 
 		if (inovacaoDTO.getStatus().equals("Concluído") || inovacaoDTO.getStatus().equals("No prazo")
 				|| inovacaoDTO.getStatus().equals("Em atraso") || inovacaoDTO.getStatus().equals("Escalação")
