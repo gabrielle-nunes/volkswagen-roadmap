@@ -7,15 +7,25 @@ import axios from 'axios';
 import "../css/styleBar.css";
 import { Dashboard, Visibility, Delete, Edit, Person, Home, ArrowDropDownCircle, Task, Block } from '@mui/icons-material';
 
-function Segundo() {
+function Edit() {
+
+  const { id } = useParams()
 
   const navegar = useNavigate();
 
-  const { register, handleSubmit, formState:{ errors } } = useForm({
-     //resolver: yupResolver(schema),
-  });
+  const { register, handleSubmit, formState:{ errors }, reset } = useForm({
+    //resolver: yupResolver(schema),
+ });
 
-  const addPost = data => axios.post("http://localhost:8080/inovacao/cadastro", data)
+  useEffect(() => {
+      axios.get(`http://localhost:8080/inovacao/lista/${id}`)
+      .then((response) => {
+        reset(response.data)
+      })
+  }, []) 
+
+ 
+  const addPut = data => axios.put(`http://localhost:8080/inovacao/editar/${id}`, data)
   .then(() =>  {
       console.log("Deu certo")
       navegar("/")
@@ -24,7 +34,6 @@ function Segundo() {
       console.log("Deu errado")
 
 })
-
 
 return (
 
@@ -216,4 +225,4 @@ return (
   )
 }
 
-export default Segundo;
+export default Edit;
