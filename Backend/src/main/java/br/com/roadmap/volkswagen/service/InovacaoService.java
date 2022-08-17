@@ -121,18 +121,6 @@ public class InovacaoService {
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
-		if(inovacao.isPresent())
-			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
-		else
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-	}
-
-	public ResponseEntity<Inovacao> findTitle(String title) {
-		Optional<Inovacao> nome = inovacaoRepository.findByTitle(title);
-		if(nome.isPresent())
-			return new ResponseEntity<Inovacao>(nome.get(), HttpStatus.OK);
-		else
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	public ResponseEntity<List<Inovacao>> searchTitle(String title) {
