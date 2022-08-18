@@ -3,7 +3,10 @@
 
 *{
   font-family: 'Open Sans', sans-serif;
-  color: black;
+}
+
+.infoTitutlo{
+  color: white;
 }
 
 h1{
