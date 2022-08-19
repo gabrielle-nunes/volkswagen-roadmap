@@ -20,49 +20,9 @@ public class InovacaoDTO {
 	private String pontosEscalacao;
 	private String divulgacao;
 	private Hg hg;
-	private Setor setor;
+	private static Setor setor;
 	private String status;
 	private String actualState;
-	public String getActualState() {
-		return actualState;
-	}
-
-	public void setActualState(String actualState) {
-		this.actualState = actualState;
-	}
-
-	public String getTargetState() {
-		return targetState;
-	}
-
-	public void setTargetState(String targetState) {
-		this.targetState = targetState;
-	}
-
-	public String getCalculationExplication() {
-		return calculationExplication;
-	}
-
-	public void setCalculationExplication(String calculationExplication) {
-		this.calculationExplication = calculationExplication;
-	}
-
-	public String getStaircaseElement() {
-		return staircaseElement;
-	}
-
-	public void setStaircaseElement(String staircaseElement) {
-		this.staircaseElement = staircaseElement;
-	}
-
-	public String getHandlungsfeld() {
-		return handlungsfeld;
-	}
-
-	public void setHandlungsfeld(String handlungsfeld) {
-		this.handlungsfeld = handlungsfeld;
-	}
-
 	private String targetState;
 	private String calculationExplication;
 	private String staircaseElement;
@@ -196,8 +156,50 @@ public class InovacaoDTO {
 		this.status = status;
 	}
 
+	public String getActualState() {
+		return actualState;
+	}
+
+	public void setActualState(String actualState) {
+		this.actualState = actualState;
+	}
+
+	public String getTargetState() {
+		return targetState;
+	}
+
+	public void setTargetState(String targetState) {
+		this.targetState = targetState;
+	}
+
+	public String getCalculationExplication() {
+		return calculationExplication;
+	}
+
+	public void setCalculationExplication(String calculationExplication) {
+		this.calculationExplication = calculationExplication;
+	}
+
+	public String getStaircaseElement() {
+		return staircaseElement;
+	}
+
+	public void setStaircaseElement(String staircaseElement) {
+		this.staircaseElement = staircaseElement;
+	}
+
+	public String getHandlungsfeld() {
+		return handlungsfeld;
+	}
+
+	public void setHandlungsfeld(String handlungsfeld) {
+		this.handlungsfeld = handlungsfeld;
+	}
+
 	public static InovacaoDTO convert(Inovacao inovacao) throws Exception {
+		
 		InovacaoDTO inovacaoDTO = new InovacaoDTO();
+		
 		inovacaoDTO.setArea(inovacao.getArea());
 		inovacaoDTO.setDivulgacao(inovacao.getDivulgacao());
 		inovacaoDTO.setGanhosPrevistos(inovacao.getGanhosPrevistos());
@@ -216,15 +218,7 @@ public class InovacaoDTO {
 		inovacaoDTO.setTargetState(inovacao.getTargetState());
 		inovacaoDTO.setCalculationExplication(inovacao.getCalculationExplication());
 		inovacaoDTO.setHandlungsfeld(inovacao.getHandlungsfeld());
-
-		if (inovacao.getStatus().equals("Concluído") || inovacao.getStatus().equals("No prazo")
-				|| inovacao.getStatus().equals("Em atraso") || inovacao.getStatus().equals("Escalação")
-				|| inovacao.getStatus().equals("Reprovado")) {
-
-			inovacaoDTO.setStatus(inovacao.getStatus());
-		} else {
-			throw new Exception("Selecione um status válido.");
-		}
+		inovacaoDTO.setStatus(inovacao.getStatus());
 		return inovacaoDTO;
 
 	}
