@@ -1,11 +1,11 @@
 package br.com.roadmap.volkswagen.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -39,12 +39,15 @@ public class Inovacao {
 	private String staircaseElement;
 	private String handlungsfeld;
 
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Hg hg;
+	/*
+	 * @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	 * 
+	 * @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) private Hg hg;
+	 */
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "setor_id")
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Setor setor;
 
 	private String status;
@@ -89,13 +92,11 @@ public class Inovacao {
 		this.mweb = mweb;
 	}
 
-	public Hg getHg() {
-		return hg;
-	}
-
-	public void setHg(Hg hg) {
-		this.hg = hg;
-	}
+	/*
+	 * public Hg getHg() { return hg; }
+	 * 
+	 * public void setHg(Hg hg) { this.hg = hg; }
+	 */
 
 	public Setor getSetor() {
 		return setor;
@@ -223,7 +224,7 @@ public class Inovacao {
 		inovacao.setArea(inovacaoDTO.getArea());
 		inovacao.setDivulgacao(inovacaoDTO.getDivulgacao());
 		inovacao.setGanhosPrevistos(inovacaoDTO.getGanhosPrevistos());
-		inovacao.setHg(inovacaoDTO.getHg());
+		// inovacao.setHg(inovacaoDTO.getHg());
 		inovacao.setId(inovacaoDTO.getId());
 		inovacao.setInvest(inovacaoDTO.getInvest());
 		inovacao.setMweb(inovacaoDTO.getMweb());
@@ -241,31 +242,15 @@ public class Inovacao {
 		inovacao.setCalculationExplication(inovacaoDTO.getCalculationExplication());
 		inovacao.setHandlungsfeld(inovacaoDTO.getHandlungsfeld());
 
-		if (inovacaoDTO.getStatus().equals(ConstantesRoadmap.getConcluido()) || inovacaoDTO.getStatus().equals(ConstantesRoadmap.getNoPrazo())
-				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEmAtraso()) || inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEscalacao())
+		if (inovacaoDTO.getStatus().equals(ConstantesRoadmap.getConcluido())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getNoPrazo())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEmAtraso())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEscalacao())
 				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getReprovado())) {
 
 			inovacao.setStatus(inovacaoDTO.getStatus());
 		} else {
 			throw new Exception("Selecione um status válido.");
-		}
-
-		if (inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getTi())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getPlanDeSerie())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getFabricaPiloto())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getManutencaoSite())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getEstamparia())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getArmacao())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getPintura())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getMontagemFinal())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getVwComponentes())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getQaProcessos())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getEngIndustrial())
-				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getLogistica())) {
-
-			inovacao.setor.setNomeSetor(inovacaoDTO.getSetor().getNomeSetor());
-		} else {
-			throw new Exception("Selecione um setor válido.");
 		}
 
 		return inovacao;

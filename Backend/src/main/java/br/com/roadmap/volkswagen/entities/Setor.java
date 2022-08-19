@@ -6,9 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
-import org.hibernate.validator.constraints.UniqueElements;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "tbl_setor")
@@ -17,8 +18,9 @@ public class Setor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
-
-	@Column(unique = true)
+	
+	@Column(unique=true)
+	@JsonIgnoreProperties("nomeSetor")
 	private String nomeSetor;
 	
 	public Long getId() {
@@ -29,6 +31,8 @@ public class Setor {
 		Id = id;
 	}
 
+	@JsonIgnore
+	@JsonProperty(value = "nome_Setor")
 	public String getNomeSetor() {
 		return nomeSetor;
 	}
