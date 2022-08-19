@@ -117,14 +117,19 @@ function Dashboards() {
       </div>
   
   
-    <div class ="chart">
-      <div class="chart1">
-        <ReactECharts option={option} />
+    <section>
+      <div>
+        <h5 class="tituloDashboard">Gráficos</h5>
       </div>
-      <div class="chart2">
-        <ReactECharts option={option} />
-      </div>
-    </div>
+        <div class ="chart">
+          <div class="chart1">
+            <ReactECharts option={option} />
+          </div>
+          <div class="chart2">
+            <ReactECharts option={option} />
+          </div>
+        </div>
+    </section>
   </main>
 </body>
    );

@@ -6,7 +6,7 @@ html {
     position: fixed;
     width: 60px;
     height: 100%;
-    background: #003C9C;
+    background: #003c9ccb;
     transition: 0.5s;
     overflow: hidden;
     box-shadow: 1px 30px 50px 5px #222222;
@@ -26,6 +26,10 @@ html {
     position: relative;
     width: 100%;
     list-style: none;
+  }
+
+  .navigation > ul > *{
+    color:white;
   }
   
   .navigation > ul > .item:hover{
