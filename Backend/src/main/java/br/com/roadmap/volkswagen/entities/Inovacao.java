@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import br.com.roadmap.volkswagen.constantes.ConstantesRoadmap;
 import br.com.roadmap.volkswagen.dto.InovacaoDTO;
 
 @Entity
@@ -234,16 +235,39 @@ public class Inovacao {
 		inovacao.setSetor(inovacaoDTO.getSetor());
 		inovacao.setTimeTrabalho(inovacaoDTO.getTimeTrabalho());
 		inovacao.setTitle(inovacaoDTO.getTitle());
+		inovacao.setActualState(inovacaoDTO.getActualState());
+		inovacao.setStaircaseElement(inovacaoDTO.getStaircaseElement());
+		inovacao.setTargetState(inovacaoDTO.getTargetState());
+		inovacao.setCalculationExplication(inovacaoDTO.getCalculationExplication());
+		inovacao.setHandlungsfeld(inovacaoDTO.getHandlungsfeld());
 
-		if (inovacaoDTO.getStatus().equals("Concluído") || inovacaoDTO.getStatus().equals("No prazo")
-				|| inovacaoDTO.getStatus().equals("Em atraso") || inovacaoDTO.getStatus().equals("Escalação")
-				|| inovacaoDTO.getStatus().equals("Reprovado")) {
+		if (inovacaoDTO.getStatus().equals(ConstantesRoadmap.getConcluido()) || inovacaoDTO.getStatus().equals(ConstantesRoadmap.getNoPrazo())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEmAtraso()) || inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEscalacao())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getReprovado())) {
 
 			inovacao.setStatus(inovacaoDTO.getStatus());
 		} else {
 			throw new Exception("Selecione um status válido.");
 		}
-		
+
+		if (inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getTi())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getPlanDeSerie())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getFabricaPiloto())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getManutencaoSite())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getEstamparia())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getArmacao())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getPintura())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getMontagemFinal())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getVwComponentes())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getQaProcessos())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getEngIndustrial())
+				|| inovacaoDTO.getSetor().getNomeSetor().equals(ConstantesRoadmap.getLogistica())) {
+
+			inovacao.setor.setNomeSetor(inovacaoDTO.getSetor().getNomeSetor());
+		} else {
+			throw new Exception("Selecione um setor válido.");
+		}
+
 		return inovacao;
 	}
 }

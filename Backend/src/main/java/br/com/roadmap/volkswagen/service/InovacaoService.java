@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.roadmap.volkswagen.dto.InovacaoDTO;
 import br.com.roadmap.volkswagen.entities.Inovacao;
+import br.com.roadmap.volkswagen.entities.Setor;
 import br.com.roadmap.volkswagen.repository.InovacaoRepository;
 
 @Service
