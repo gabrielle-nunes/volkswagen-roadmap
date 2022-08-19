@@ -10,13 +10,14 @@
 }
 
 main{
-  background-color: brown;
   height: auto;
 }
 
 
 
-
+#tableRun{
+  padding: 10px 50px 10px 200px;
+}
 
 .Icone{
   margin-top: 10px;
@@ -26,4 +27,20 @@ main{
   padding-bottom: 10px;
   position: relative;
   float: right;
+}
+
+
+.nomeInicio{
+  text-align: center;
+  color:black;
+}
+
+
+
+.iconesInicial{
+  padding: 10px;
+}
+
+.iconesInicial:hover{
+  cursor: pointer;
 }
