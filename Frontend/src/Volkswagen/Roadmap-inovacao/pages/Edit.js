@@ -64,12 +64,6 @@ function Edit() {
                 </li>
                 <li class="item">
                   <a>
-                    <span class="icon"><span><Person/></span></span>
-                    <span class="title">Account</span>
-                  </a>
-                </li>
-                <li class="item">
-                  <a>
                     <span class="icon"><span><Task/></span></span>
                     <span class="title">Accepted</span>
                   </a>
@@ -81,6 +75,9 @@ function Edit() {
                   </a>
                 </li>
               </ul>
+      </div>
+      <div class="barUser">
+        <span class="userIcon"><Person/></span>
       </div>
           <header class="titulo">
             <h1>Titulo</h1>

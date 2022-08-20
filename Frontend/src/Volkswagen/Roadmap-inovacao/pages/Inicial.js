@@ -97,12 +97,6 @@ function Inicial() {
             </li>
             <li class="item">
               <a>
-                <span class="icon"><span><Person/></span></span>
-                <span class="title">Account</span>
-              </a>
-            </li>
-            <li class="item">
-              <a>
                 <span class="icon"><span><Task/></span></span>
                 <span class="title">Accepted</span>
               </a>
@@ -115,8 +109,11 @@ function Inicial() {
             </li>
           </ul>
       </div>
+      <div class="barUser">
+        <span class="userIcon"><Person/></span>
+      </div>
       <div>
-        <h2 class="nomeInicio">Roadmap de Inovações</h2>
+        <h2 class="nomeInicio">Tabela de inovações</h2>
         <div id="tableRun">
               <div class="botao">
               <Button size='medium' color='success' variant='contained' onClick={() => navegar("/cadastro")}> + Novo</Button>

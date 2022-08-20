@@ -1,11 +1,15 @@
 import React, { Component }  from 'react';
 import "../css/stylesCreate.css";
+import Popover from '@mui/material/Popover';
 import Form from "react-bootstrap/Form";
 import { useForm } from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import "../css/styleBar.css";
-import { Dashboard, Visibility, Delete, Edit, Person, Home, ArrowDropDownCircle, Task, Block } from '@mui/icons-material';
+import { Dashboard, Visibility, Delete, Edit, Person, Home, ArrowDropDownCircle, Task, Block, QuestionMark } from '@mui/icons-material';
+import Button from '@mui/material/Button';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
+import Typography from '@mui/material/Typography';
 
 function Segundo() {
 
@@ -52,12 +56,6 @@ return (
             </li>
             <li class="item">
               <a>
-                <span class="icon"><span><Person/></span></span>
-                <span class="title">Account</span>
-              </a>
-            </li>
-            <li class="item">
-              <a>
                 <span class="icon"><span><Task/></span></span>
                 <span class="title">Accepted</span>
               </a>
@@ -70,6 +68,9 @@ return (
             </li>
           </ul>
   </div>
+  <div class="barUser">
+        <span class="userIcon"><Person/></span>
+      </div>
       <header class="titulo">
         <h1>Titulo</h1>
         <a class="down" href="#section2"><ArrowDropDownCircle fontSize="large"/></a>
@@ -79,8 +80,30 @@ return (
 
       <Form onSubmit={handleSubmit(addPost)}>
         <div class="forms">
-            <div class="selecao">
-                <h5 class="infoTitutlo"> Status</h5>      
+            <div class="formulario">
+                <h5 class="infoTitutlo"> Status </h5>      
+                <PopupState variant="popover" popupId="demo-popup-popover">
+                  {(popupState) => (
+                    <span class="interrogacao">
+                      <QuestionMark variant="contained" {...bindTrigger(popupState)}>
+                        Open Popover
+                      </QuestionMark>
+                      <Popover
+                        {...bindPopover(popupState)}
+                        anchorOrigin={{
+                          vertical: 'top',
+                          horizontal: 'right',
+                        }}
+                        transformOrigin={{
+                          vertical: 'bottom',
+                          horizontal: 'left',
+                        }}
+                      >
+                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                      </Popover>
+                    </span>
+                  )}
+                </PopupState>
                 <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
                   <option>Escalação</option>
                   <option>No prazo</option>
@@ -90,9 +113,31 @@ return (
                 </Form.Select>
             </div>
 
-            <div>
+            <div class="formulario">
               <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <h5 class="infoTitutlo">Staircase element</h5>
+              <h5 class="infoTitutlo">Staircase element</h5> 
+                    <PopupState variant="popover" popupId="demo-popup-popover">
+                      {(popupState) => (
+                        <span class="interrogacao">
+                          <QuestionMark variant="contained" {...bindTrigger(popupState)}>
+                            Open Popover
+                          </QuestionMark>
+                          <Popover
+                            {...bindPopover(popupState)}
+                            anchorOrigin={{
+                              vertical: 'top',
+                              horizontal: 'right',
+                            }}
+                            transformOrigin={{
+                              vertical: 'bottom',
+                              horizontal: 'left',
+                            }}
+                          >
+                            <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                          </Popover>
+                        </span>
+                      )}
+                    </PopupState>
                 <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
               </Form.Group>
             </div>
