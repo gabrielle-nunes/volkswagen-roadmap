@@ -151,7 +151,5 @@ public class InovacaoService {
 	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
 		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
 		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
-
 	}
-//teste
 }
