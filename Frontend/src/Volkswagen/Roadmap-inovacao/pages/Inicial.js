@@ -85,16 +85,16 @@ function Inicial() {
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li class="active">
-                                <a href="javascript:void(0)"><span><Home/></span><span class="title">Home</span></a>
+                                <a onClick={() => navegar("/")}><span><Home/></span><span class="title">Home</span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><span><Dashboard/></span><span class="title">Dashboard</span></a>
+                                <a onClick={() => navegar("/dashboards")}><span><Dashboard/></span><span class="title">Dashboard</span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" class="title"><span><Task/></span><span>Accepted</span></a>
+                                <a onClick={() => navegar("/aceitos")} class="title"><span><Task/></span><span>Accepted</span></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)" class="title"><span><Block/></span><span>Refused</span></a>
+                                <a onClick={() => navegar("/recusados")} class="title"><span><Block/></span><span>Refused</span></a>
                             </li>
                         </ul>
                     </nav>
