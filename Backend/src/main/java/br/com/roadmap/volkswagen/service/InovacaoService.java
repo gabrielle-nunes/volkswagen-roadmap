@@ -17,9 +17,14 @@ public class InovacaoService {
 
 	@Autowired
 	private InovacaoRepository inovacaoRepository;
-	
+
 	public InovacaoDTO cadastrarInovacao(InovacaoDTO inovacaoDTO) throws Exception {
-		Inovacao inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
+		Inovacao inovacao = null;
+		try {
+			inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
+		} catch (Exception e) {
+			throw new Exception("Erro ao cadastrar a inovação!");
+		}
 		return InovacaoDTO.convert(inovacao);
 	}
 
@@ -62,8 +67,8 @@ public class InovacaoService {
 		}
 		throw new Exception("Nenhuma inovação cadastrada está reprovada.");
 	}
-	
-	public List<Inovacao> listarInovacoesEmAndamento (String status) throws Exception {
+
+	public List<Inovacao> listarInovacoesEmAndamento(String status) throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findByStatusEquals(status);
 		if (!inovacao.isEmpty()) {
 			return inovacao;
@@ -83,7 +88,7 @@ public class InovacaoService {
 						|| in.getGanhosPrevistos() != null || in.getSaving() != null
 						|| in.getRecursosNecessarios() != null || in.getInvest() != null || in.getTimeTrabalho() != null
 						|| in.getParceriasNecessarias() != null || in.getPontosEscalacao() != null
-						|| in.getDivulgacao() != null || in.getHg() != null || in.getSetor() != null
+						|| in.getDivulgacao() != null || /* in.getHg() != null || */ in.getSetor() != null
 						|| in.getStatus() != null) {
 
 					in.setTitle(inovacaoDTO.getTitle());
@@ -98,7 +103,7 @@ public class InovacaoService {
 					in.setParceriasNecessarias(inovacaoDTO.getParceriasNecessarias());
 					in.setPontosEscalacao(inovacaoDTO.getPontosEscalacao());
 					in.setDivulgacao(inovacaoDTO.getDivulgacao());
-					in.setHg(inovacaoDTO.getHg());
+					// in.setHg(inovacaoDTO.getHg());
 					in.setSetor(inovacaoDTO.getSetor());
 					in.setStatus(inovacaoDTO.getStatus());
 				}
@@ -115,7 +120,7 @@ public class InovacaoService {
 
 	public ResponseEntity<Inovacao> retornaUmaInovacao(long id) {
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
-    
+
 		if (inovacao.isPresent())
 			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
 		else
@@ -125,7 +130,7 @@ public class InovacaoService {
 
 	public ResponseEntity<List<Inovacao>> searchTitle(String title) {
 		List<Inovacao> serviceTitle = inovacaoRepository.searchByTitle(title);
-			return new ResponseEntity<List<Inovacao>>(serviceTitle, HttpStatus.OK);
+		return new ResponseEntity<List<Inovacao>>(serviceTitle, HttpStatus.OK);
 	}
 
 	public ResponseEntity<List<Inovacao>> searchResponsible(String responsible) {
@@ -149,7 +154,7 @@ public class InovacaoService {
 	}
 
 	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
-		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTitle(timeTrabalho);
+		List<Inovacao> serviceTimeTrabalho = inovacaoRepository.searchByTitle(timeTrabalho);
 		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
 
 	}

@@ -1,16 +1,17 @@
 package br.com.roadmap.volkswagen.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import br.com.roadmap.volkswagen.constantes.ConstantesRoadmap;
 import br.com.roadmap.volkswagen.dto.InovacaoDTO;
 
 @Entity
@@ -38,12 +39,15 @@ public class Inovacao {
 	private String staircaseElement;
 	private String handlungsfeld;
 
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Hg hg;
+	/*
+	 * @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	 * 
+	 * @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) private Hg hg;
+	 */
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "setor_id")
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Setor setor;
 
 	private String status;
@@ -88,13 +92,11 @@ public class Inovacao {
 		this.mweb = mweb;
 	}
 
-	public Hg getHg() {
-		return hg;
-	}
-
-	public void setHg(Hg hg) {
-		this.hg = hg;
-	}
+	/*
+	 * public Hg getHg() { return hg; }
+	 * 
+	 * public void setHg(Hg hg) { this.hg = hg; }
+	 */
 
 	public Setor getSetor() {
 		return setor;
@@ -222,7 +224,7 @@ public class Inovacao {
 		inovacao.setArea(inovacaoDTO.getArea());
 		inovacao.setDivulgacao(inovacaoDTO.getDivulgacao());
 		inovacao.setGanhosPrevistos(inovacaoDTO.getGanhosPrevistos());
-		inovacao.setHg(inovacaoDTO.getHg());
+		// inovacao.setHg(inovacaoDTO.getHg());
 		inovacao.setId(inovacaoDTO.getId());
 		inovacao.setInvest(inovacaoDTO.getInvest());
 		inovacao.setMweb(inovacaoDTO.getMweb());
@@ -234,16 +236,23 @@ public class Inovacao {
 		inovacao.setSetor(inovacaoDTO.getSetor());
 		inovacao.setTimeTrabalho(inovacaoDTO.getTimeTrabalho());
 		inovacao.setTitle(inovacaoDTO.getTitle());
+		inovacao.setActualState(inovacaoDTO.getActualState());
+		inovacao.setStaircaseElement(inovacaoDTO.getStaircaseElement());
+		inovacao.setTargetState(inovacaoDTO.getTargetState());
+		inovacao.setCalculationExplication(inovacaoDTO.getCalculationExplication());
+		inovacao.setHandlungsfeld(inovacaoDTO.getHandlungsfeld());
 
-		if (inovacaoDTO.getStatus().equals("Concluído") || inovacaoDTO.getStatus().equals("No prazo")
-				|| inovacaoDTO.getStatus().equals("Em atraso") || inovacaoDTO.getStatus().equals("Escalação")
-				|| inovacaoDTO.getStatus().equals("Reprovado")) {
+		if (inovacaoDTO.getStatus().equals(ConstantesRoadmap.getConcluido())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getNoPrazo())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEmAtraso())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEscalacao())
+				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getReprovado())) {
 
 			inovacao.setStatus(inovacaoDTO.getStatus());
 		} else {
 			throw new Exception("Selecione um status válido.");
 		}
-		
+
 		return inovacao;
 	}
 }
