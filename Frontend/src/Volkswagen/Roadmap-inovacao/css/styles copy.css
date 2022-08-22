@@ -113,14 +113,16 @@
     transition: all 0.3s ease 0s;
 }
 
-.sbar_collapsed .sidebar-menu {
-    left: -180px;
+ol, ul {
+    padding-left: 0em;
 }
+
+
 
 .main-menu {
     height: calc(100% - 100px);
     overflow: hidden;
-    padding: 20px 10px 0 0;
+    padding: 20px 0px 0 0;
     transition: all 0.3s ease 0s;
 }
 
@@ -130,7 +132,7 @@
 }
 
 .sidebar-header {
-    padding: 19px 32px 20px;
+    padding: 10px 10px 10px 10px;
     background: #003c9c;
     border-bottom: 1px solid #001E50;
 }

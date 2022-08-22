@@ -83,7 +83,7 @@ function Inicial() {
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
-                        <ul class="metismenu" id="menu">
+                        <ul class="metismenu">
                             <li class="active">
                                 <a onClick={() => navegar("/")}><span><Home/></span><span class="title">Home</span></a>
                             </li>
