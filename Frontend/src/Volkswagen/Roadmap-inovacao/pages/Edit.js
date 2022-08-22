@@ -5,7 +5,7 @@ import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import "../css/styleBar.css";
-import "../css/styleCreateEdit.css";
+import "../css/stylesCreate.css";
 import { Dashboard, Visibility, Delete, Person, Home, ArrowDropDownCircle, Task, Block } from '@mui/icons-material';
 
 
@@ -64,12 +64,6 @@ function Edit() {
                 </li>
                 <li class="item">
                   <a>
-                    <span class="icon"><span><Person/></span></span>
-                    <span class="title">Account</span>
-                  </a>
-                </li>
-                <li class="item">
-                  <a>
                     <span class="icon"><span><Task/></span></span>
                     <span class="title">Accepted</span>
                   </a>
@@ -82,6 +76,9 @@ function Edit() {
                 </li>
               </ul>
       </div>
+      <div class="barUser">
+        <span class="userIcon"><Person/></span>
+      </div>
           <header class="titulo">
             <h1>Titulo</h1>
             <a class="down" href="#section2"><ArrowDropDownCircle fontSize="large"/></a>
@@ -92,7 +89,7 @@ function Edit() {
           <Form onSubmit={handleSubmit(addPut)}>
             <div class="forms">
                 <div class="selecao">
-                    <h5> Status</h5>      
+                    <h5 class="infoTitutlo"> Status</h5>      
                     <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
                       <option>Escalação</option>
                       <option>No prazo</option>
@@ -104,54 +101,54 @@ function Edit() {
     
                 <div>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <h5>Staircase element</h5>
+                  <h5 class="infoTitutlo">Staircase element</h5>
                     <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
                   </Form.Group>
                 </div>
     
                 <div>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <h5>Responsable</h5>
+                  <h5 class="infoTitutlo">Responsable</h5>
                   <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
                   </Form.Group>
                 </div>
     
                 <div>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <h5>Area</h5>
+                  <h5 class="infoTitutlo">Area</h5>
                   <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
                   </Form.Group>
                 </div>
     
                 <div>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                  <h5>Nome of Measure</h5>
+                  <h5 class="infoTitutlo">Nome of Measure</h5>
                     <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} />
                       <p> OU: VWB : CUR : VWB </p>
                   </Form.Group>
                 </div>
     
                 <div class="texto">
-                    <h5>Actual State</h5>
+                    <h5 class="infoTitutlo">Actual State</h5>
                     <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} />
                 </div>
     
                 <div class="texto">
-                    <h5>Targer state with measure description</h5>
+                    <h5 class="infoTitutlo">Targer state with measure description</h5>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                     <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} />
                     </Form.Group>
                 </div>
     
                 <div class="texto">
-                    <h5>Calculation/Explication</h5>
+                    <h5 class="infoTitutlo">Calculation/Explication</h5>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                     <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} />
                     </Form.Group>
                 </div>
     
                   <div class="selecao">
-                    <h5>Handlungsfeld</h5>
+                    <h5 class="infoTitutlo">Handlungsfeld</h5>
                       <select class="form-select" aria-label="Default select example" type="text" name="handlungsfeld" {...register("handlungsfeld")}>
                         <option selected></option>
                         <option>SGK</option>
@@ -168,7 +165,7 @@ function Edit() {
     
     
                   <div class="texto">
-                    <h5>Ganhos Previstos:</h5>
+                    <h5 class="infoTitutlo">Ganhos Previstos:</h5>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                     <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")}/>
                     </Form.Group>
@@ -176,35 +173,35 @@ function Edit() {
     
     
                   <div class="texto" id="section2">
-                      <h5>Recursos Necessários:</h5>
+                      <h5 class="infoTitutlo">Recursos Necessários:</h5>
                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                       <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} />
                     </Form.Group>
                   </div>
     
                   <div>
-                      <h5>Time de Trabalho:</h5>
+                      <h5 class="infoTitutlo">Time de Trabalho:</h5>
                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                       <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} />
                       </Form.Group>
                   </div>
     
                   <div>
-                    <h5>Parcerias Necessárias:</h5>
+                    <h5 class="infoTitutlo">Parcerias Necessárias:</h5>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                     <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} />
                     </Form.Group>
                   </div>
     
                   <div>
-                  <h5 id="section2">Pontos de Escalação:</h5>
+                  <h5 class="infoTitutlo">Pontos de Escalação:</h5>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                     <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} />
                     </Form.Group>
                   </div>
     
                   <div>
-                    <h5>Divulgação:</h5>
+                    <h5  id="section2" class="infoTitutlo">Divulgação:</h5>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                     <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} />
                     </Form.Group>

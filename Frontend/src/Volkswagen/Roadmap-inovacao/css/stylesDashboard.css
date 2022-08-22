@@ -6,8 +6,13 @@
   }
 
 #mainDashboard{
-    background-color: white;
+    background-color: aliceblue;
+    height: 100vh;
 
+}
+
+.tituloDashboard{
+    text-align: center;
 }
 
 .chart{
@@ -18,10 +23,16 @@
     width: 525px;
     height: 250px;
     display:inline-block;
+    background-color: #8BC6EC;
+    border-radius: 25px;
+    margin: 0px 10px 0px 0px;
 }
 
 .chart2{
     width: 525px;
     height: 250px;
     display:inline-block;
+    background-color: white;
+    border-radius: 40px;
+    box-shadow: 1px 30px 50px 5px #222222;
 }
