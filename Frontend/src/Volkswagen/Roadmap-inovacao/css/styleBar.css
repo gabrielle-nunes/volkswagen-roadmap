@@ -2,23 +2,11 @@ html {
   scroll-behavior: smooth;
 }
 
-
-
-.userIcon{
-  float: right;
-  padding-right: 25px;
-  padding-top: 15px;
-}
-
-.userIcon:hover{
-  cursor: pointer;
-}
-
 .navigation{
     position: fixed;
     width: 60px;
     height: 100%;
-    background: #003c9cef;
+    background: #003c9c;
     transition: 0.5s;
     overflow: hidden;
     box-shadow: 1px 30px 50px 5px #222222;
@@ -68,26 +56,4 @@ html {
     text-align: center;
     font-size: 5px;
   }
-  
-  .title{
-      position: relative;
-      display: block;
-      height: 60px;
-      line-height: 60px;
-      text-align: start;
-      font-size: 24px;
-      white-space: nowrap;
-      color: white;
-  }
 
-  .barUser{
-    display: block;
-    background-color: #0243ace8;
-    height: 60px;
-    margin-bottom: 5px;
-    box-shadow: 1px 1px 10px 2px #003c9cc4;
-  }
-
-  .barUser > *{
-    color:white;
-  }
