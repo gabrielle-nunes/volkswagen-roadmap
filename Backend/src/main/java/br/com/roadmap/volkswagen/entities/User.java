@@ -1,7 +1,6 @@
 package br.com.roadmap.volkswagen.entities;
 
-import br.com.roadmap.volkswagen.dto.InovacaoDTO;
-import br.com.roadmap.volkswagen.dto.UsuarioDTO;
+import br.com.roadmap.volkswagen.dto.UserDTO;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -9,13 +8,13 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tbl_usuario")
-public class Usuario {
+@Table(name = "tbl_user")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @NotBlank
-    private String nome;
+    private String user;
     @NotBlank(message = "Mínimo 5 caracteres")
     @Size(min = 5)
     private String senha;
@@ -25,12 +24,12 @@ public class Usuario {
     @JoinColumn(name = "setor_id")
     private Setor setor;
 
-    public String getNome() {
-        return nome;
+    public String getUser() {
+        return user;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getSenha() {
@@ -53,11 +52,18 @@ public class Usuario {
         return setor;
     }
 
-    public static Usuario convert(UsuarioDTO usuarioDTO) throws Exception {
-        Usuario usuario = new Usuario();
-            usuario.setNome(usuarioDTO.getNome());
-            usuario.setSenha(usuarioDTO.getSenha());
-            usuario.setEmail(usuarioDTO.getEmail());
-        return usuario;
+    public void setSetor(Setor setor) {
+        this.setor = setor;
     }
+
+    public static User convert(UserDTO userDTO) throws Exception {
+        User user = new User();
+        user.setUser(userDTO.getUser());
+        user.setSenha(userDTO.getSenha());
+        user.setEmail(userDTO.getEmail());
+        return user;
+    }
+
+
 }
+
