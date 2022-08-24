@@ -4,8 +4,8 @@ import br.com.roadmap.volkswagen.dto.UserDTO;
 import br.com.roadmap.volkswagen.entities.User;
 import br.com.roadmap.volkswagen.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Component
 public class UserService {
@@ -13,7 +13,18 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public User cadastroUser(User user){
-        return userRepository.save(user);
+    public User cadastroUser(User user) throws Exception {
+        if (findByCpf(UserDTO.convert(user)) != null){
+            throw new DataIntegrityViolationException("CPF Já Cadastrado!");
+
+        }return userRepository.save(user);
+    }
+
+    private  User findByCpf(UserDTO userDTO) {
+        User user = userRepository.findByCpf(userDTO.getCpf());
+        if (user != null){
+            return user;
+        }
+        return null;
     }
 }

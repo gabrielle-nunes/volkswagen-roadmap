@@ -16,13 +16,14 @@ public class User {
     @Column(name = "user")
     private String user;
 
+    @CPF
     @NotBlank(message = "CPF Obrigatório")
-    @Size(max = 11)
     private String cpf;
 
     @NotBlank(message = "Mínimo 5 caracteres")
     @Size(min = 5)
     private String senha;
+
 //    @Email
 //    private Email email;
 
