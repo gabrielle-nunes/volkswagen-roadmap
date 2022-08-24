@@ -71,6 +71,8 @@ function Inicial() {
       }
 
       function buscarInovacao(title){
+
+        axios.get(`http://localhost:8080/inovacao/searchTitle?title=${title}`)
       
         setBusca(posts.filter(post=> post.startsWith (busca)))
 
