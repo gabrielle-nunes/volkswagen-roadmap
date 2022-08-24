@@ -1,9 +1,10 @@
 package br.com.roadmap.volkswagen.entities;
 
 import br.com.roadmap.volkswagen.dto.UserDTO;
+import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
+//import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -11,18 +12,31 @@ import javax.validation.constraints.Size;
 @Table(name = "tbl_user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    @NotBlank
+    @Column(name = "user")
     private String user;
+
+    @NotBlank(message = "CPF Obrigatório")
+    @Size(max = 11)
+    private String cpf;
+
     @NotBlank(message = "Mínimo 5 caracteres")
     @Size(min = 5)
     private String senha;
-    @Email
-    private Email email;
+//    @Email
+//    private Email email;
+
     @ManyToOne
     @JoinColumn(name = "setor_id")
     private Setor setor;
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public String getUser() {
         return user;
@@ -40,13 +54,13 @@ public class User {
         this.senha = senha;
     }
 
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
+//    public Email getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(Email email) {
+//        this.email = email;
+//    }
 
     public Setor getSetor() {
         return setor;
@@ -59,8 +73,9 @@ public class User {
     public static User convert(UserDTO userDTO) throws Exception {
         User user = new User();
         user.setUser(userDTO.getUser());
+        user.setCpf(userDTO.getCpf());
         user.setSenha(userDTO.getSenha());
-        user.setEmail(userDTO.getEmail());
+//        user.setEmail(userDTO.getEmail());
         return user;
     }
 
