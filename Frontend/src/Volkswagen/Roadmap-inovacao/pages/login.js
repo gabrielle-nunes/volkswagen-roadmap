@@ -17,7 +17,6 @@ import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import "../css/stylesInicial.css";
 import "../css/styleBar.css";
-import "../css/styles copy.css"
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block  } from '@mui/icons-material';
 
 function Login() {
