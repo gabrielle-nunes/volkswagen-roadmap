@@ -34,11 +34,15 @@ main{
 }
 
 
-
 .iconesInicial{
   padding: 10px;
 }
 
 .iconesInicial:hover{
   cursor: pointer;
+}
+
+
+.btn-procura{
+ size: 0ch;
 }

@@ -18,7 +18,8 @@ import axios from 'axios';
 import "../css/stylesInicial.css";
 import "../css/styleBar.css";
 import "../css/styles copy.css"
-import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block  } from '@mui/icons-material';
+import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Search } from '@mui/icons-material';
+
 
 
 
@@ -46,9 +47,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function Inicial() {
     const navegar = useNavigate();
-    const [ posts, setPosts ] = useState([])
-
-  
+    const [ posts, setPosts] = useState([])
+    const [busca, setBusca] = useState('')
+    console.log(busca);
+    
     useEffect(() => {
         axios.get("http://localhost:8080/inovacao/lista")
         .then((response) => {
@@ -66,6 +68,12 @@ function Inicial() {
         axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
 
         setPosts(posts.filter(post => post.id !== id))
+      }
+
+      function buscarInovacao(title){
+      
+        setBusca(posts.filter(post=> post.startsWith (busca)))
+
       }
 
    return(
@@ -103,12 +111,12 @@ function Inicial() {
         </div>
       <div class="header-area">
                 <div class="row align-items-center">
-
                     <div class="col-md-6 col-sm-8 clearfix">
                         <div class="search-box pull-left">
                             <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required/>
+                                <input type="text" name="search" value={busca} placeholder="Search..." required onChange={(ev) => setBusca(ev.target.value)}/>
                                 <i class="ti-search"></i>
+                                <Search></Search>
                             </form>
                         </div>
                     </div>
@@ -309,9 +317,6 @@ function Inicial() {
     </main>
 </body>
    );
-  
-   
-
 }
 
 
