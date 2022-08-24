@@ -219,7 +219,6 @@ public class InovacaoDTO {
 		inovacaoDTO.setCalculationExplication(inovacao.getCalculationExplication());
 		inovacaoDTO.setHandlungsfeld(inovacao.getHandlungsfeld());
 		inovacaoDTO.setStatus(inovacao.getStatus());
-		setor.setNomeSetor(inovacao.getSetor().getNomeSetor());
 		return inovacaoDTO;
 
 	}

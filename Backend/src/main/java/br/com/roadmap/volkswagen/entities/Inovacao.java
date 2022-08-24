@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,14 +22,19 @@ public class Inovacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotBlank
 	private String title;
+	@NotBlank
 	private String responsible;
-	private String area;
+	private String area; //verificar necessidade
 	private Integer mweb;
+	@NotBlank
 	private String ganhosPrevistos;
 	private Integer saving;
+	@NotBlank
 	private String recursosNecessarios;
 	private Integer invest;
+	@NotBlank
 	private String timeTrabalho;
 	private String parceriasNecessarias;
 	private String pontosEscalacao;
