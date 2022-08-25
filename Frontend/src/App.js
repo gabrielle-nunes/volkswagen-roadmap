@@ -1,6 +1,5 @@
 
 import React from 'react';
-import './App.css';
 import Inicial from "./Volkswagen/Roadmap-inovacao/pages/Inicial";
 import Segundo from "./Volkswagen/Roadmap-inovacao/pages/Create";
 import Error from "./Volkswagen/Roadmap-inovacao/pages/Error";
