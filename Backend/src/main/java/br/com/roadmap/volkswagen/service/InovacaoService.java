@@ -3,6 +3,7 @@ package br.com.roadmap.volkswagen.service;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.roadmap.volkswagen.entities.Hg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -152,4 +153,16 @@ public class InovacaoService {
 		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
 		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
 	}
+
+	public ResponseEntity<List<Inovacao>> searchHg(Hg hg) {
+		List<Inovacao> serviceHg= inovacaoRepository.searchByHg(hg);
+		return new ResponseEntity<List<Inovacao>>(serviceHg, HttpStatus.OK);
+	}
+
+
+	public ResponseEntity<List<Inovacao>> searchMweb(Integer mweb) {
+		List<Inovacao> serviceMweb= inovacaoRepository.searchByMweb(mweb);
+		return new ResponseEntity<List<Inovacao>>(serviceMweb, HttpStatus.OK);
+	}
+
 }

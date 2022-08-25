@@ -2,6 +2,7 @@ package br.com.roadmap.volkswagen.repository;
 
 import java.util.List;
 
+import br.com.roadmap.volkswagen.entities.Hg;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -32,7 +33,14 @@ public interface InovacaoRepository extends JpaRepository<Inovacao, Long> {
     @Query(value = "select inovacao from Inovacao inovacao where inovacao.pontosEscalacao like %?1%")
     List<Inovacao> searchByPontosEscalacao(String pontosEscalacao);
 
+
     @Query(value = "select inovacao from Inovacao inovacao where inovacao.timeTrabalho like %?1%")
     List<Inovacao> searchByTimeTrabalho(String timeTrabalho);
+
+    @Query(value = "select inovacao from Inovacao inovacao where inovacao.hg like %?1%")
+    List<Inovacao> searchByHg(Hg hg);
+
+    @Query(value = "select inovacao from Inovacao inovacao where inovacao.mweb like %?1%")
+    List<Inovacao> searchByMweb(Integer mweb);
 
 }
