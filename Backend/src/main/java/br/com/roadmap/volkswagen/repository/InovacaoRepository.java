@@ -42,5 +42,4 @@ public interface InovacaoRepository extends JpaRepository<Inovacao, Long> {
 
     @Query(value = "select inovacao from Inovacao inovacao where inovacao.mweb like %?1%")
     List<Inovacao> searchByMweb(Integer mweb);
-
 }
