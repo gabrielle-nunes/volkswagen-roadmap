@@ -1,6 +1,5 @@
 
 import React from 'react';
-import './App.css';
 import Inicial from "./Volkswagen/Roadmap-inovacao/pages/Inicial";
 import Segundo from "./Volkswagen/Roadmap-inovacao/pages/Create";
 import Error from "./Volkswagen/Roadmap-inovacao/pages/Error";
@@ -9,7 +8,6 @@ import Visualizar from "./Volkswagen/Roadmap-inovacao/pages/Visualizar";
 import Dashboards from "./Volkswagen/Roadmap-inovacao/pages/Dashboards";
 import Login from "./Volkswagen/Roadmap-inovacao/pages/login";
 import Register from "./Volkswagen/Roadmap-inovacao/pages/Register";
-import Teste from "./Volkswagen/Roadmap-inovacao/pages/teste";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
@@ -25,7 +23,6 @@ return (
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/teste" element={<Teste />} />
       </Routes>
     </Router>
   );

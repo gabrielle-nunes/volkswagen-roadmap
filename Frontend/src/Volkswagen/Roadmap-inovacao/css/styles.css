@@ -128,16 +128,6 @@
     transition: all 0.3s ease 0s;
 }
 
-.menu-inner {
-    overflow-y: scroll;
-    height: 100%;
-}
-
-.slimScrollBar {
-    background: #fff!important;
-    opacity: 0.1!important;
-}
-
 .sidebar-header {
     padding: 19px 32px 20px;
     background: #303641;
@@ -2508,7 +2498,6 @@ table.dataTable thead td {
 /* login-s3 */
 
 .login-bg {
-    background: url(../images/bg/singin-bg.jpg) center/cover no-repeat;
     position: relative;
     z-index: 1;
 }
@@ -2835,3 +2824,13 @@ table.dataTable thead td {
 }
 
 /*-------------------- END Offset Sidebar ------------------- */
+
+
+
+/*
+Edições novas
+*/
+
+.iconBar{
+    cursor: pointer;
+}
