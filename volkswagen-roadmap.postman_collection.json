@@ -6,13 +6,221 @@
 	},
 	"item": [
 		{
+			"name": "pesquisa",
+			"item": [
+				{
+					"name": "busca-title",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "area",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/inovacao/searchTitle?title=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inovacao",
+								"searchTitle"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "busca-area",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "area",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/inovacao/searchArea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inovacao",
+								"searchArea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "busca-responsible",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/inovacao/searchResponsible?responsible=Gabrielle Nunes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inovacao",
+								"searchResponsible"
+							],
+							"query": [
+								{
+									"key": "responsible",
+									"value": "Gabrielle Nunes"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "busca-status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/inovacao/searchStatus?status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inovacao",
+								"searchStatus"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "busca-pontosEscalacao",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "pontosEscalacao",
+									"value": "Pontos CDE",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/inovacao/searchPontosEscalacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inovacao",
+								"searchPontosEscalacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "busca-timeTrabalho",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "timeTrabalho",
+									"value": "Engenharia",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/inovacao/searchTimeTrabalho",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"inovacao",
+								"searchTimeTrabalho"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "cadastrar-inovacao",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\":\"Inovação Teste\",\n    \"responsible\": \"Gabrielle Nunes\",\n    \"area\": \"TI\",\n    \"mweb\": 1234,\n    \"ganhosPrevistos\": \"Redução de custo, produtividade e qualidade.\",\n    \"saving\": 300000,\n    \"recursosNecessarios\": \"Material ABC\",\n    \"invest\": 12000,\n    \"timeTrabalho\": \"TI e Engenharia\",\n    \"parceriasNecessarias\": \"Parceria empresa ABC Tecnologia\",\n    \"pontosEscalacao\": \"Pontos CDE\",\n    \"divulgacao\": \"Divulgação XPTO\",\n    \"actualState\": \"Hoje o processo funciona assim...\",\n    \"targetState\": \"Com essa mudança pretendemos ficar dessa forma...\",\n    \"calculationExplication\": \"Teste\",\n    \"staircaseElement\": \"Teste\",\n    \"handlungsfeld\": \"Sustainable Structures\",\n    \"status\": \"Escalação\",\n    \"hg\": {\n        \"responsable\": \"Gabrielle Nunes\",\n        \"meeting\": \"2022-07-15\"\n    },\n    \"setor\": {\n        \"nomeSetor\": \"TI\"\n    }\n}",
+					"raw": "{\n    \"title\":\"Inovação Importante\",\n    \"responsible\": \"Gabrielle Nunes\",\n    \"area\": \"Tecnologia\",\n    \"mweb\": 1234,\n    \"ganhosPrevistos\": \"Redução de custo, produtividade e qualidade.\",\n    \"saving\": 300000,\n    \"recursosNecessarios\": \"Material ABC\",\n    \"invest\": 12000,\n    \"timeTrabalho\": \"TI e Engenharia\",\n    \"parceriasNecessarias\": \"Parceria empresa ABC Tecnologia\",\n    \"pontosEscalacao\": \"Pontos CDE\",\n    \"divulgacao\": \"Divulgação XPTO\",\n    \"actualState\": \"Hoje o processo funciona assim...\",\n    \"targetState\": \"Com essa mudança pretendemos ficar dessa forma...\",\n    \"calculationExplication\": \"Teste\",\n    \"staircaseElement\": \"Teste\",\n    \"handlungsfeld\": \"Sustainable Structures\",\n    \"status\": \"Concluído\",\n    \"hg\": {\n        \"responsable\": \"Gabrielle Nunes\",\n        \"meeting\": \"2022-07-15\"\n    },\n    \"setor\": {\n        \"id\": 8\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -111,7 +319,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/inovacao/excluir/1",
+					"raw": "http://localhost:8080/inovacao/excluir/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -120,7 +328,7 @@
 					"path": [
 						"inovacao",
 						"excluir",
-						"1"
+						"4"
 					]
 				}
 			},
@@ -154,6 +362,105 @@
 						"inovacao",
 						"lista",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-inovacoes-concluidas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/inovacao/lista/concluidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inovacao",
+						"lista",
+						"concluidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-inovacoes-reprovadas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/inovacao/lista/reprovados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inovacao",
+						"lista",
+						"reprovados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-inovacoes-andamento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/inovacao/lista/emAndamento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inovacao",
+						"lista",
+						"emAndamento"
 					]
 				}
 			},
