@@ -132,7 +132,7 @@ public class InovacaoService {
 		List<Inovacao> serviceResponsible = inovacaoRepository.searchByResponsible(responsible);
 		return new ResponseEntity<List<Inovacao>>(serviceResponsible, HttpStatus.OK);
 	}
-	
+
 	public ResponseEntity<List<Inovacao>> searchArea(String area) {
 		List<Inovacao> serviceArea = inovacaoRepository.searchByArea(area);
 		return new ResponseEntity<List<Inovacao>>(serviceArea, HttpStatus.OK);

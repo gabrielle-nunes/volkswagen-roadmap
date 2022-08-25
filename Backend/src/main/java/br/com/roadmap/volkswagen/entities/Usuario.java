@@ -1,21 +1,20 @@
 package br.com.roadmap.volkswagen.entities;
 
-import br.com.roadmap.volkswagen.dto.UserDTO;
+import br.com.roadmap.volkswagen.dto.UsuarioDTO;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
-//import javax.validation.constraints.Email;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "tbl_user")
-public class User {
+@Table(name = "tbl_usuario")
+public class Usuario {
+    @Column(name = "nome")
+    private String nome;
+
     @Id
-
-    @Column(name = "user")
-    private String user;
-
     @CPF
     @NotBlank(message = "CPF Obrigatório")
     private String cpf;
@@ -24,8 +23,8 @@ public class User {
     @Size(min = 5)
     private String senha;
 
-//    @Email
-//    private Email email;
+    @Email
+    private String email;
 
     @ManyToOne
     @JoinColumn(name = "setor_id")
@@ -39,12 +38,12 @@ public class User {
         this.cpf = cpf;
     }
 
-    public String getUser() {
-        return user;
+    public String getNome() {
+        return nome;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getSenha() {
@@ -55,13 +54,13 @@ public class User {
         this.senha = senha;
     }
 
-//    public Email getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(Email email) {
-//        this.email = email;
-//    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Setor getSetor() {
         return setor;
@@ -71,13 +70,13 @@ public class User {
         this.setor = setor;
     }
 
-    public static User convert(UserDTO userDTO) throws Exception {
-        User user = new User();
-        user.setUser(userDTO.getUser());
-        user.setCpf(userDTO.getCpf());
-        user.setSenha(userDTO.getSenha());
-//        user.setEmail(userDTO.getEmail());
-        return user;
+    public static Usuario convert(UsuarioDTO usuarioDTO) throws Exception {
+        Usuario usuario = new Usuario();
+        usuario.setNome(usuarioDTO.getNome());
+        usuario.setCpf(usuarioDTO.getCpf());
+        usuario.setSenha(usuarioDTO.getSenha());
+        usuario.setEmail(usuarioDTO.getEmail());
+        return usuario;
     }
 
 
