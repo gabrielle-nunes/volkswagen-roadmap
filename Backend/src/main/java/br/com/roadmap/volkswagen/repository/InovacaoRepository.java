@@ -33,7 +33,6 @@ public interface InovacaoRepository extends JpaRepository<Inovacao, Long> {
     @Query(value = "select inovacao from Inovacao inovacao where inovacao.pontosEscalacao like %?1%")
     List<Inovacao> searchByPontosEscalacao(String pontosEscalacao);
 
-
     @Query(value = "select inovacao from Inovacao inovacao where inovacao.timeTrabalho like %?1%")
     List<Inovacao> searchByTimeTrabalho(String timeTrabalho);
 
