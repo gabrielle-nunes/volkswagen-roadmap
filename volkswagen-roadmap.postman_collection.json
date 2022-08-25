@@ -1,9 +1,8 @@
 {
 	"info": {
-		"_postman_id": "b5bce934-7c52-4a9f-8f12-3dd335ed4b44",
+		"_postman_id": "baeda88b-21fb-4eba-89af-b588eea3f739",
 		"name": "volkswagen-roadmap",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "20245002"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -139,7 +138,7 @@
 							"query": [
 								{
 									"key": "status",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -215,47 +214,13 @@
 			]
 		},
 		{
-			"name": "usuario",
-			"item": [
-				{
-					"name": "cadastrar-usuario",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"nome\": \"André\",\n    \"cpf\": \"56294067952\",\n    \"senha\": \"123456789\",\n    \"email\": \"andre@volks.com\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "http://localhost:8080/config/usuario",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"config",
-								"usuario"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "cadastrar-inovacao",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\":\"Inovação Teste\",\n    \"responsible\": \"Gabrielle Nunes\",\n    \"area\": \"TI\",\n    \"mweb\": 1234,\n    \"ganhosPrevistos\": \"Redução de custo, produtividade e qualidade.\",\n    \"saving\": 300000,\n    \"recursosNecessarios\": \"Material ABC\",\n    \"invest\": 12000,\n    \"timeTrabalho\": \"TI e Engenharia\",\n    \"parceriasNecessarias\": \"Parceria empresa ABC Tecnologia\",\n    \"pontosEscalacao\": \"Pontos CDE\",\n    \"divulgacao\": \"Divulgação XPTO\",\n    \"actualState\": \"Hoje o processo funciona assim...\",\n    \"targetState\": \"Com essa mudança pretendemos ficar dessa forma...\",\n    \"calculationExplication\": \"Teste\",\n    \"staircaseElement\": \"Teste\",\n    \"handlungsfeld\": \"Sustainable Structures\",\n    \"status\": \"Escalação\",\n    \"hg\": {\n        \"responsable\": \"Gabrielle Nunes\",\n        \"meeting\": \"2022-07-15\"\n    },\n    \"setor\": {\n        \"nomeSetor\": \"TI\"\n    }\n}",
+					"raw": "{\n    \"title\":\"Inovação Importante\",\n    \"responsible\": \"Gabrielle Nunes\",\n    \"area\": \"Tecnologia\",\n    \"mweb\": 1234,\n    \"ganhosPrevistos\": \"Redução de custo, produtividade e qualidade.\",\n    \"saving\": 300000,\n    \"recursosNecessarios\": \"Material ABC\",\n    \"invest\": 12000,\n    \"timeTrabalho\": \"TI e Engenharia\",\n    \"parceriasNecessarias\": \"Parceria empresa ABC Tecnologia\",\n    \"pontosEscalacao\": \"Pontos CDE\",\n    \"divulgacao\": \"Divulgação XPTO\",\n    \"actualState\": \"Hoje o processo funciona assim...\",\n    \"targetState\": \"Com essa mudança pretendemos ficar dessa forma...\",\n    \"calculationExplication\": \"Teste\",\n    \"staircaseElement\": \"Teste\",\n    \"handlungsfeld\": \"Sustainable Structures\",\n    \"status\": \"Concluído\",\n    \"hg\": {\n        \"responsable\": \"Gabrielle Nunes\",\n        \"meeting\": \"2022-07-15\"\n    },\n    \"setor\": {\n        \"id\": 8\n    }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -354,7 +319,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/inovacao/excluir/1",
+					"raw": "http://localhost:8080/inovacao/excluir/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -363,7 +328,7 @@
 					"path": [
 						"inovacao",
 						"excluir",
-						"1"
+						"4"
 					]
 				}
 			},
@@ -397,6 +362,105 @@
 						"inovacao",
 						"lista",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-inovacoes-concluidas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/inovacao/lista/concluidos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inovacao",
+						"lista",
+						"concluidos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-inovacoes-reprovadas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/inovacao/lista/reprovados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inovacao",
+						"lista",
+						"reprovados"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "listar-inovacoes-andamento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/inovacao/lista/emAndamento",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"inovacao",
+						"lista",
+						"emAndamento"
 					]
 				}
 			},
