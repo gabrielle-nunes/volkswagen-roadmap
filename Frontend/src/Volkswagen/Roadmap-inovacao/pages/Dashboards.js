@@ -149,7 +149,7 @@ function Dashboards() {
                 <div class="row align-items-center">
                     <div class="col-sm-6">
                         <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Tabela de Inovações</h4>
+                            <h4 class="page-title pull-left">Gráficos Relativos a Inovações</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">

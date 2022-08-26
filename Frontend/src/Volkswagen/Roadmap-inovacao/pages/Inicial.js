@@ -11,7 +11,6 @@ import Button from '@mui/material/Button';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import "../css/styles.css";
-import "../css/estilo.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";

@@ -141,6 +141,12 @@
     max-width: 120px;
 }
 
+.metismenu{
+    padding: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+
 .metismenu >li >a {
     padding-left: 32px!important;
 }

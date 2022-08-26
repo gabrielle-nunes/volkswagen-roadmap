@@ -133,7 +133,7 @@ function Visualizar() {
                 <div class="card mt-5">
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-3">
-                            <h4 class="header-title mb-0">Editar Inovação</h4>
+                            <h4 class="header-title mb-0">Visualizar Inovação</h4>
                         </div>
                         {/* TABELA*/}
                           <div id="mainCreate">
