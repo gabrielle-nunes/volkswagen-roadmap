@@ -197,9 +197,9 @@ public class InovacaoDTO {
 	}
 
 	public static InovacaoDTO convert(Inovacao inovacao) throws Exception {
-		
+
 		InovacaoDTO inovacaoDTO = new InovacaoDTO();
-		
+
 		inovacaoDTO.setArea(inovacao.getArea());
 		inovacaoDTO.setDivulgacao(inovacao.getDivulgacao());
 		inovacaoDTO.setGanhosPrevistos(inovacao.getGanhosPrevistos());
@@ -219,6 +219,14 @@ public class InovacaoDTO {
 		inovacaoDTO.setCalculationExplication(inovacao.getCalculationExplication());
 		inovacaoDTO.setHandlungsfeld(inovacao.getHandlungsfeld());
 		inovacaoDTO.setStatus(inovacao.getStatus());
+		if (inovacao.getStatus().equals("Concluído") || inovacao.getStatus().equals("No prazo")
+				|| inovacao.getStatus().equals("Em atraso") || inovacao.getStatus().equals("Escalação")
+				|| inovacao.getStatus().equals("Reprovado")) {
+
+			inovacaoDTO.setStatus(inovacao.getStatus());
+		} else {
+			throw new Exception("Selecione um status válido.");
+		}
 		return inovacaoDTO;
 
 	}

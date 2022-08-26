@@ -3,6 +3,7 @@ package br.com.roadmap.volkswagen.service;
 import java.util.List;
 import java.util.Optional;
 
+import br.com.roadmap.volkswagen.entities.Hg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -68,7 +69,7 @@ public class InovacaoService {
 		throw new Exception("Nenhuma inovação cadastrada está reprovada.");
 	}
 
-	public List<Inovacao> listarInovacoesEmAndamento(String status) throws Exception {
+	public List<Inovacao> listarInovacoesEmAndamento (String status) throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findByStatusEquals(status);
 		if (!inovacao.isEmpty()) {
 			return inovacao;
@@ -88,7 +89,7 @@ public class InovacaoService {
 						|| in.getGanhosPrevistos() != null || in.getSaving() != null
 						|| in.getRecursosNecessarios() != null || in.getInvest() != null || in.getTimeTrabalho() != null
 						|| in.getParceriasNecessarias() != null || in.getPontosEscalacao() != null
-						|| in.getDivulgacao() != null || /* in.getHg() != null || */ in.getSetor() != null
+						|| in.getDivulgacao() != null || in.getHg() != null || in.getSetor() != null
 						|| in.getStatus() != null) {
 
 					in.setTitle(inovacaoDTO.getTitle());
@@ -103,7 +104,7 @@ public class InovacaoService {
 					in.setParceriasNecessarias(inovacaoDTO.getParceriasNecessarias());
 					in.setPontosEscalacao(inovacaoDTO.getPontosEscalacao());
 					in.setDivulgacao(inovacaoDTO.getDivulgacao());
-					// in.setHg(inovacaoDTO.getHg());
+					in.setHg(inovacaoDTO.getHg());
 					in.setSetor(inovacaoDTO.getSetor());
 					in.setStatus(inovacaoDTO.getStatus());
 				}
@@ -144,7 +145,7 @@ public class InovacaoService {
 	}
 
 	public ResponseEntity<List<Inovacao>> searchStatus(String status) {
-		List<Inovacao> serviceStatus = inovacaoRepository.searchByTitle(status);
+		List<Inovacao> serviceStatus = inovacaoRepository.searchByStatus(status);
 		return new ResponseEntity<List<Inovacao>>(serviceStatus, HttpStatus.OK);
 	}
 
@@ -154,9 +155,18 @@ public class InovacaoService {
 	}
 
 	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
-		List<Inovacao> serviceTimeTrabalho = inovacaoRepository.searchByTitle(timeTrabalho);
+		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
 		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
+	}
 
+	public ResponseEntity<List<Inovacao>> searchHg(Hg hg) {
+		List<Inovacao> serviceHg= inovacaoRepository.searchByHg(hg);
+		return new ResponseEntity<List<Inovacao>>(serviceHg, HttpStatus.OK);
+	}
+
+	public ResponseEntity<List<Inovacao>> searchMweb(Integer mweb) {
+		List<Inovacao> serviceMweb= inovacaoRepository.searchByMweb(mweb);
+		return new ResponseEntity<List<Inovacao>>(serviceMweb, HttpStatus.OK);
 	}
 
 }
