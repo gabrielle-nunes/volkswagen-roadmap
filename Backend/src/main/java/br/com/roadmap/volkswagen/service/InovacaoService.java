@@ -20,7 +20,12 @@ public class InovacaoService {
 	private InovacaoRepository inovacaoRepository;
 
 	public InovacaoDTO cadastrarInovacao(InovacaoDTO inovacaoDTO) throws Exception {
-		Inovacao inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
+		Inovacao inovacao = null;
+		try {
+			inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
+		} catch (Exception e) {
+			throw new Exception("Erro ao cadastrar a inovação!");
+		}
 		return InovacaoDTO.convert(inovacao);
 	}
 
