@@ -14,7 +14,7 @@ import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
-import { Navbar, Jumbotron, Dropdown } from 'react-bootstrap';
+import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings } from '@mui/icons-material';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -36,6 +36,21 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
         border: 0,
     },
 }));
+
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        {/* Render custom icon here */}
+        <Mail/>
+        {children}
+    </a>
+));
 
 
 
@@ -213,11 +228,8 @@ function Inicial() {
                                         </Table>
                                     </TableContainer>
                                 </div>
-                                <Dropdown>
-                                <Dropdown.Toggle variant="light" className="bg-white border-0 p-0" id="dropdown-basic">
-                                    <i class="dropdown" data-toggle="dropdown">
-                                            <Notifications />
-                                            {/*
+
+                                  {/*
                                             https://stackoverflow.com/questions/58601704/adding-a-icon-to-react-bootstrap-dropdown
 
                                             https://stackoverflow.com/questions/63329613/drop-down-menu-when-click-on-the-icon-reactjs
@@ -225,15 +237,18 @@ function Inicial() {
                                             https://react-bootstrap.github.io/components/dropdowns/#split-button-dropdowns
                                             
                                             */}
-                                    </i>
-                                </Dropdown.Toggle>
 
-      <Dropdown.Menu>
-        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-      </Dropdown.Menu>
-    </Dropdown>
+                                <Dropdown>
+                                    <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                                        <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                        <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                        <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
                             </div>
                         </div>
                     </div>
