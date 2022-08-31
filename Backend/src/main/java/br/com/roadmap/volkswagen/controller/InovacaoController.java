@@ -105,11 +105,11 @@ public class InovacaoController {
 		return inovacaoService.searchTimeTrabalho(timeTrabalho);
 	}
 
-	@GetMapping(value ="searchHg")
-	@ResponseBody
-	public ResponseEntity<List<Inovacao>> searchPorHg(@RequestParam(name = "hg")Hg hg) {
-		return inovacaoService.searchHg(hg);
-	}
+//	@GetMapping(value ="searchHg")
+//	@ResponseBody
+//	public ResponseEntity<List<Inovacao>> searchPorHg(@RequestParam(name = "hg")Hg hg) {
+//		return inovacaoService.searchHg(hg);
+//	}
 
 	@GetMapping(value ="searchMweb")
 	@ResponseBody

@@ -219,14 +219,6 @@ public class InovacaoDTO {
 		inovacaoDTO.setCalculationExplication(inovacao.getCalculationExplication());
 		inovacaoDTO.setHandlungsfeld(inovacao.getHandlungsfeld());
 		inovacaoDTO.setStatus(inovacao.getStatus());
-		if (inovacao.getStatus().equals("Concluído") || inovacao.getStatus().equals("No prazo")
-				|| inovacao.getStatus().equals("Em atraso") || inovacao.getStatus().equals("Escalação")
-				|| inovacao.getStatus().equals("Reprovado")) {
-
-			inovacaoDTO.setStatus(inovacao.getStatus());
-		} else {
-			throw new Exception("Selecione um status válido.");
-		}
 		return inovacaoDTO;
 
 	}
