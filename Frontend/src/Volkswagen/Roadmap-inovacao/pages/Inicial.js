@@ -45,7 +45,9 @@ function Inicial() {
     const navegar = useNavigate();
     const [ posts, setPosts ] = useState([])
     const [busca, setBusca] = useState('')
+
     console.log(busca);
+
 
   
     useEffect(() => {
@@ -65,14 +67,6 @@ function Inicial() {
         axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
 
         setPosts(posts.filter(post => post.id !== id))
-      }
-
-      function buscarInovacao(title){
-
-        axios.get(`http://localhost:8080/inovacao/searchTitle?title=${title}`)
-      
-        setBusca(posts.filter(post=> post.startsWith (busca)))
-
       }
 
    return(
@@ -114,7 +108,7 @@ function Inicial() {
                     <div class="col-md-6 col-sm-8 clearfix">
                         <div class="search-box pull-left">
                             <form action="#">
-                                <input type="text" name="search" value={busca} placeholder="Procurar..." required onChange={(ev) => setBusca(ev.target.value)}/>
+                                <input type="text" name="search" placeholder="Procurar..." required value={busca} onChange={(ev) => setBusca(ev.target.value)}/>
                                 <i class="ti-search"></i>
                             </form>
                         </div>
@@ -188,8 +182,18 @@ function Inicial() {
                                         <StyledTableCell align="left"></StyledTableCell>
                                         </TableRow>
                                     </TableHead>
-                                    <TableBody>
-                                        {posts.map((post, key) => (
+                                    <TableBody> 
+                                        {/* Função por filtra busca no campo buscas :p*/}
+                                        {posts.filter((post)=> {
+                                           if (busca == "") {
+                                            return post
+                                           }  else if (post.responsible.toLowerCase().includes(busca.toLowerCase())){
+                                                return post
+                                            }  else if (post.area.toLowerCase().includes(busca.toLowerCase())){
+                                                return post
+                                            }  else if (post.title.toLowerCase().includes(busca.toLowerCase())){
+                                                return post
+                                        }} ).map((post, key) => (
                                         <StyledTableRow>
                                             <Visibility class="iconesInicial" onClick={() => navegar({pathname: `/visualizar/${post.id}` })} />
                                             <StyledTableCell align="center">{post.status}</StyledTableCell>

@@ -141,7 +141,7 @@ function Visualizar() {
                               <div class="forms">
                                   <div class="selecao">
                                       <h5 class="infoTitutlo"> Status</h5>      
-                                      <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
+                                      <Form.Select aria-label="Default select example" type="text" name="status">
                                         <option>Escalação</option>
                                         <option>No prazo</option>
                                         <option>Em atraso</option>
@@ -153,54 +153,54 @@ function Visualizar() {
                                   <div>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <h5 class="infoTitutlo" >Staircase element</h5>
-                                      <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
+                                      <Form.Control type="text" placeholder="Staircase element" name="staircaseElement"  />
                                     </Form.Group>
                                   </div>
                       
                                   <div>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <h5 class="infoTitutlo" >Responsable</h5>
-                                    <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
+                                    <Form.Control type="text" placeholder="Responsable" name="responsable"  />
                                     </Form.Group>
                                   </div>
                       
                                   <div>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <h5 class="infoTitutlo" >Area</h5>
-                                    <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
+                                    <Form.Control type="text" placeholder="Area" name="area"  />
                                     </Form.Group>
                                   </div>
                       
                                   <div>
                                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <h5 class="infoTitutlo" >Nome of Measure</h5>
-                                      <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} />
+                                      <Form.Control type="text" placeholder="Nome of Measure" name="title"  />
                                         <p> OU: VWB : CUR : VWB </p>
                                     </Form.Group>
                                   </div>
                       
                                   <div class="texto">
                                       <h5 class="infoTitutlo" >Actual State</h5>
-                                      <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} />
+                                      <Form.Control type="text" as="textarea" name="actualState"  rows={3} />
                                   </div>
                       
                                   <div class="texto">
                                       <h5 class="infoTitutlo" >Targer state with measure description</h5>
                                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                      <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} />
+                                      <Form.Control as="textarea" rows={3} name="targetState"  />
                                       </Form.Group>
                                   </div>
                       
                                   <div class="texto">
                                       <h5 class="infoTitutlo" >Calculation/Explication</h5>
                                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                      <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} />
+                                      <Form.Control as="textarea" rows={3} name="calculationExplication" />
                                       </Form.Group>
                                   </div>
                       
                                     <div class="selecao">
                                       <h5 class="infoTitutlo" >Handlungsfeld</h5>
-                                        <select class="form-select" aria-label="Default select example" type="text" name="handlungsfeld" {...register("handlungsfeld")}>
+                                        <select class="form-select" aria-label="Default select example" type="text" name="handlungsfeld" >
                                           <option selected></option>
                                           <option>SGK</option>
                                           <option>Ramp-up Excellence</option>
@@ -218,7 +218,7 @@ function Visualizar() {
                                     <div class="texto">
                                       <h5 class="infoTitutlo" >Ganhos Previstos:</h5>
                                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                      <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")}/>
+                                      <Form.Control as="textarea" rows={3} name="ganhosPrevistos" />
                                       </Form.Group>
                                     </div>
                       
@@ -226,35 +226,35 @@ function Visualizar() {
                                     <div class="texto" id="section2">
                                         <h5 class="infoTitutlo" >Recursos Necessários:</h5>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                        <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} />
+                                        <Form.Control as="textarea" rows={3} name="recursosNecessarios" />
                                       </Form.Group>
                                     </div>
                       
                                     <div>
                                         <h5 class="infoTitutlo" >Time de Trabalho:</h5>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                        <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} />
+                                        <Form.Control as="textarea" rows={3} name="timeTrabalho"  />
                                         </Form.Group>
                                     </div>
                       
                                     <div>
                                       <h5 class="infoTitutlo" >Parcerias Necessárias:</h5>
                                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                      <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} />
+                                      <Form.Control as="textarea" rows={3} name="parceriasNecessarias"  />
                                       </Form.Group>
                                     </div>
                       
                                     <div>
                                     <h5 class="infoTitutlo" >Pontos de Escalação:</h5>
                                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                      <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} />
+                                      <Form.Control as="textarea" rows={3} name="pontosEscalacao"  />
                                       </Form.Group>
                                     </div>
                       
                                     <div>
                                       <h5 class="infoTitutlo" id="section2" >Divulgação:</h5>
                                       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                      <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} />
+                                      <Form.Control as="textarea" rows={3} name="divulgacao"  />
                                       </Form.Group>
                                     </div>
                       
