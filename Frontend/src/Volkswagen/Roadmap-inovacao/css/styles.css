@@ -2840,3 +2840,11 @@ Edições novas
 .iconBar{
     cursor: pointer;
 }
+
+.dropdown > *{
+    color: black;
+}
+
+.iconesInicial:hover{
+    cursor: pointer;
+}

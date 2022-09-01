@@ -15,8 +15,10 @@ import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
-import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings } from '@mui/icons-material';
+import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown } from '@mui/icons-material';
 
+
+//INICIO TABELAS PERSONALIZADAS----------------->
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.black,
@@ -36,7 +38,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
         border: 0,
     },
 }));
+//FIM TABELAS PERSONALIZADAS----------------->
 
+
+//INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
         href='@mui/icons-material'
@@ -46,11 +51,53 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
             onClick(e);
         }}
     >
-        {/* Render custom icon here */}
-        <Mail/>
+        <Mail />
         {children}
     </a>
 ));
+
+const CustomToggleB = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        {<Notifications />}
+        {children}
+    </a>
+));
+
+const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        <Settings />
+        {children}
+    </a>
+));
+
+const CustomToggleD = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        <ArrowDropDown />
+        {children}
+    </a>
+));
+//FIM ICONES PERSONALIZADOS----------------->
 
 
 
@@ -143,17 +190,44 @@ function Inicial() {
                                 <ul class="notification-area pull-right">
                                     <li class="dropdown">
                                         <i data-toggle="dropdown">
-                                            <Notifications />
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggleB} menuVariant='dark' id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
                                         </i>
                                     </li>
                                     <li class="dropdown">
                                         <i data-toggle="dropdown">
-                                            <Mail />
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
                                         </i>
                                     </li>
                                     <li class="settings-btn">
                                         <i>
-                                            <Settings />
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggleC} id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
                                         </i>
                                     </li>
                                 </ul>
@@ -170,12 +244,15 @@ function Inicial() {
                             <div class="col-sm-6 clearfix">
                                 <div class="user-profile pull-right">
                                     <img class="avatar user-thumb" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar" />
-                                    <h4 class="user-name dropdown-toggle" data-toggle="dropdown">User<i class="fa fa-angle-down"></i></h4>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">Message</a>
-                                        <a class="dropdown-item" href="#">Settings</a>
-                                        <a class="dropdown-item" href="#">Log Out</a>
-                                    </div>
+                                    <h4 class="user-name dropdown-toggle" data-toggle="dropdown">User</h4>
+                                    <Dropdown>
+                                        <Dropdown.Toggle as={CustomToggleD} id="dropdown-custom-components">
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
+                                            <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +288,7 @@ function Inicial() {
                                             <TableBody>
                                                 {posts.map((post, key) => (
                                                     <StyledTableRow>
-                                                        <Visibility class="iconesInicial" onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} />
+                                                        <Visibility class="iconesInicial"  onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} />
                                                         <StyledTableCell align="center">{post.status}</StyledTableCell>
                                                         <StyledTableCell align="center">{post.id}</StyledTableCell>
                                                         <StyledTableCell align="center">{post.title}</StyledTableCell>
@@ -229,7 +306,7 @@ function Inicial() {
                                     </TableContainer>
                                 </div>
 
-                                  {/*
+                                {/*
                                             https://stackoverflow.com/questions/58601704/adding-a-icon-to-react-bootstrap-dropdown
 
                                             https://stackoverflow.com/questions/63329613/drop-down-menu-when-click-on-the-icon-reactjs
@@ -237,18 +314,6 @@ function Inicial() {
                                             https://react-bootstrap.github.io/components/dropdowns/#split-button-dropdowns
                                             
                                             */}
-
-                                <Dropdown>
-                                    <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-                                        <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
-                                        <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
-                                        <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
                             </div>
                         </div>
                     </div>
