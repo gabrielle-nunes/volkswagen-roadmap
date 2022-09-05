@@ -14,6 +14,7 @@ import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
+import Modal from 'react-bootstrap/Modal';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown } from '@mui/icons-material';
 
@@ -103,6 +104,9 @@ const CustomToggleD = React.forwardRef(({ children, onClick }, ref) => (
 
 function Inicial() {
     const navegar = useNavigate();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [posts, setPosts] = useState([])
     const [busca, setBusca] = useState('')
     console.log(busca);
@@ -288,7 +292,7 @@ function Inicial() {
                                             <TableBody>
                                                 {posts.map((post, key) => (
                                                     <StyledTableRow>
-                                                        <Visibility class="iconesInicial"  onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} />
+                                                        <Visibility class="iconesInicial" onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} />
                                                         <StyledTableCell align="center">{post.status}</StyledTableCell>
                                                         <StyledTableCell align="center">{post.id}</StyledTableCell>
                                                         <StyledTableCell align="center">{post.title}</StyledTableCell>
@@ -305,15 +309,31 @@ function Inicial() {
                                         </Table>
                                     </TableContainer>
                                 </div>
+                                {/*FIM TABELA*/}
 
-                                {/*
-                                            https://stackoverflow.com/questions/58601704/adding-a-icon-to-react-bootstrap-dropdown
-
-                                            https://stackoverflow.com/questions/63329613/drop-down-menu-when-click-on-the-icon-reactjs
-
-                                            https://react-bootstrap.github.io/components/dropdowns/#split-button-dropdowns
-                                            
-                                            */}
+                                <div>
+                                    <Button size='medium' color='success' variant='contained' onClick={handleShow}> + Novo</Button>
+                                </div>
+                                <Modal
+                                    show={show}
+                                    onHide={handleClose}
+                                    backdrop="static"
+                                    keyboard={false}
+                                >
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Visualizar Inovação</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        I will not close if you click outside me. Don't even try to press
+                                        escape key.
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button color='success' onClick={handleClose}>
+                                            Close
+                                        </Button>
+                                        <Button color='success'>Understood</Button>
+                                    </Modal.Footer>
+                                </Modal>
                             </div>
                         </div>
                     </div>
