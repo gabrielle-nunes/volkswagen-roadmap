@@ -7,8 +7,12 @@ import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Popover from '@mui/material/Popover';
+import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
-import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown,  HelpOutline } from '@mui/icons-material';
+import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline } from '@mui/icons-material';
 
 //INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -67,6 +71,19 @@ const CustomToggleD = React.forwardRef(({ children, onClick }, ref) => (
     </a>
 ));
 //FIM ICONES PERSONALIZADOS----------------->
+
+const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
 
 
 function Segundo() {
@@ -213,7 +230,21 @@ function Segundo() {
                                     <Form onSubmit={handleSubmit(addPost)}>
                                         <div class="forms">
                                             <div class="selecao">
-                                                <h5 class="infoTitutlo"> Status <HelpOutline/> </h5> 
+                                                <h5 class="infoTitutlo"> Status <HelpOutline onClick={handleClick}>
+                                                    <Popover
+                                                        id={id}
+                                                        open={open}
+                                                        anchorEl={anchorEl}
+                                                        onClose={handleClose}
+                                                        anchorOrigin={{
+                                                            vertical: 'bottom',
+                                                            horizontal: 'left',
+                                                        }}
+                                                    >
+                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                    </Popover>
+                                                </HelpOutline>
+                                                </h5>
                                                 <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
                                                     <option>Escalação</option>
                                                     <option>No prazo</option>
@@ -225,54 +256,54 @@ function Segundo() {
 
                                             <div>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <h5 class="infoTitutlo">Staircase element <HelpOutline/></h5>
+                                                    <h5 class="infoTitutlo">Staircase element <HelpOutline /></h5>
                                                     <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <h5 class="infoTitutlo">Responsable <HelpOutline/></h5>
+                                                    <h5 class="infoTitutlo">Responsable <HelpOutline /></h5>
                                                     <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <h5 class="infoTitutlo">Area <HelpOutline/></h5>
+                                                    <h5 class="infoTitutlo">Area <HelpOutline /></h5>
                                                     <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <h5 class="infoTitutlo">Nome of Measure <HelpOutline/></h5>
+                                                    <h5 class="infoTitutlo">Nome of Measure <HelpOutline /></h5>
                                                     <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} />
                                                     <p> OU: VWB : CUR : VWB </p>
                                                 </Form.Group>
                                             </div>
 
                                             <div class="texto">
-                                                <h5 class="infoTitutlo">Actual State <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Actual State <HelpOutline /></h5>
                                                 <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} />
                                             </div>
 
                                             <div class="texto">
-                                                <h5 class="infoTitutlo">Targer state with measure description <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Targer state with measure description <HelpOutline /></h5>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                                                     <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div class="texto">
-                                                <h5 class="infoTitutlo">Calculation/Explication <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Calculation/Explication <HelpOutline /></h5>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                                                     <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div class="selecao">
-                                                <h5 class="infoTitutlo">Handlungsfeld <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Handlungsfeld <HelpOutline /></h5>
                                                 <select class="form-select" aria-label="Default select example" type="text" name="handlungsfeld" {...register("handlungsfeld")}>
                                                     <option selected></option>
                                                     <option>SGK</option>
@@ -289,7 +320,7 @@ function Segundo() {
 
 
                                             <div class="texto">
-                                                <h5 class="infoTitutlo">Ganhos Previstos: <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Ganhos Previstos: <HelpOutline /></h5>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                                                     <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")} />
                                                 </Form.Group>
@@ -297,35 +328,35 @@ function Segundo() {
 
 
                                             <div class="texto" id="section2">
-                                                <h5 class="infoTitutlo">Recursos Necessários: <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Recursos Necessários: <HelpOutline /></h5>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                                                     <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
-                                                <h5 class="infoTitutlo">Time de Trabalho: <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Time de Trabalho: <HelpOutline /></h5>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                                                     <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
-                                                <h5 class="infoTitutlo">Parcerias Necessárias: <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Parcerias Necessárias: <HelpOutline /></h5>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                                                     <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
-                                                <h5 class="infoTitutlo">Pontos de Escalação: <HelpOutline/></h5>
+                                                <h5 class="infoTitutlo">Pontos de Escalação: <HelpOutline /></h5>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                                                     <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
-                                                <h5 id="section2" class="infoTitutlo">Divulgação: <HelpOutline/></h5>
+                                                <h5 id="section2" class="infoTitutlo">Divulgação: <HelpOutline /></h5>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
                                                     <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} />
                                                 </Form.Group>
