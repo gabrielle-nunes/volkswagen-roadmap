@@ -129,6 +129,7 @@ function Inicial() {
     axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
 
     setPosts(posts.filter(post => post.id !== id))
+    handleClose();
   }
 
   function buscarInovacao(title) {
@@ -313,7 +314,7 @@ function Inicial() {
                             <StyledTableCell align="center">{ }</StyledTableCell>
                             <Edit class="iconesInicial" onClick={() => navegar({ pathname: `/edit/${post.id}` })} />
                             <TableCell class="iconesInicial" text-align="center">{ }</TableCell>
-                            <Delete class="iconesInicial" onClick={handleShow} />
+                            <Delete class="iconesInicial" onClick={deletePost(post.id)} />
                             <Modal
                               show={show}
                               onHide={handleClose}
@@ -330,7 +331,7 @@ function Inicial() {
                                 <Button color='success' onClick={handleClose}>
                                   Cancelar
                                 </Button>
-                                <Button color='success' onClick={handleClose}>Excluir</Button>
+                                <Button color='success' onClick={() => deletePost(post.id)} >Excluir</Button>
                               </Modal.Footer>
                             </Modal>
                           </StyledTableRow>
@@ -340,11 +341,6 @@ function Inicial() {
                   </TableContainer>
                 </div>
                 {/*FIM TABELA*/}
-
-                <div>
-                  <Button size='medium' color='success' variant='contained' onClick={handleShow}> TESTE</Button>
-                </div>
-
               </div>
             </div>
           </div>
