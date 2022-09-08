@@ -315,25 +315,6 @@ function Inicial() {
                             <Edit class="iconesInicial" onClick={() => navegar({ pathname: `/edit/${post.id}` })} />
                             <TableCell class="iconesInicial" text-align="center">{ }</TableCell>
                             <Delete class="iconesInicial" onClick={deletePost(post.id)} />
-                            <Modal
-                              show={show}
-                              onHide={handleClose}
-                              backdrop="static"
-                              keyboard={false}
-                            >
-                              <Modal.Header closeButton>
-                                <Modal.Title>Apagar Inovação</Modal.Title>
-                              </Modal.Header>
-                              <Modal.Body>
-                                Você realmente deseja excluir a Inovação?
-                              </Modal.Body>
-                              <Modal.Footer>
-                                <Button color='success' onClick={handleClose}>
-                                  Cancelar
-                                </Button>
-                                <Button color='success' onClick={() => deletePost(post.id)} >Excluir</Button>
-                              </Modal.Footer>
-                            </Modal>
                           </StyledTableRow>
                         ))}
                       </TableBody>
