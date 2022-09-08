@@ -123,9 +123,11 @@
 .main-menu {
     height: calc(100% - 100px);
     overflow: hidden;
+    margin: 0 -20px;
     padding: 20px 10px 0 0;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
+    text-decoration: none;
 }
 
 .sidebar-header {
@@ -704,26 +706,8 @@ ul.breadcrumbs {
 }
 
 .user-profile {
-    margin-right: -30px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
-    padding: 17px 38px;
+    padding: 25px 38px;
     position: relative;
-}
-
-.user-profile img.avatar {
-    height: 35px;
-    width: 35px;
-    border-radius: 50%;
-    margin-right: 12px;
 }
 
 .user-name {
@@ -1181,6 +1165,7 @@ table.dbkit-table tr td {
     text-align: center;
     padding: 23px 0 19px;
     background: #fff;
+    font-size: small;
 }
 
 .footer-area p {
@@ -2191,6 +2176,11 @@ table.dataTable thead td {
 
 /*-------------------- 21. Map Start ------------------- */
 
+#menu a {
+    color: #F2FFFC;
+    text-decoration: none;
+}
+
 #mapamchart1,
 #mapamchart2,
 #mapamchart3,
@@ -2851,4 +2841,16 @@ Edições novas
 
 .helpButton{
     cursor: pointer;
+}
+
+.pdfBotao{
+    align-items: left;
+}
+
+a{
+    text-decoration: none;
+}
+
+.active{
+    text-decoration: none;
 }
