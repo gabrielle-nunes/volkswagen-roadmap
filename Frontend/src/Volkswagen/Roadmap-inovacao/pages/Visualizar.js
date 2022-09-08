@@ -8,7 +8,7 @@ import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
-import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown } from '@mui/icons-material';
+import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
 /*const schema = yup.object({
   staircase: yup.string().required(),
@@ -57,19 +57,6 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
     </a>
 ));
 
-const CustomToggleD = React.forwardRef(({ children, onClick }, ref) => (
-    <a
-        href='@mui/icons-material'
-        ref={ref}
-        onClick={e => {
-            e.preventDefault();
-            onClick(e);
-        }}
-    >
-        <ArrowDropDown />
-        {children}
-    </a>
-));
 //FIM ICONES PERSONALIZADOS----------------->
 
 function Visualizar() {
@@ -183,10 +170,9 @@ function Visualizar() {
                                                 <Dropdown.Toggle as={CustomToggleC} id="dropdown-custom-components">
                                                 </Dropdown.Toggle>
                                                 <Dropdown.Menu>
-                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
                                                     <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
                                                 </Dropdown.Menu>
                                             </Dropdown>
                                         </i>
@@ -204,16 +190,7 @@ function Visualizar() {
                             </div>
                             <div class="col-sm-6 clearfix">
                                 <div class="user-profile pull-right">
-                                    <img class="avatar user-thumb" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar" />
-                                    <h4 class="user-name dropdown-toggle" data-toggle="dropdown">User</h4>
-                                    <Dropdown>
-                                        <Dropdown.Toggle as={CustomToggleD} id="dropdown-custom-components">
-                                        </Dropdown.Toggle>
-                                        <Dropdown.Menu>
-                                            <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
-                                            <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
-                                        </Dropdown.Menu>
-                                    </Dropdown>
+                                   
                                 </div>
                             </div>
                         </div>

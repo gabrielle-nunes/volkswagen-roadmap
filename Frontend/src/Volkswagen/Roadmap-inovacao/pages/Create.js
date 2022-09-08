@@ -7,12 +7,14 @@ import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
-import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline } from '@mui/icons-material';
+import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle } from '@mui/icons-material';
 
 //INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -38,7 +40,7 @@ const CustomToggleB = React.forwardRef(({ children, onClick }, ref) => (
             onClick(e);
         }}
     >
-        {<Notifications />}
+        {<Settings />}
         {children}
     </a>
 ));
@@ -52,21 +54,7 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
             onClick(e);
         }}
     >
-        <Settings />
-        {children}
-    </a>
-));
-
-const CustomToggleD = React.forwardRef(({ children, onClick }, ref) => (
-    <a
-        href='@mui/icons-material'
-        ref={ref}
-        onClick={e => {
-            e.preventDefault();
-            onClick(e);
-        }}
-    >
-        <ArrowDropDown />
+        <AccountCircle />
         {children}
     </a>
 ));
@@ -171,10 +159,9 @@ function Segundo() {
                                                 <Dropdown.Toggle as={CustomToggleC} id="dropdown-custom-components">
                                                 </Dropdown.Toggle>
                                                 <Dropdown.Menu>
-                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
                                                     <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
-                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
                                                 </Dropdown.Menu>
                                             </Dropdown>
                                         </i>
@@ -192,16 +179,6 @@ function Segundo() {
                             </div>
                             <div class="col-sm-6 clearfix">
                                 <div class="user-profile pull-right">
-                                    <img class="avatar user-thumb" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar" />
-                                    <h4 class="user-name dropdown-toggle" data-toggle="dropdown">User</h4>
-                                    <Dropdown>
-                                        <Dropdown.Toggle as={CustomToggleD} id="dropdown-custom-components">
-                                        </Dropdown.Toggle>
-                                        <Dropdown.Menu>
-                                            <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
-                                            <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
-                                        </Dropdown.Menu>
-                                    </Dropdown>
                                 </div>
                             </div>
                         </div>
@@ -247,107 +224,107 @@ function Segundo() {
 
                                             <div>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Staircase Element <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
+                                                    <PopupState variant="popover" popupId="demo-popup-popover">
+                                                        {(popupState) => (
+                                                            <h5 class="infoTitutlo"> Staircase Element <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                <Popover
+                                                                    {...bindPopover(popupState)}
+                                                                    anchorOrigin={{
+                                                                        vertical: 'bottom',
+                                                                        horizontal: 'center',
+                                                                    }}
+                                                                    transformOrigin={{
+                                                                        vertical: 'top',
+                                                                        horizontal: 'left',
+                                                                    }}
+                                                                >
+                                                                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                </Popover>
+                                                            </h5>
+                                                        )}
+                                                    </PopupState>
                                                     <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Responsable <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
+                                                    <PopupState variant="popover" popupId="demo-popup-popover">
+                                                        {(popupState) => (
+                                                            <h5 class="infoTitutlo"> Responsable <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                <Popover
+                                                                    {...bindPopover(popupState)}
+                                                                    anchorOrigin={{
+                                                                        vertical: 'bottom',
+                                                                        horizontal: 'center',
+                                                                    }}
+                                                                    transformOrigin={{
+                                                                        vertical: 'top',
+                                                                        horizontal: 'left',
+                                                                    }}
+                                                                >
+                                                                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                </Popover>
+                                                            </h5>
+                                                        )}
+                                                    </PopupState>
                                                     <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Area <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
+                                                    <PopupState variant="popover" popupId="demo-popup-popover">
+                                                        {(popupState) => (
+                                                            <h5 class="infoTitutlo"> Area <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                <Popover
+                                                                    {...bindPopover(popupState)}
+                                                                    anchorOrigin={{
+                                                                        vertical: 'bottom',
+                                                                        horizontal: 'center',
+                                                                    }}
+                                                                    transformOrigin={{
+                                                                        vertical: 'top',
+                                                                        horizontal: 'left',
+                                                                    }}
+                                                                >
+                                                                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                </Popover>
+                                                            </h5>
+                                                        )}
+                                                    </PopupState>
                                                     <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
                                                 </Form.Group>
                                             </div>
 
                                             <div>
                                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Name of Measure <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
+                                                    <PopupState variant="popover" popupId="demo-popup-popover">
+                                                        {(popupState) => (
+                                                            <h5 class="infoTitutlo"> Name of Measure <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                <Popover
+                                                                    {...bindPopover(popupState)}
+                                                                    anchorOrigin={{
+                                                                        vertical: 'bottom',
+                                                                        horizontal: 'center',
+                                                                    }}
+                                                                    transformOrigin={{
+                                                                        vertical: 'top',
+                                                                        horizontal: 'left',
+                                                                    }}
+                                                                >
+                                                                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                </Popover>
+                                                            </h5>
+                                                        )}
+                                                    </PopupState>
                                                     <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} />
                                                     <p> OU: VWB : CUR : VWB </p>
                                                 </Form.Group>
                                             </div>
 
                                             <div class="texto">
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Actual State <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -370,7 +347,7 @@ function Segundo() {
                                             </div>
 
                                             <div class="texto">
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Targer state with measure description <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -395,7 +372,7 @@ function Segundo() {
                                             </div>
 
                                             <div class="texto">
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Calculation/Explication <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -420,7 +397,7 @@ function Segundo() {
                                             </div>
 
                                             <div class="selecao">
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Handlungsfeld <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -455,7 +432,7 @@ function Segundo() {
 
 
                                             <div class="texto">
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Ganhos Previstos: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -481,7 +458,7 @@ function Segundo() {
 
 
                                             <div class="texto" id="section2">
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Recursos Necessários: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -506,7 +483,7 @@ function Segundo() {
                                             </div>
 
                                             <div>
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Time de Trabalho: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -531,7 +508,7 @@ function Segundo() {
                                             </div>
 
                                             <div>
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Parcerias Necessárias: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -556,7 +533,7 @@ function Segundo() {
                                             </div>
 
                                             <div>
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Pontos de Escalação: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover
@@ -581,7 +558,7 @@ function Segundo() {
                                             </div>
 
                                             <div>
-                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                <PopupState variant="popover" popupId="demo-popup-popover">
                                                     {(popupState) => (
                                                         <h5 class="infoTitutlo"> Divulgação: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                             <Popover

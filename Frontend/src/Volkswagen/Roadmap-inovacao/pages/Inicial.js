@@ -6,6 +6,9 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
 import React, { useEffect, useState } from "react";
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
@@ -16,7 +19,7 @@ import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
 import Modal from 'react-bootstrap/Modal';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
-import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown } from '@mui/icons-material';
+import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
 
 //INICIO TABELAS PERSONALIZADAS----------------->
@@ -66,7 +69,7 @@ const CustomToggleB = React.forwardRef(({ children, onClick }, ref) => (
       onClick(e);
     }}
   >
-    {<Notifications />}
+    {<Settings />}
     {children}
   </a>
 ));
@@ -80,24 +83,11 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
       onClick(e);
     }}
   >
-    <Settings />
+    <AccountCircle />
     {children}
   </a>
 ));
 
-const CustomToggleD = React.forwardRef(({ children, onClick }, ref) => (
-  <a
-    href='@mui/icons-material'
-    ref={ref}
-    onClick={e => {
-      e.preventDefault();
-      onClick(e);
-    }}
-  >
-    <ArrowDropDown />
-    {children}
-  </a>
-));
 //FIM ICONES PERSONALIZADOS----------------->
 
 
@@ -129,7 +119,6 @@ function Inicial() {
     axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
 
     setPosts(posts.filter(post => post.id !== id))
-    handleClose();
   }
 
   function buscarInovacao(title) {
@@ -227,10 +216,9 @@ function Inicial() {
                         <Dropdown.Toggle as={CustomToggleC} id="dropdown-custom-components">
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                          <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-                          <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                          <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
+                          <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
                           <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
-                          <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
                         </Dropdown.Menu>
                       </Dropdown>
                     </i>
@@ -248,16 +236,6 @@ function Inicial() {
               </div>
               <div class="col-sm-6 clearfix">
                 <div class="user-profile pull-right">
-                  <img class="avatar user-thumb" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="avatar" />
-                  <h4 class="user-name dropdown-toggle" data-toggle="dropdown">User</h4>
-                  <Dropdown>
-                    <Dropdown.Toggle as={CustomToggleD} id="dropdown-custom-components">
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
-                      <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
                 </div>
               </div>
             </div>
@@ -304,7 +282,8 @@ function Inicial() {
                           }
                         }).map((post, key) => (
                           <StyledTableRow>
-                            <Visibility class="iconesInicial" onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} />
+                            <Visibility class="iconesInicial" onClick={handleShow} />
+                            {/*onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} */}
                             <StyledTableCell align="center">{post.status}</StyledTableCell>
                             <StyledTableCell align="center">{post.id}</StyledTableCell>
                             <StyledTableCell align="center">{post.title}</StyledTableCell>
@@ -314,9 +293,79 @@ function Inicial() {
                             <StyledTableCell align="center">{ }</StyledTableCell>
                             <Edit class="iconesInicial" onClick={() => navegar({ pathname: `/edit/${post.id}` })} />
                             <TableCell class="iconesInicial" text-align="center">{ }</TableCell>
-                            <Delete class="iconesInicial" onClick={deletePost(post.id)} />
+                            <Delete class="iconesInicial" onClick={() => deletePost(post.id)} />
+
+                            {/*MODAL PARA DELETAR
+                            <Modal
+                              show={show}
+                              onHide={handleClose}
+                              backdrop="static"
+                              keyboard={false}
+                            >
+                              <Modal.Header closeButton>
+                                <Modal.Title>Apagar Inovação</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                                Você realmente deseja excluir a Inovação?
+                              </Modal.Body>
+                              <Modal.Footer>
+                                <Button color='success' onClick={handleClose}>
+                                  Cancelar
+                                </Button>
+                                <Button color='success' onClick={() => deletePost(post.id)} >Excluir</Button>
+                              </Modal.Footer>
+                            </Modal>
+                            */}
+
+                            {/*MODAL PARA VISUALIZAR*/}
+                            <Modal
+                              show={show}
+                              onHide={handleClose}
+                              backdrop="static"
+                              keyboard={true}
+                              size='xl'
+                            >
+                              <Modal.Header closeButton>
+                                <Modal.Title>Visualizar Inovação</Modal.Title>
+                              </Modal.Header>
+                              <Modal.Body>
+                                <Form>
+                                  <Row>
+                                    <Col>
+                                      <Form.Control placeholder="First name" />
+                                    </Col>
+                                    <Col>
+                                      <Form.Control placeholder="Last name" />
+                                    </Col>
+                                    <Col>
+                                      <Form.Control placeholder="Last name" />
+                                    </Col>
+                                    <Col>
+                                      <Form.Control placeholder="Last name" />
+                                    </Col>
+                                    <Col>
+                                      <Form.Control placeholder="Last name" />
+                                    </Col>
+                                    <Col>
+                                      <Form.Control placeholder="Last name" disabled />
+                                    </Col>
+                                  </Row>
+                                </Form>
+                              {/*<Form.Control placeholder="Disabled input" disabled /> */}
+                              </Modal.Body>
+                              <Modal.Footer>
+                                <Button className='main-content-inner' size='medium' color='warning' variant='contained' onClick={() => deletePost(post.id)} >Salvar em PDF</Button>
+                                <Button size='medium' color='success' variant='contained' onClick={handleClose}>
+                                  Fechar
+                                </Button>
+                              </Modal.Footer>
+                            </Modal>
                           </StyledTableRow>
+
+
                         ))}
+
+
                       </TableBody>
                     </Table>
                   </TableContainer>
