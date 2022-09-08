@@ -186,7 +186,7 @@ function Inicial() {
               <div class="col-md-6 col-sm-8 clearfix">
                 <div class="search-box pull-left">
                   <form action="#">
-                    <input type="text" name="search" placeholder="Procurar..." required value={busca} onChange={(ev) => setBusca(ev.target.value)} />
+                    <input type="text" name="search" value={busca} placeholder="Procurar..." required onChange={(ev) => setBusca(ev.target.value)} />
                     <i class="ti-search"></i>
                   </form>
                 </div>
@@ -291,18 +291,7 @@ function Inicial() {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {/* Função por filtra busca no campo buscas :p*/}
-                        {posts.filter((post) => {
-                          if (busca == "") {
-                            return post
-                          } else if (post.responsible.toLowerCase().includes(busca.toLowerCase())) {
-                            return post
-                          } else if (post.area.toLowerCase().includes(busca.toLowerCase())) {
-                            return post
-                          } else if (post.title.toLowerCase().includes(busca.toLowerCase())) {
-                            return post
-                          }
-                        }).map((post, key) => (
+                        {posts.map((post, key) => (
                           <StyledTableRow>
                             <Visibility class="iconesInicial" onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} />
                             <StyledTableCell align="center">{post.status}</StyledTableCell>
@@ -314,6 +303,7 @@ function Inicial() {
                             <StyledTableCell align="center">{ }</StyledTableCell>
                             <Edit class="iconesInicial" onClick={() => navegar({ pathname: `/edit/${post.id}` })} />
                             <TableCell class="iconesInicial" text-align="center">{ }</TableCell>
+<<<<<<< HEAD
                             <Delete class="iconesInicial" onClick={deletePost(post.id)} />
                             <Modal
                               show={show}
@@ -334,26 +324,57 @@ function Inicial() {
                                 <Button color='success' onClick={() => deletePost(post.id)} >Excluir</Button>
                               </Modal.Footer>
                             </Modal>
+=======
+                            <Delete class="iconesInicial" onClick={() => deletePost(post.id)} />
+>>>>>>> parent of e1b6797 (Update Inicial.js)
                           </StyledTableRow>
                         ))}
                       </TableBody>
                     </Table>
                   </TableContainer>
                 </div>
+<<<<<<< HEAD
                 {/*FIM TABELA*/}
+=======
+              {/*FIM TABELA*/}
+
+              <div>
+                <Button size='medium' color='success' variant='contained' onClick={handleShow}> TESTE</Button>
+>>>>>>> parent of e1b6797 (Update Inicial.js)
               </div>
+              <Modal
+                show={show}
+                onHide={handleClose}
+                backdrop="static"
+                keyboard={false}
+              >
+                <Modal.Header closeButton>
+                  <Modal.Title>Visualizar Inovação</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  I will not close if you click outside me. Don't even try to press
+                  escape key.
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button color='success' onClick={handleClose}>
+                    Close
+                  </Button>
+                  <Button color='success'>Understood</Button>
+                </Modal.Footer>
+              </Modal>
             </div>
           </div>
         </div>
-        <footer>
-          <div class="footer-area">
-            <p>© Copyright 2022. Todos os direitos reservados. Desenvolvido pela <a href="https://github.com/gabrielle-nunes/volkswagen-roadmap">Equipe Rômulo</a>.</p>
-          </div>
-        </footer>
       </div>
-    </body >
+      <footer>
+        <div class="footer-area">
+          <p>© Copyright 2022. Todos os direitos reservados. Desenvolvido pela <a href="https://github.com/gabrielle-nunes/volkswagen-roadmap">Equipe Rômulo</a>.</p>
+        </div>
+      </footer>
+    </div>
+        </body >
 
-  );
+    );
 
 }
 
