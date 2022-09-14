@@ -659,9 +659,6 @@
     top: 50%;
     width: 4px;
     height: 36px;
-    background: var(--primary-color);
-    -webkit-transform: translateY(-50%);
-            transform: translateY(-50%);
 }
 
 .page-title {
