@@ -193,398 +193,437 @@ function Segundo() {
                                 <div id="mainCreate">
                                     <Form onSubmit={handleSubmit(addPost)}>
                                         <div class="forms">
-                                            <div class="selecao">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Status <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
-                                                    <option>Escalação</option>
-                                                    <option>No prazo</option>
-                                                    <option>Em atraso</option>
-                                                    <option>Concluído</option>
-                                                    <option>Reprovado</option>
-                                                </Form.Select>
-                                            </div>
+                                            <Row>
+                                                <Col>
+                                                    <div class="selecao">
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Status <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
+                                                            <option>Escalação</option>
+                                                            <option>No prazo</option>
+                                                            <option>Em atraso</option>
+                                                            <option>Concluído</option>
+                                                            <option>Reprovado</option>
+                                                        </Form.Select>
+                                                    </div>
+                                                </Col>
+                                                <Col>
+                                                    <div>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                                {(popupState) => (
+                                                                    <h6 class="infoTitutlo"> Staircase Element <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                        <Popover
+                                                                            {...bindPopover(popupState)}
+                                                                            anchorOrigin={{
+                                                                                vertical: 'bottom',
+                                                                                horizontal: 'center',
+                                                                            }}
+                                                                            transformOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'left',
+                                                                            }}
+                                                                        >
+                                                                            <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                        </Popover>
+                                                                    </h6>
+                                                                )}
+                                                            </PopupState>
+                                                            <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+
+                                                <Col>
+                                                    <div>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                                {(popupState) => (
+                                                                    <h6 class="infoTitutlo"> Responsable <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                        <Popover
+                                                                            {...bindPopover(popupState)}
+                                                                            anchorOrigin={{
+                                                                                vertical: 'bottom',
+                                                                                horizontal: 'center',
+                                                                            }}
+                                                                            transformOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'left',
+                                                                            }}
+                                                                        >
+                                                                            <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                        </Popover>
+                                                                    </h6>
+                                                                )}
+                                                            </PopupState>
+                                                            <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+
+
+
+                                            <Row>
+                                                <Col>
+                                                    <div>
+                                                        <Form.Group controlId="exampleForm.ControlInput1">
+                                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                                {(popupState) => (
+                                                                    <h6 class="infoTitutlo"> Area <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                        <Popover
+                                                                            {...bindPopover(popupState)}
+                                                                            anchorOrigin={{
+                                                                                vertical: 'bottom',
+                                                                                horizontal: 'center',
+                                                                            }}
+                                                                            transformOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'left',
+                                                                            }}
+                                                                        >
+                                                                            <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                        </Popover>
+                                                                    </h6>
+                                                                )}
+                                                            </PopupState>
+                                                            <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                                <Col>
+                                                    <div>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                            <PopupState variant="popover" popupId="demo-popup-popover">
+                                                                {(popupState) => (
+                                                                    <h6 class="infoTitutlo"> Name of Measure <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                        <Popover
+                                                                            {...bindPopover(popupState)}
+                                                                            anchorOrigin={{
+                                                                                vertical: 'bottom',
+                                                                                horizontal: 'center',
+                                                                            }}
+                                                                            transformOrigin={{
+                                                                                vertical: 'top',
+                                                                                horizontal: 'left',
+                                                                            }}
+                                                                        >
+                                                                            <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                        </Popover>
+                                                                    </h6>
+                                                                )}
+                                                            </PopupState>
+                                                            <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} />
+                                                            <p> OU: VWB : CUR : VWB </p>
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col>
+                                                    <div class="texto">
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Actual State <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} />
+                                                    </div>
+                                                </Col>
+
+
+                                                <Col>
+                                                    <div class="texto">
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Targer state with measure description <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                            <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col>
+                                                    <div class="texto">
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Calculation/Explication <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                                            <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                                <Col>
+                                                    <div class="selecao">
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Handlungsfeld <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <select class="form-select" aria-label="Default select example" type="text" name="handlungsfeld" {...register("handlungsfeld")}>
+                                                            <option selected></option>
+                                                            <option>SGK</option>
+                                                            <option>Ramp-up Excellence</option>
+                                                            <option>Low-Expenditure Factories of the Future</option>
+                                                            <option>Stable Customer Order Process</option>
+                                                            <option>Team of the Future</option>
+                                                            <option>Sustainable Structures</option>
+                                                            <option>Produtivity</option>
+                                                            <option>Rework-free Products and Processes</option>
+                                                            <option>Zero Impact Factory</option>
+                                                        </select>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+
+
+                                            <Row>
+                                                <Col>
+                                                    <div class="texto">
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Ganhos Previstos: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                            <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                                <Col>
+                                                    <div class="texto" id="section2">
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Recursos Necessários: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                            <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col>
+                                                    <div>
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Time de Trabalho: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                            <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                                <Col>
+                                                    <div>
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Parcerias Necessárias: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                            <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+
+                                            <Row>
+                                                <Col>
+                                                    <div>
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Pontos de Escalação: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                            <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                                <Col>
+                                                    <div>
+                                                        <PopupState variant="popover" popupId="demo-popup-popover">
+                                                            {(popupState) => (
+                                                                <h6 class="infoTitutlo"> Divulgação: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <Popover
+                                                                        {...bindPopover(popupState)}
+                                                                        anchorOrigin={{
+                                                                            vertical: 'bottom',
+                                                                            horizontal: 'center',
+                                                                        }}
+                                                                        transformOrigin={{
+                                                                            vertical: 'top',
+                                                                            horizontal: 'left',
+                                                                        }}
+                                                                    >
+                                                                        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+                                                                    </Popover>
+                                                                </h6>
+                                                            )}
+                                                        </PopupState>
+                                                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                            <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} />
+                                                        </Form.Group>
+                                                    </div>
+                                                </Col>
+                                            </Row>
 
                                             <div>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <PopupState variant="popover" popupId="demo-popup-popover">
-                                                        {(popupState) => (
-                                                            <h5 class="infoTitutlo"> Staircase Element <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                                <Popover
-                                                                    {...bindPopover(popupState)}
-                                                                    anchorOrigin={{
-                                                                        vertical: 'bottom',
-                                                                        horizontal: 'center',
-                                                                    }}
-                                                                    transformOrigin={{
-                                                                        vertical: 'top',
-                                                                        horizontal: 'left',
-                                                                    }}
-                                                                >
-                                                                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                                </Popover>
-                                                            </h5>
-                                                        )}
-                                                    </PopupState>
-                                                    <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <PopupState variant="popover" popupId="demo-popup-popover">
-                                                        {(popupState) => (
-                                                            <h5 class="infoTitutlo"> Responsable <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                                <Popover
-                                                                    {...bindPopover(popupState)}
-                                                                    anchorOrigin={{
-                                                                        vertical: 'bottom',
-                                                                        horizontal: 'center',
-                                                                    }}
-                                                                    transformOrigin={{
-                                                                        vertical: 'top',
-                                                                        horizontal: 'left',
-                                                                    }}
-                                                                >
-                                                                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                                </Popover>
-                                                            </h5>
-                                                        )}
-                                                    </PopupState>
-                                                    <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <PopupState variant="popover" popupId="demo-popup-popover">
-                                                        {(popupState) => (
-                                                            <h5 class="infoTitutlo"> Area <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                                <Popover
-                                                                    {...bindPopover(popupState)}
-                                                                    anchorOrigin={{
-                                                                        vertical: 'bottom',
-                                                                        horizontal: 'center',
-                                                                    }}
-                                                                    transformOrigin={{
-                                                                        vertical: 'top',
-                                                                        horizontal: 'left',
-                                                                    }}
-                                                                >
-                                                                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                                </Popover>
-                                                            </h5>
-                                                        )}
-                                                    </PopupState>
-                                                    <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                                    <PopupState variant="popover" popupId="demo-popup-popover">
-                                                        {(popupState) => (
-                                                            <h5 class="infoTitutlo"> Name of Measure <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                                <Popover
-                                                                    {...bindPopover(popupState)}
-                                                                    anchorOrigin={{
-                                                                        vertical: 'bottom',
-                                                                        horizontal: 'center',
-                                                                    }}
-                                                                    transformOrigin={{
-                                                                        vertical: 'top',
-                                                                        horizontal: 'left',
-                                                                    }}
-                                                                >
-                                                                    <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                                </Popover>
-                                                            </h5>
-                                                        )}
-                                                    </PopupState>
-                                                    <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} />
-                                                    <p> OU: VWB : CUR : VWB </p>
-                                                </Form.Group>
-                                            </div>
-
-                                            <div class="texto">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Actual State <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} />
-                                            </div>
-
-                                            <div class="texto">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Targer state with measure description <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                    <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div class="texto">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Calculation/Explication <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                                    <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div class="selecao">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Handlungsfeld <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <select class="form-select" aria-label="Default select example" type="text" name="handlungsfeld" {...register("handlungsfeld")}>
-                                                    <option selected></option>
-                                                    <option>SGK</option>
-                                                    <option>Ramp-up Excellence</option>
-                                                    <option>Low-Expenditure Factories of the Future</option>
-                                                    <option>Stable Customer Order Process</option>
-                                                    <option>Team of the Future</option>
-                                                    <option>Sustainable Structures</option>
-                                                    <option>Produtivity</option>
-                                                    <option>Rework-free Products and Processes</option>
-                                                    <option>Zero Impact Factory</option>
-                                                </select>
-                                            </div>
-
-
-                                            <div class="texto">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Ganhos Previstos: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                    <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")} />
-                                                </Form.Group>
-                                            </div>
-
-
-                                            <div class="texto" id="section2">
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Recursos Necessários: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                    <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div>
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Time de Trabalho: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                    <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div>
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Parcerias Necessárias: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                    <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div>
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Pontos de Escalação: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                    <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div>
-                                                <PopupState variant="popover" popupId="demo-popup-popover">
-                                                    {(popupState) => (
-                                                        <h5 class="infoTitutlo"> Divulgação: <HelpOutline variant="contained" {...bindTrigger(popupState)} />
-                                                            <Popover
-                                                                {...bindPopover(popupState)}
-                                                                anchorOrigin={{
-                                                                    vertical: 'bottom',
-                                                                    horizontal: 'center',
-                                                                }}
-                                                                transformOrigin={{
-                                                                    vertical: 'top',
-                                                                    horizontal: 'left',
-                                                                }}
-                                                            >
-                                                                <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
-                                                            </Popover>
-                                                        </h5>
-                                                    )}
-                                                </PopupState>
-                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                    <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} />
-                                                </Form.Group>
-                                            </div>
-
-                                            <div>
-                                                <button id="butao" type="submit" class="btn btn-primary" name="submit" {...register("submit")}> Salvar </button>
-
+                                                <button type="submit" class="btn btn-primary" name="submit" {...register("submit")}> Salvar </button>
                                                 <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Cancelar</button>
                                             </div>
                                         </div>
@@ -593,8 +632,6 @@ function Segundo() {
                                 {/* FIM TABELA*/}
                             </div>
                         </div>
-
-
                     </div>
                 </div>
                 <footer>
@@ -602,11 +639,9 @@ function Segundo() {
                         <p>© Copyright 2022. Todos os direitos reservados. Desenvolvido pela <a href="https://github.com/gabrielle-nunes/volkswagen-roadmap">Equipe Rômulo</a>.</p>
                     </div>
                 </footer>
-            </div>
-        </body>
-
+            </div >
+        </body >
     );
-
 }
 
 export default Segundo;
