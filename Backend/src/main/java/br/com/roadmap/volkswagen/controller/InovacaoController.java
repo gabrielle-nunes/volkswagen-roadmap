@@ -1,10 +1,14 @@
 package br.com.roadmap.volkswagen.controller;
 
+import java.io.IOException;
+//import java.nio.file.Files;
+//import java.nio.file.Paths;
+//import java.nio.file.Path;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
-import br.com.roadmap.volkswagen.entities.Hg;
+//import br.com.roadmap.volkswagen.entities.Hg;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import br.com.roadmap.volkswagen.dto.InovacaoDTO;
 import br.com.roadmap.volkswagen.entities.Inovacao;
 import br.com.roadmap.volkswagen.service.InovacaoService;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/inovacao")
@@ -22,14 +27,18 @@ public class InovacaoController {
 
 	@PostMapping("/cadastro")
 	@Transactional
-	public InovacaoDTO cadastrarInovacao(@RequestBody InovacaoDTO inovacaoDTO) throws Exception {
-		return inovacaoService.cadastrarInovacao(inovacaoDTO);
-	}
+	public InovacaoDTO cadastrarInovacaoController(@RequestBody InovacaoDTO inovacaoDTO, @RequestParam("file") MultipartFile file) throws Exception {
 
-	@DeleteMapping("/excluir/{id}")
-	@Transactional
-	public ResponseEntity<InovacaoDTO> excluirInovacao(@PathVariable Long id) throws Exception {
-		return inovacaoService.excluirInovacao(id);
+		/*caso a imagem/caminho nao exista*/
+//				if (!file.isEmpty()){
+//					byte[] arrayBytes = file.getBytes();
+//					String caminhoFile = "/photos";
+//					Path caminho = Paths.get(caminhoFile + String.valueOf(inovacaoDTO.getId()) + file.getOriginalFilename());/*pega o caminho junto com nome completo da img*/
+//					Files.write(caminho, arrayBytes);
+
+		inovacaoDTO.setImagem((String.valueOf(inovacaoDTO.getId()) + file.getOriginalFilename()).getBytes()); /*So salvar o caminho da img*/
+//				}
+		return inovacaoService.cadastrarInovacao(inovacaoDTO);
 	}
 
 	@GetMapping("/lista")
@@ -41,13 +50,6 @@ public class InovacaoController {
 	@GetMapping("/lista/{id}")
 	public ResponseEntity<Inovacao> retornaUmaInovacao(@PathVariable long id) throws Exception {
 		return inovacaoService.retornaUmaInovacao(id);
-	}
-
-	@PutMapping("/editar/{id}")
-	@Transactional
-	public InovacaoDTO atualizarInovacao(@RequestBody InovacaoDTO inovacaoDTO, @PathVariable("id") Long id) throws Exception {
-		return inovacaoService.atualizarInovacao(inovacaoDTO, id);
-
 	}
 
 	@GetMapping(value="/lista/concluidos")
@@ -116,4 +118,18 @@ public class InovacaoController {
 	public ResponseEntity<List<Inovacao>> searchPorMweb(@RequestParam(name = "mweb") Integer mweb) {
 		return inovacaoService.searchMweb(mweb);
 	}
+
+
+	@PutMapping("/editar/{id}")
+	@Transactional
+	public InovacaoDTO atualizarInovacao(@RequestBody InovacaoDTO inovacaoDTO, @PathVariable("id") Long id) throws Exception {
+		return inovacaoService.atualizarInovacao(inovacaoDTO, id);
+	}
+
+	@DeleteMapping("/excluir/{id}")
+	@Transactional
+	public ResponseEntity<InovacaoDTO> excluirInovacao(@PathVariable Long id) throws Exception {
+		return inovacaoService.excluirInovacao(id);
+	}
+
 }

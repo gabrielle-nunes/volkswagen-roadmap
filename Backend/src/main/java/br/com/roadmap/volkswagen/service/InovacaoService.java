@@ -19,6 +19,7 @@ public class InovacaoService {
 	@Autowired
 	private InovacaoRepository inovacaoRepository;
 
+//	POST
 	public InovacaoDTO cadastrarInovacao(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = null;
 		try {
@@ -29,19 +30,7 @@ public class InovacaoService {
 		return InovacaoDTO.convert(inovacao);
 	}
 
-	public ResponseEntity<InovacaoDTO> excluirInovacao(Long id) {
-
-		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
-
-		if (inovacao.isPresent()) {
-			inovacaoRepository.deleteById(id);
-			return ResponseEntity.ok().build();
-		}
-
-		return ResponseEntity.notFound().build();
-	}
-
-	// Lista todas as inovações
+	// GET Lista todas as inovações
 	public List<Inovacao> listarInovacao() throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findAll();
 
@@ -52,7 +41,6 @@ public class InovacaoService {
 		throw new Exception("Nenhuma inovação cadastrada.");
 
 	}
-
 	public List<Inovacao> listarInovacoesConcluidas(String status) throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findByStatus("Concluído");
 		if (!inovacao.isEmpty()) {
@@ -60,7 +48,6 @@ public class InovacaoService {
 		}
 		throw new Exception("Nenhuma inovação cadastrada está concluída.");
 	}
-
 	public List<Inovacao> listarInovacoesReprovadas(String status) throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findByStatus("Reprovado");
 		if (!inovacao.isEmpty()) {
@@ -68,7 +55,6 @@ public class InovacaoService {
 		}
 		throw new Exception("Nenhuma inovação cadastrada está reprovada.");
 	}
-
 	public List<Inovacao> listarInovacoesEmAndamento(String status) throws Exception {
 		List<Inovacao> inovacao = inovacaoRepository.findByStatusEquals(status);
 		if (!inovacao.isEmpty()) {
@@ -76,7 +62,50 @@ public class InovacaoService {
 		}
 		throw new Exception("Nenhuma inovação cadastrada está em andamento.");
 	}
+	public ResponseEntity<Inovacao> retornaUmaInovacao(long id) {
+		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
 
+		if (inovacao.isPresent())
+			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+	}
+	public ResponseEntity<List<Inovacao>> searchTitle(String title) {
+		List<Inovacao> serviceTitle = inovacaoRepository.searchByTitle(title);
+		return new ResponseEntity<List<Inovacao>>(serviceTitle, HttpStatus.OK);
+	}
+	public ResponseEntity<List<Inovacao>> searchResponsible(String responsible) {
+		List<Inovacao> serviceResponsible = inovacaoRepository.searchByResponsible(responsible);
+		return new ResponseEntity<List<Inovacao>>(serviceResponsible, HttpStatus.OK);
+	}
+	public ResponseEntity<List<Inovacao>> searchArea(String area) {
+		List<Inovacao> serviceArea = inovacaoRepository.searchByArea(area);
+		return new ResponseEntity<List<Inovacao>>(serviceArea, HttpStatus.OK);
+	}
+	public ResponseEntity<List<Inovacao>> searchStatus(String status) {
+		List<Inovacao> serviceStatus = inovacaoRepository.searchByStatus(status);
+		return new ResponseEntity<List<Inovacao>>(serviceStatus, HttpStatus.OK);
+	}
+	public ResponseEntity<List<Inovacao>> searchPontosEscalacao(String pontosEscalacao) {
+		List<Inovacao> servicePontosEscalacao = inovacaoRepository.searchByPontosEscalacao(pontosEscalacao);
+		return new ResponseEntity<List<Inovacao>>(servicePontosEscalacao, HttpStatus.OK);
+	}
+	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
+		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
+		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
+	}
+	public ResponseEntity<List<Inovacao>> searchMweb(Integer mweb) {
+		List<Inovacao> serviceMweb= inovacaoRepository.searchByMweb(mweb);
+		return new ResponseEntity<List<Inovacao>>(serviceMweb, HttpStatus.OK);
+	}
+//	public ResponseEntity<List<Inovacao>> searchHg(Hg hg) {
+//		List<Inovacao> serviceHg= inovacaoRepository.searchByHg(hg);
+//		return new ResponseEntity<List<Inovacao>>(serviceHg, HttpStatus.OK);
+
+//	}
+
+//	POST
 	public InovacaoDTO atualizarInovacao(InovacaoDTO inovacaoDTO, Long id) throws Exception {
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
 
@@ -119,54 +148,17 @@ public class InovacaoService {
 		}
 	}
 
-	public ResponseEntity<Inovacao> retornaUmaInovacao(long id) {
+//	DELET
+	public ResponseEntity<InovacaoDTO> excluirInovacao(Long id) {
+
 		Optional<Inovacao> inovacao = inovacaoRepository.findById(id);
 
-		if (inovacao.isPresent())
-			return new ResponseEntity<Inovacao>(inovacao.get(), HttpStatus.OK);
-		else
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		if (inovacao.isPresent()) {
+			inovacaoRepository.deleteById(id);
+			return ResponseEntity.ok().build();
+		}
 
-	}
-
-	public ResponseEntity<List<Inovacao>> searchTitle(String title) {
-		List<Inovacao> serviceTitle = inovacaoRepository.searchByTitle(title);
-		return new ResponseEntity<List<Inovacao>>(serviceTitle, HttpStatus.OK);
-	}
-
-	public ResponseEntity<List<Inovacao>> searchResponsible(String responsible) {
-		List<Inovacao> serviceResponsible = inovacaoRepository.searchByResponsible(responsible);
-		return new ResponseEntity<List<Inovacao>>(serviceResponsible, HttpStatus.OK);
-	}
-
-	public ResponseEntity<List<Inovacao>> searchArea(String area) {
-		List<Inovacao> serviceArea = inovacaoRepository.searchByArea(area);
-		return new ResponseEntity<List<Inovacao>>(serviceArea, HttpStatus.OK);
-	}
-
-	public ResponseEntity<List<Inovacao>> searchStatus(String status) {
-		List<Inovacao> serviceStatus = inovacaoRepository.searchByStatus(status);
-		return new ResponseEntity<List<Inovacao>>(serviceStatus, HttpStatus.OK);
-	}
-
-	public ResponseEntity<List<Inovacao>> searchPontosEscalacao(String pontosEscalacao) {
-		List<Inovacao> servicePontosEscalacao = inovacaoRepository.searchByPontosEscalacao(pontosEscalacao);
-		return new ResponseEntity<List<Inovacao>>(servicePontosEscalacao, HttpStatus.OK);
-	}
-
-	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
-		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
-		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
-	}
-
-//	public ResponseEntity<List<Inovacao>> searchHg(Hg hg) {
-//		List<Inovacao> serviceHg= inovacaoRepository.searchByHg(hg);
-//		return new ResponseEntity<List<Inovacao>>(serviceHg, HttpStatus.OK);
-//	}
-
-	public ResponseEntity<List<Inovacao>> searchMweb(Integer mweb) {
-		List<Inovacao> serviceMweb= inovacaoRepository.searchByMweb(mweb);
-		return new ResponseEntity<List<Inovacao>>(serviceMweb, HttpStatus.OK);
+		return ResponseEntity.notFound().build();
 	}
 
 }

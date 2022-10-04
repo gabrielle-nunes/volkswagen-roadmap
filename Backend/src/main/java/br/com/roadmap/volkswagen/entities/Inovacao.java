@@ -1,14 +1,6 @@
 package br.com.roadmap.volkswagen.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -39,6 +31,8 @@ public class Inovacao {
 	private String calculationExplication;
 	private String staircaseElement;
 	private String handlungsfeld;
+	@Lob
+	private byte[] imagem;
 	/*
 	 * @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	 *
@@ -54,30 +48,39 @@ public class Inovacao {
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
 	public String getResponsible() {
 		return responsible;
 	}
+
 	public void setResponsible(String responsible) {
 		this.responsible = responsible;
 	}
+
 	public String getArea() {
 		return area;
 	}
+
 	public void setArea(String area) {
 		this.area = area;
 	}
+
 	public Integer getMweb() {
 		return mweb;
 	}
+
 	public void setMweb(Integer mweb) {
 		this.mweb = mweb;
 	}
@@ -208,6 +211,14 @@ public class Inovacao {
 		this.status = status;
 	}
 
+	public byte[] getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(byte[] imagem) {
+		this.imagem = imagem;
+	}
+
 	public static Inovacao convert(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = new Inovacao();
 
@@ -226,6 +237,7 @@ public class Inovacao {
 		inovacao.setSetor(inovacaoDTO.getSetor());
 		inovacao.setTimeTrabalho(inovacaoDTO.getTimeTrabalho());
 		inovacao.setTitle(inovacaoDTO.getTitle());
+		inovacao.setImagem(inovacaoDTO.getImagem());
 
 		inovacao.setActualState(inovacaoDTO.getActualState());
 		inovacao.setStaircaseElement(inovacaoDTO.getStaircaseElement());
