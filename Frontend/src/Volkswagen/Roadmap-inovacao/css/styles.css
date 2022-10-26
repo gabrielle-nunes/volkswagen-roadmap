@@ -2854,3 +2854,28 @@ a{
 .active{
     text-decoration: none;
 }
+
+
+/* alinhando HG na tela */
+
+.MeasureResp{
+    width: 200x;
+    height: 50px;
+    position: absolute;
+    margin-left: 10px;
+}
+
+.MeasureData{
+    width: 200x;
+    height: 50px;
+    position: absolute;
+    margin-left: 230px;
+    margin-top: 28px;
+}
+
+.MeasureStatus{
+    width: 200x;
+    height: 50px;
+    position: absolute;
+    margin-left: 450px;
+}
