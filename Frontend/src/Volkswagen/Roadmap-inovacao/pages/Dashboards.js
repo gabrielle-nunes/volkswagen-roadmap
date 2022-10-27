@@ -10,7 +10,25 @@ import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
 
+
+
+
+const mysql = require('mysql')
+const db = mysql.createConnection({
+host: "localhost",
+user: "admin",
+password: "",
+database:"banco" 
+})
+
+module.exports = db;
+
+
+
 //INICIO ICONES PERSONALIZADOS----------------->
+
+
+
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
         href='@mui/icons-material'
