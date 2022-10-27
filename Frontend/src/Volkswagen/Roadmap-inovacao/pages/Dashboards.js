@@ -9,22 +9,6 @@ import "../css/themify-icons.css";
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
-
-
-
-
-const mysql = require('mysql')
-const db = mysql.createConnection({
-host: "localhost",
-user: "admin",
-password: "",
-database:"banco" 
-})
-
-module.exports = db;
-
-
-
 //INICIO ICONES PERSONALIZADOS----------------->
 
 
@@ -75,77 +59,78 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 
 function Dashboards() {
     const navegar = useNavigate();
-    const [posts, setPosts] = useState([])
-    const [busca, setBusca] = useState('')
-    console.log(busca);
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [posts, setPosts] = useState([])
+  const [busca, setBusca] = useState('')
+  var dadus =""
+
+  console.log(busca);
 
 
-    useEffect(() => {
+  useEffect(() => {
+    axios.get("http://localhost:8080/inovacao/lista")
+      .then((response) => {
+        setPosts(response.data)
+        
+      })
+
+      .catch(() => {
+        console.log("Deu errado")
+      })
+  }, [])
+
+function achar() {
         axios.get("http://localhost:8080/inovacao/lista")
-            .then((response) => {
-                setPosts(response.data)
-            })
+        .then((response) =>{
+        console.log(response.data)    
+        })
+}
 
-            .catch(() => {
-                console.log("Deu errado")
-            })
+achar()
 
-    }, [])
+  function deletePost(id) {
 
-    function deletePost(id) {
+    axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
 
-        axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
+    setPosts(posts.filter(post => post.id !== id))
+  }
 
-        setPosts(posts.filter(post => post.id !== id))
-    }
+  function buscarInovacao(title) {
 
-    function buscarInovacao(title) {
+    axios.get(`http://localhost:8080/inovacao/searchTitle?title=${title}`)
 
-        axios.get(`http://localhost:8080/inovacao/searchTitle?title=${title}`)
+    setBusca(posts.filter(post => post.startsWith(busca)))
 
-        setBusca(posts.filter(post => post.startsWith(busca)))
+  }
 
-    }
+console.log(dadus)
 
+var valores = [1,2,3];
 
-    const option = {
-        title: {
-            text: 'Referer of a Website',
-            subtext: 'Fake Data',
-            left: 'center'
-        },
-        tooltip: {
-            trigger: 'item'
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left'
-        },
-        series: [
-            {
-                name: 'Access From',
-                type: 'pie',
-                radius: '50%',
-                data: [
-                    { value: 1048, name: 'Search Engine' },
-                    { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' },
-                    { value: 484, name: 'Union Ads' },
-                    { value: 300, name: 'Video Ads' }
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
+  var option = {
+    title: {
+      text: 'ECharts Getting Started Example'
+    },
+    tooltip: {},
+    legend: {
+      data: ['sales']
+    },
+    xAxis: {
+      data: ['dados', 'sim', 'não']
+    },
+    yAxis: {},
+    series: [
+      {
+        name: 'sales',
+        type: 'bar',
+        data: valores
+      }
+    ]
+  };
 
     return (
-
 
         <body>
             <div class="page-container">
