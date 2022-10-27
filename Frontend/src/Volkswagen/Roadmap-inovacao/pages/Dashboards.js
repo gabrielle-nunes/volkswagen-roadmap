@@ -10,9 +10,7 @@ import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
 //INICIO ICONES PERSONALIZADOS----------------->
-
-
-
+var dadus =""
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
         href='@mui/icons-material'
@@ -58,13 +56,14 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 //FIM ICONES PERSONALIZADOS----------------->
 
 function Dashboards() {
-    const navegar = useNavigate();
+  const navegar = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [posts, setPosts] = useState([])
   const [busca, setBusca] = useState('')
-  var dadus =""
+
+
 
   console.log(busca);
 
@@ -81,14 +80,17 @@ function Dashboards() {
       })
   }, [])
 
-function achar() {
-        axios.get("http://localhost:8080/inovacao/lista")
-        .then((response) =>{
-        console.log(response.data)    
-        })
-}
 
-achar()
+
+  axios.get("http://localhost:8080/inovacao/lista")
+        .then((response) =>{
+        dadus = (response.data)  
+        return dadus
+})
+
+
+console.log(dadus)
+
 
   function deletePost(id) {
 
@@ -105,29 +107,44 @@ achar()
 
   }
 
-console.log(dadus)
 
+console.log(dadus[1])
 var valores = [1,2,3];
 
   var option = {
     title: {
-      text: 'ECharts Getting Started Example'
-    },
-    tooltip: {},
-    legend: {
-      data: ['sales']
-    },
-    xAxis: {
-      data: ['dados', 'sim', 'não']
-    },
-    yAxis: {},
-    series: [
-      {
-        name: 'sales',
-        type: 'bar',
-        data: valores
-      }
-    ]
+        text: 'Referer of a Website',
+        subtext: 'Fake Data',
+        left: 'center'
+      },
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        orient: 'vertical',
+        left: 'left'
+      },
+      series: [
+        {
+          name: 'Access From',
+          type: 'pie',
+          radius: '50%',
+          data: [
+            { value: 1048, name: 'Search Engine' },
+            { value: 735, name: 'Direct' },
+            { value: 580, name: 'Email' },
+            { value: 484, name: 'Union Ads' },
+            { value: 300, name: 'Video Ads' }
+          ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
   };
 
     return (
