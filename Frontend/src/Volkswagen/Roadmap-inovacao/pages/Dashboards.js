@@ -10,7 +10,19 @@ import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
 //INICIO ICONES PERSONALIZADOS----------------->
-var dadus =""
+var dadus = ""
+var idDado = [];
+var nomeDado = [];
+var criadorDado = [];
+var setorDado = [];
+
+var aidDado = [];
+var anomeDado = [];
+var acriadorDado = [];
+var asetorDado = [];
+
+var option;
+
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
         href='@mui/icons-material'
@@ -56,96 +68,125 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 //FIM ICONES PERSONALIZADOS----------------->
 
 function Dashboards() {
-  const navegar = useNavigate();
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const [posts, setPosts] = useState([])
-  const [busca, setBusca] = useState('')
+    const navegar = useNavigate();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [posts, setPosts] = useState([])
+    const [busca, setBusca] = useState('')
 
 
 
-  console.log(busca);
+    console.log(busca);
 
 
-  useEffect(() => {
+    useEffect(() => {
+        axios.get("http://localhost:8080/inovacao/lista")
+            .then((response) => {
+                setPosts(response.data)
+
+            })
+
+            .catch(() => {
+                console.log("Deu errado")
+            })
+    }, [])
+
+
+
     axios.get("http://localhost:8080/inovacao/lista")
-      .then((response) => {
-        setPosts(response.data)
-        
-      })
-
-      .catch(() => {
-        console.log("Deu errado")
-      })
-  }, [])
+        .then((response) => {
+            dadus = (response.data)
+            return dadus
+        })
 
 
-
-  axios.get("http://localhost:8080/inovacao/lista")
-        .then((response) =>{
-        dadus = (response.data)  
-        return dadus
-})
+    console.log(dadus)
 
 
-console.log(dadus)
+    function deletePost(id) {
+
+        axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
+
+        setPosts(posts.filter(post => post.id !== id))
+    }
+
+    function buscarInovacao(title) {
+
+        axios.get(`http://localhost:8080/inovacao/searchTitle?title=${title}`)
+
+        setBusca(posts.filter(post => post.startsWith(busca)))
+
+    }
+
+    //criando arrays dos valores json
+    for (var i = 0; i < dadus.length; i++) {
+        console.log(dadus[i]["id"]);
+
+        idDado += (dadus[i]["id"]) + "-"
+        aidDado = idDado.split('-')
+
+        nomeDado += (dadus[i]["title"]) + "-"
+        anomeDado = nomeDado.split('-')
+
+        criadorDado += (dadus[i]["responsible"]) + "-"
+        acriadorDado = criadorDado.split('-')
+
+        setorDado += (dadus[i]["area"]) + "-"
+        asetorDado = setorDado.split('-')
 
 
-  function deletePost(id) {
+    }
 
-    axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
-
-    setPosts(posts.filter(post => post.id !== id))
-  }
-
-  function buscarInovacao(title) {
-
-    axios.get(`http://localhost:8080/inovacao/searchTitle?title=${title}`)
-
-    setBusca(posts.filter(post => post.startsWith(busca)))
-
-  }
+    var counts = {};
+    asetorDado.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
+    var filtrarTI = (counts["TI"]);
+    var filtrarSerie = (counts["Plan. De Série"]);
+    console.log(filtrarTI)
 
 
-console.log(dadus[1])
-var valores = [1,2,3];
-
-  var option = {
-    title: {
-        text: 'Referer of a Website',
-        subtext: 'Fake Data',
-        left: 'center'
-      },
-      tooltip: {
-        trigger: 'item'
-      },
-      legend: {
-        orient: 'vertical',
-        left: 'left'
-      },
-      series: [
-        {
-          name: 'Access From',
-          type: 'pie',
-          radius: '50%',
-          data: [
-            { value: 1048, name: 'Search Engine' },
-            { value: 735, name: 'Direct' },
-            { value: 580, name: 'Email' },
-            { value: 484, name: 'Union Ads' },
-            { value: 300, name: 'Video Ads' }
-          ],
-          emphasis: {
-            itemStyle: {
-              shadowBlur: 10,
-              shadowOffsetX: 0,
-              shadowColor: 'rgba(0, 0, 0, 0.5)'
+    option = {
+        title: {
+            text: 'Inovações por Área',
+            subtext: 'Dados atuais',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left'
+        },
+        series: [
+            {
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [
+                    { value: filtrarTI, name: 'TI' },
+                    { value: filtrarSerie, name: 'Plan. De Série' },
+                    { value: 1, name: 'Fábrica Piloto' },
+                    { value: 1, name: 'Manutenção Site' },
+                    { value: 1, name: 'Estamparia' },
+                    { value: 1, name: 'Armação' },
+                    { value: 1, name: 'Pintura' },
+                    { value: 1, name: 'Montagem Final' },
+                    { value: 1, name: 'VW Componentes' },
+                    { value: 1, name: 'QA Processos' },
+                    { value: 1, name: 'Eng. Industrial' },
+                    { value: 1, name: 'Logística' },
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
             }
-          }
-        }
-      ]
-  };
+        ]
+    };
 
     return (
 
@@ -262,7 +303,7 @@ var valores = [1,2,3];
                                         <ReactECharts option={option} />
                                     </div>
                                     <div class="chart2">
-                                        <ReactECharts option={option} />
+
                                     </div>
                                 </div>
                                 {/* Fim gráficos*/}
