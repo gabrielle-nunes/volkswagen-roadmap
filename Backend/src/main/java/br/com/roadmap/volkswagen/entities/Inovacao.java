@@ -1,9 +1,5 @@
 package br.com.roadmap.volkswagen.entities;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,13 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.format.annotation.DateTimeFormat;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import br.com.roadmap.volkswagen.VolkswagenApplication;
 import br.com.roadmap.volkswagen.constantes.ConstantesRoadmap;
 import br.com.roadmap.volkswagen.dto.InovacaoDTO;
 

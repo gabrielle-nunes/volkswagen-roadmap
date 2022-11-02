@@ -1,9 +1,5 @@
 package br.com.roadmap.volkswagen.dto;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-
 import br.com.roadmap.volkswagen.entities.Inovacao;
 import br.com.roadmap.volkswagen.entities.Setor;
 
@@ -424,10 +420,10 @@ public class InovacaoDTO {
 		inovacaoDTO.setOkHg4(inovacao.getOkHg4());
 		inovacaoDTO.setOkHg5(inovacao.getOkHg5());
 		inovacaoDTO.setDataHg1(inovacao.getDataHg1());
-		/*inovacaoDTO.setDataHg2(inovacao.getDataHg2());
+		inovacaoDTO.setDataHg2(inovacao.getDataHg2());
 		inovacaoDTO.setDataHg3(inovacao.getDataHg3());
 		inovacaoDTO.setDataHg4(inovacao.getDataHg4());
-		inovacaoDTO.setDataHg5(inovacao.getDataHg5());*/
+		inovacaoDTO.setDataHg5(inovacao.getDataHg5());
 		return inovacaoDTO;
 
 	}
