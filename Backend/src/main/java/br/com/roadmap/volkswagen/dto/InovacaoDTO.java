@@ -1,9 +1,5 @@
 package br.com.roadmap.volkswagen.dto;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-
 import br.com.roadmap.volkswagen.entities.Inovacao;
 import br.com.roadmap.volkswagen.entities.Setor;
 
