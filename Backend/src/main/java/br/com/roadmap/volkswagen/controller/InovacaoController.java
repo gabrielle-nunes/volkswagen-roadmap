@@ -1,5 +1,8 @@
 package br.com.roadmap.volkswagen.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -51,36 +54,42 @@ public class InovacaoController {
 
 	@GetMapping(value ="searchTitle")
 	@ResponseBody
+	@Transactional
 	public ResponseEntity<List<Inovacao>> searchPorTitle(@RequestParam(name = "title") String title) {
 		return inovacaoService.searchTitle(title);
 	}
 
 	@GetMapping(value ="searchResponsible")
 	@ResponseBody
+	@Transactional
 	public ResponseEntity<List<Inovacao>> searchPorResponsible(@RequestParam(name = "responsible") String responsible) {
 		return inovacaoService.searchResponsible(responsible);
 	}
 
 	@GetMapping(value ="searchArea")
 	@ResponseBody
+	@Transactional
 	public ResponseEntity<List<Inovacao>> searchPorArea(@RequestParam(name = "area") String area) {
 		return inovacaoService.searchArea(area);
 	}
 
 	@GetMapping(value ="searchStatus")
 	@ResponseBody
+	@Transactional
 	public ResponseEntity<List<Inovacao>> searchPorStatus(@RequestParam(name = "status") String status) {
 		return inovacaoService.searchStatus(status);
 	}
 
 	@GetMapping(value ="searchPontosEscalacao")
 	@ResponseBody
+	@Transactional
 	public ResponseEntity<List<Inovacao>> searchPorPontosEscalacao(@RequestParam(name = "pontosEscalacao") String pontosEscalacao) {
 		return inovacaoService.searchPontosEscalacao(pontosEscalacao);
 	}
 
 	@GetMapping(value ="timeTrabalho")
 	@ResponseBody
+	@Transactional
 	public ResponseEntity<List<Inovacao>> searchPorTimeTrabalho(@RequestParam(name = "timeTrabalho") String timeTrabalho) {
 		return inovacaoService.searchTimeTrabalho(timeTrabalho);
 	}
