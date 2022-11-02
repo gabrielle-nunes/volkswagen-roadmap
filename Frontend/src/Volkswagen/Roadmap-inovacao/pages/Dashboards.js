@@ -1,139 +1,267 @@
-import React, {useEffect, useState} from "react";
-import {useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import "../css/stylesDashboard.css";
-import "../css/styleBar.css";
 import ReactECharts from 'echarts-for-react';  // or var ReactECharts = require('echarts-for-react');
+import "../css/styles.css";
+import "../css/default-css.css";
+import "../css/font-awesome.min.css";
+import "../css/themify-icons.css";
+import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
-import { Dashboard, Visibility, Delete, Edit, Person, Home,Task, Block } from '@mui/icons-material';
 
+//INICIO ICONES PERSONALIZADOS----------------->
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        <Mail />
+        {children}
+    </a>
+));
+
+const CustomToggleB = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        {<Notifications />}
+        {children}
+    </a>
+));
+
+const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        <AccountCircle />
+        {children}
+    </a>
+));
+
+//FIM ICONES PERSONALIZADOS----------------->
 
 function Dashboards() {
     const navegar = useNavigate();
-    const [ posts, setPosts ] = useState([])
+    const [posts, setPosts] = useState([])
+    const [busca, setBusca] = useState('')
+    console.log(busca);
 
-  
+
     useEffect(() => {
         axios.get("http://localhost:8080/inovacao/lista")
-        .then((response) => {
-            setPosts(response.data)
-        })
+            .then((response) => {
+                setPosts(response.data)
+            })
 
-        .catch(() => {
-            console.log("Deu errado")
-        })
+            .catch(() => {
+                console.log("Deu errado")
+            })
 
-      }, [])
+    }, [])
 
-      function deletePost(id){
+    function deletePost(id) {
 
         axios.delete(`http://localhost:8080/inovacao/excluir/${id}`)
 
         setPosts(posts.filter(post => post.id !== id))
-      }
+    }
 
-      //GRÁFICOS
-      const option = {
+    function buscarInovacao(title) {
+
+        axios.get(`http://localhost:8080/inovacao/searchTitle?title=${title}`)
+
+        setBusca(posts.filter(post => post.startsWith(busca)))
+
+    }
+
+
+    const option = {
         title: {
-          text: 'Referer of a Website',
-          subtext: 'Fake Data',
-          left: 'center'
+            text: 'Referer of a Website',
+            subtext: 'Fake Data',
+            left: 'center'
         },
         tooltip: {
-          trigger: 'item'
+            trigger: 'item'
         },
         legend: {
-          orient: 'vertical',
-          left: 'left'
+            orient: 'vertical',
+            left: 'left'
         },
         series: [
-          {
-            name: 'Access From',
-            type: 'pie',
-            radius: '50%',
-            data: [
-              { value: 1048, name: 'Search Engine' },
-              { value: 735, name: 'Direct' },
-              { value: 580, name: 'Email' },
-              { value: 484, name: 'Union Ads' },
-              { value: 300, name: 'Video Ads' }
-            ],
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)'
-              }
+            {
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [
+                    { value: 1048, name: 'Search Engine' },
+                    { value: 735, name: 'Direct' },
+                    { value: 580, name: 'Email' },
+                    { value: 484, name: 'Union Ads' },
+                    { value: 300, name: 'Video Ads' }
+                ],
+                emphasis: {
+                    itemStyle: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
             }
-          }
         ]
-      };
+    };
 
-   return(
-
-
+    return (
 
 
-    
+        <body>
+            <div class="page-container">
+                <div class="sidebar-menu">
+                    <div class="sidebar-header">
+                        <div class="logo">
+                            <a><img src="https://logodownload.org/wp-content/uploads/2014/02/volkswagen-vw-logo-0.png" alt="logo" width="60px" height="60px" /></a>
+                        </div>
+                    </div>
+                    <div class="main-menu">
+                        <div class="menu-inner">
+                            <nav>
+                                {/* BARRA LATERAL*/}
+                                <ul class="metismenu" id="menu">
+                                    <li>
+                                        <a class="iconBar" onClick={() => navegar("/")} aria-expanded="true"><Home /><span>Inovações</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="iconBar" onClick={() => navegar("/aceitas")} aria-expanded="true"><Task /><span>Inovações Aceitas</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="iconBar" onClick={() => navegar("/recusadas")} aria-expanded="true"><Block /><span>Inovações Recusadas</span></a>
+                                    </li>
+                                    <li class="active">
+                                        <a class="iconBar" onClick={() => navegar("/dashboards")} aria-expanded="true"><Dashboard /><span>Dashboard</span></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="header-area">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 col-sm-8 clearfix">
+                                <div class="search-box pull-left">
+                                    <form action="#">
+                                        <input type="text" name="search" value={busca} placeholder="Procurar..." required onChange={(ev) => setBusca(ev.target.value)} />
+                                        <i class="ti-search"></i>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-4 clearfix">
+                                <ul class="notification-area pull-right">
+                                    <li class="dropdown">
+                                        <i data-toggle="dropdown">
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggleB} menuVariant='dark' id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </i>
+                                    </li>
+                                    <li class="dropdown">
+                                        <i data-toggle="dropdown">
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </i>
+                                    </li>
+                                    <li class="settings-btn">
+                                        <i>
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggleC} id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-title-area">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6">
+                                <div class="breadcrumbs-area clearfix">
+                                    <h4 class="page-title pull-left">Gráficos Relativos a Inovações</h4>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 clearfix">
+                                <div class="user-profile pull-right">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-content-inner">
+                        <div class="card mt-5">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h4 class="header-title mb-0">Gráficos Relativos a Inovações</h4>
+                                </div>
+                                {/* Gráficos*/}
+                                <div class="chart">
+                                    <div class="chart1">
+                                        <ReactECharts option={option} />
+                                    </div>
+                                    <div class="chart2">
+                                        <ReactECharts option={option} />
+                                    </div>
+                                </div>
+                                {/* Fim gráficos*/}
+                            </div>
+                        </div>
 
-<body>
-  <main id="mainDashboard">
-    <div class ="navigation">
-          <ul>
-            <li class="imagem">
-              <img src="https://logodownload.org/wp-content/uploads/2014/02/volkswagen-vw-logo-0.png" alt="logo" height="60px" width="60px"/>
-            </li>
-            <li class="item">
-              <a onClick={() => navegar("/")}>
-                <span class="icon"><span><Home/></span></span>
-                <span class="title">Home</span>
-              </a>
-            </li>
-            <li class="item">
-              <a onClick={() => navegar("/dashboards")}>
-                <span class="icon"><span><Dashboard/></span></span>
-                <span class="title">Dashboard</span>
-              </a>
-            </li>
-            <li class="item">
-              <a>
-                <span class="icon"><span><Person/></span></span>
-                <span class="title">Account</span>
-              </a>
-            </li>
-            <li class="item">
-              <a>
-                <span class="icon"><span><Task/></span></span>
-                <span class="title">Accepted</span>
-              </a>
-            </li>
-            <li class="item">
-              <a>
-                <span class="icon"><span><Block/></span></span>
-                <span class="title">Refused</span>
-              </a>
-            </li>
-          </ul>
-      </div>
-  
-  
-    <div class ="chart">
-      <div class="chart1">
-        <ReactECharts option={option} />
-      </div>
-      <div class="chart2">
-        <ReactECharts option={option} />
-      </div>
-    </div>
-  </main>
-</body>
-   );
-  
-   
-   
+
+                    </div>
+                </div>
+                <footer>
+                    <div class="footer-area">
+                        <p>© Copyright 2022. Todos os direitos reservados. Desenvolvido pela <a href="https://github.com/gabrielle-nunes/volkswagen-roadmap">Equipe Roadmap de Inovação</a>.</p>
+                    </div>
+                </footer>
+            </div>
+        </body>
+
+    );
 
 }
-
-
 
 export default Dashboards;

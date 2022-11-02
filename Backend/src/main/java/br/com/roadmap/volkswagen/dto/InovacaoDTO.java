@@ -385,9 +385,8 @@ public class InovacaoDTO {
 	}
 
 	public static InovacaoDTO convert(Inovacao inovacao) throws Exception {
-		
+
 		InovacaoDTO inovacaoDTO = new InovacaoDTO();
-		
 		inovacaoDTO.setDivulgacao(inovacao.getDivulgacao());
 		inovacaoDTO.setGanhosPrevistos(inovacao.getGanhosPrevistos());
 		inovacaoDTO.setId(inovacao.getId());
@@ -424,12 +423,10 @@ public class InovacaoDTO {
 		inovacaoDTO.setOkHg4(inovacao.getOkHg4());
 		inovacaoDTO.setOkHg5(inovacao.getOkHg5());
 		inovacaoDTO.setDataHg1(inovacao.getDataHg1());
-		/*inovacaoDTO.setDataHg2(inovacao.getDataHg2());
+		inovacaoDTO.setDataHg2(inovacao.getDataHg2());
 		inovacaoDTO.setDataHg3(inovacao.getDataHg3());
 		inovacaoDTO.setDataHg4(inovacao.getDataHg4());
-		inovacaoDTO.setDataHg5(inovacao.getDataHg5());*/
+		inovacaoDTO.setDataHg5(inovacao.getDataHg5());
 		return inovacaoDTO;
 
 	}
-
-}

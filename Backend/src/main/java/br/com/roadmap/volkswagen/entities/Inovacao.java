@@ -1,9 +1,5 @@
 package br.com.roadmap.volkswagen.entities;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -80,9 +76,10 @@ public class Inovacao {
 	private String dataHg4;
 	private String dataHg5;
 
+
 	/*
 	 * @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	 * 
+	 *
 	 * @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) private Hg hg;
 	 */
 
@@ -91,27 +88,21 @@ public class Inovacao {
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private Setor setor;
 	private String status;
-
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getTitle() {
 		return title;
 	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
 	public String getResponsible() {
 		return responsible;
 	}
-
 	public void setResponsible(String responsible) {
 		this.responsible = responsible;
 	}
@@ -119,7 +110,6 @@ public class Inovacao {
 	public Integer getMweb() {
 		return mweb;
 	}
-
 	public void setMweb(Integer mweb) {
 		this.mweb = mweb;
 	}
@@ -436,6 +426,7 @@ public class Inovacao {
 		inovacao.setSetor(inovacaoDTO.getSetor());
 		inovacao.setTimeTrabalho(inovacaoDTO.getTimeTrabalho());
 		inovacao.setTitle(inovacaoDTO.getTitle());
+
 		inovacao.setActualState(inovacaoDTO.getActualState());
 		inovacao.setStaircaseElement(inovacaoDTO.getStaircaseElement());
 		inovacao.setTargetState(inovacaoDTO.getTargetState());
@@ -470,7 +461,7 @@ public class Inovacao {
 				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getEscalacao())
 				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getReprovado())) {
 
-			inovacao.setStatus(inovacaoDTO.getStatus());
+					inovacao.setStatus(inovacaoDTO.getStatus());
 		} else {
 			throw new Exception("Selecione um status válido.");
 		}
