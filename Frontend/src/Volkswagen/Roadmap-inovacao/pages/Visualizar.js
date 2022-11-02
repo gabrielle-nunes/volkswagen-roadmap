@@ -1,239 +1,352 @@
-import React, { useEffect } from "react";
-import Table from "react-bootstrap/Table";
 import Form from "react-bootstrap/Form";
-import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Button from 'react-bootstrap/Button';
 import { useForm } from 'react-hook-form';
-import * as yup from "yup";
-import { yupResolver } from '@hookform/resolvers/yup';
-import {useNavigate, useParams} from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import TextField from '@mui/material/TextField';
-import { Dashboard, Visibility, Delete, Edit, Person, Home, ArrowDropDownCircle, Task, Block } from '@mui/icons-material';
-
-
-
+import "../css/styles.css";
+import "../css/default-css.css";
+import "../css/font-awesome.min.css";
+import "../css/themify-icons.css";
+import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
 /*const schema = yup.object({
   staircase: yup.string().required(),
 })*/
 
+//INICIO ICONES PERSONALIZADOS----------------->
+const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        <Mail />
+        {children}
+    </a>
+));
+
+const CustomToggleB = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        {<Notifications />}
+        {children}
+    </a>
+));
+
+const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+        href='@mui/icons-material'
+        ref={ref}
+        onClick={e => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        <Settings />
+        {children}
+    </a>
+));
+
+//FIM ICONES PERSONALIZADOS----------------->
+
 function Visualizar() {
 
-  const { id } = useParams()
+    const { id } = useParams()
 
-  const navegar = useNavigate();
+    const navegar = useNavigate();
 
-  const { register, handleSubmit, formState:{ errors }, reset } = useForm({
-    //resolver: yupResolver(schema),
- });
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
+        //resolver: yupResolver(schema),
+    });
 
-  useEffect(() => {
-      axios.get(`http://localhost:8080/inovacao/lista/${id}`)
-      .then((response) => {
-        reset(response.data)
-      })
-  }, []) 
+    useEffect(() => {
+        axios.get(`http://localhost:8080/inovacao/lista/${id}`)
+            .then((response) => {
+                reset(response.data)
+            })
+    }, [])
 
 
- 
-  /*const addPut = data => axios.put(`http://localhost:8080/inovacao/editar/${id}`, data)
-  .then(() =>  {
-      console.log("Deu certo")
-      navegar("/")
-})
-.catch(() => {
-      console.log("Deu errado")
 
-})*/
-  //render()
-  //{
+    /*const addPut = data => axios.put(`http://localhost:8080/inovacao/editar/${id}`, data)
+    .then(() =>  {
+        console.log("Deu certo")
+        navegar("/")
+  })
+  .catch(() => {
+        console.log("Deu errado")
+  
+  })*/
+    //render()
+    //{
+
     return (
 
-      <html lang="pt-br">
-      <head>
-      </head>
-        <body id="body">
-        <section>
-        <div class ="navigation">
-                <ul>
-                  <li class="imagem">
-                    <img src="https://logodownload.org/wp-content/uploads/2014/02/volkswagen-vw-logo-0.png" alt="logo" height="60px" width="60px"/>
-                  </li>
-                  <li class="item">
-                    <a onClick={() => navegar("/")}>
-                      <span class="icon"><span><Home/></span></span>
-                      <span class="title">Home</span>
-                    </a>
-                  </li>
-                  <li class="item">
-                    <a onClick={() => navegar("/dashboards")}>
-                      <span class="icon"><span><Dashboard/></span></span>
-                      <span class="title">Dashboard</span>
-                    </a>
-                  </li>
-                  <li class="item">
-                    <a>
-                      <span class="icon"><span><Person/></span></span>
-                      <span class="title">Account</span>
-                    </a>
-                  </li>
-                  <li class="item">
-                    <a>
-                      <span class="icon"><span><Task/></span></span>
-                      <span class="title">Accepted</span>
-                    </a>
-                  </li>
-                  <li class="item">
-                    <a>
-                      <span class="icon"><span><Block/></span></span>
-                      <span class="title">Refused</span>
-                    </a>
-                  </li>
-                </ul>
-        </div>
-            <header class="titulo">
-              <h1>Titulo</h1>
-              <a class="down" href="#section2"><ArrowDropDownCircle fontSize="large"/></a>
-            </header>
-      
-            <main id="mainCreate">
-      
-            <Form onSubmit={handleSubmit()}>
-              <div class="forms">
-                  <div class="selecao">
-                      <h5> Status</h5>      
-                      <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
-                        <option>Escalação</option>
-                        <option>No prazo</option>
-                        <option>Em atraso</option>
-                        <option>Concluído</option>
-                        <option>Reprovado</option>
-                      </Form.Select>
-                  </div>
-      
-                  <div>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <h5>Staircase element</h5>
-                      <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
-                    </Form.Group>
-                  </div>
-      
-                  <div>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <h5>Responsable</h5>
-                    <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
-                    </Form.Group>
-                  </div>
-      
-                  <div>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <h5>Area</h5>
-                    <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
-                    </Form.Group>
-                  </div>
-      
-                  <div>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <h5>Nome of Measure</h5>
-                      <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} />
-                        <p> OU: VWB : CUR : VWB </p>
-                    </Form.Group>
-                  </div>
-      
-                  <div class="texto">
-                      <h5>Actual State</h5>
-                      <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} />
-                  </div>
-      
-                  <div class="texto">
-                      <h5>Targer state with measure description</h5>
-                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                      <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} />
-                      </Form.Group>
-                  </div>
-      
-                  <div class="texto">
-                      <h5>Calculation/Explication</h5>
-                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                      <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} />
-                      </Form.Group>
-                  </div>
-      
-                    <div class="selecao">
-                      <h5>Handlungsfeld</h5>
-                        <select class="form-select" aria-label="Default select example" type="text" name="handlungsfeld" {...register("handlungsfeld")}>
-                          <option selected></option>
-                          <option>SGK</option>
-                          <option>Ramp-up Excellence</option>
-                          <option>Low-Expenditure Factories of the Future</option>
-                          <option>Stable Customer Order Process</option>
-                          <option>Team of the Future</option>
-                          <option>Sustainable Structures</option>
-                          <option>Produtivity</option>
-                          <option>Rework-free Products and Processes</option>
-                          <option>Zero Impact Factory</option>
-                        </select>
+
+        <body>
+            <div class="page-container">
+                <div class="sidebar-menu">
+                    <div class="sidebar-header">
+                        <div class="logo">
+                            <a><img src="https://logodownload.org/wp-content/uploads/2014/02/volkswagen-vw-logo-0.png" alt="logo" width="60px" height="60px" /></a>
+                        </div>
                     </div>
-      
-      
-                    <div class="texto">
-                      <h5>Ganhos Previstos:</h5>
-                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                      <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")}/>
-                      </Form.Group>
+                    <div class="main-menu">
+                        <div class="menu-inner">
+                            <nav>
+                                {/* BARRA LATERAL*/}
+                                <ul class="metismenu" id="menu">
+                                    <li class="active">
+                                        <a class="iconBar" onClick={() => navegar("/")} aria-expanded="true"><Home /><span>Inovações</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="iconBar" onClick={() => navegar("/aceitas")} aria-expanded="true"><Task /><span>Inovações Aceitas</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="iconBar" onClick={() => navegar("/recusadas")} aria-expanded="true"><Block /><span>Inovações Recusadas</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="iconBar" onClick={() => navegar("/dashboards")} aria-expanded="true"><Dashboard /><span>Dashboard</span></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-      
-      
-                    <div class="texto" id="section2">
-                        <h5>Recursos Necessários:</h5>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                        <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} />
-                      </Form.Group>
+                </div>
+                <div class="main-content">
+                    <div class="header-area">
+                        <div class="row align-items-center">
+                            <div class="col-md-6 col-sm-8 clearfix">
+                                <div class="search-box pull-left">
+                                    <form action="#">
+                                        <input type="text" name="search" placeholder="Procurar..." required />
+                                        <i class="ti-search"></i>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-4 clearfix">
+                                <ul class="notification-area pull-right">
+                                    <li class="dropdown">
+                                        <i data-toggle="dropdown">
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggleB} menuVariant='dark' id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </i>
+                                    </li>
+                                    <li class="dropdown">
+                                        <i data-toggle="dropdown">
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Red</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="1">Red-Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </i>
+                                    </li>
+                                    <li class="settings-btn">
+                                        <i>
+                                            <Dropdown>
+                                                <Dropdown.Toggle as={CustomToggleC} id="dropdown-custom-components">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    <Dropdown.Item eventKey="1">Configurações</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="2">Sair</Dropdown.Item>
+                                                    <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </i>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-      
-                    <div>
-                        <h5>Time de Trabalho:</h5>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                        <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} />
-                        </Form.Group>
+                    <div class="page-title-area">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6">
+                                <div class="breadcrumbs-area clearfix">
+                                    <h4 class="page-title pull-left">Tabela de Inovações</h4>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 clearfix">
+                                <div class="user-profile pull-right">
+                                   
+                                </div>
+                            </div>
+                        </div>
                     </div>
-      
-                    <div>
-                      <h5>Parcerias Necessárias:</h5>
-                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                      <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} />
-                      </Form.Group>
+                    <div class="main-content-inner">
+                        <div class="card mt-5">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h4 class="header-title mb-0">Visualizar Inovação</h4>
+                                </div>
+                                {/* TABELA*/}
+                                <div id="mainCreate">
+                                    <Form onSubmit={handleSubmit()}>
+                                        <div class="forms">
+                                            <div class="selecao">
+                                                <h5 class="infoTitutlo"> Status</h5>
+                                                <Form.Select aria-label="Default select example" type="text" name="status" {...register("status")}>
+                                                    <option>Escalação</option>
+                                                    <option>No prazo</option>
+                                                    <option>Em atraso</option>
+                                                    <option>Concluído</option>
+                                                    <option>Reprovado</option>
+                                                </Form.Select>
+                                            </div>
+
+                                            <div>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                    <h5 class="infoTitutlo" >Staircase element</h5>
+                                                    <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                    <h5 class="infoTitutlo" >Responsable</h5>
+                                                    <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                    <h5 class="infoTitutlo" >Area</h5>
+                                                    <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                                    <h5 class="infoTitutlo" >Nome of Measure</h5>
+                                                    <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} />
+                                                    <p> OU: VWB : CUR : VWB </p>
+                                                </Form.Group>
+                                            </div>
+
+                                            <div class="texto">
+                                                <h5 class="infoTitutlo" >Actual State</h5>
+                                                <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} />
+                                            </div>
+
+                                            <div class="texto">
+                                                <h5 class="infoTitutlo" >Targer state with measure description</h5>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                    <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div class="texto">
+                                                <h5 class="infoTitutlo" >Calculation/Explication</h5>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                                                    <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div class="selecao">
+                                                <h5 class="infoTitutlo" >Handlungsfeld</h5>
+                                                <select class="form-select" aria-label="Default select example" type="text" name="handlungsfeld" {...register("handlungsfeld")}>
+                                                    <option selected></option>
+                                                    <option>SGK</option>
+                                                    <option>Ramp-up Excellence</option>
+                                                    <option>Low-Expenditure Factories of the Future</option>
+                                                    <option>Stable Customer Order Process</option>
+                                                    <option>Team of the Future</option>
+                                                    <option>Sustainable Structures</option>
+                                                    <option>Produtivity</option>
+                                                    <option>Rework-free Products and Processes</option>
+                                                    <option>Zero Impact Factory</option>
+                                                </select>
+                                            </div>
+
+
+                                            <div class="texto">
+                                                <h5 class="infoTitutlo" >Ganhos Previstos:</h5>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                    <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")} />
+                                                </Form.Group>
+                                            </div>
+
+
+                                            <div class="texto" id="section2">
+                                                <h5 class="infoTitutlo" >Recursos Necessários:</h5>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                    <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div>
+                                                <h5 class="infoTitutlo" >Time de Trabalho:</h5>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                    <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div>
+                                                <h5 class="infoTitutlo" >Parcerias Necessárias:</h5>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                    <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div>
+                                                <h5 class="infoTitutlo" >Pontos de Escalação:</h5>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                    <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div>
+                                                <h5 class="infoTitutlo" id="section2" >Divulgação:</h5>
+                                                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
+                                                    <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} />
+                                                </Form.Group>
+                                            </div>
+
+                                            <div>
+                                                <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Voltar</button>
+                                            </div>
+                                        </div>
+                                    </Form>
+                                </div>
+                                {/* FIM TABELA*/}
+                            </div>
+                        </div>
+
+
                     </div>
-      
-                    <div>
-                    <h5 id="section2">Pontos de Escalação:</h5>
-                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                      <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} />
-                      </Form.Group>
+                </div>
+                <footer>
+                    <div class="footer-area">
+                        <p>© Copyright 2022. Todos os direitos reservados. Desenvolvido pela <a href="https://github.com/gabrielle-nunes/volkswagen-roadmap">Equipe Roadmap de Inovação</a>.</p>
                     </div>
-      
-                    <div>
-                      <h5>Divulgação:</h5>
-                      <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                      <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} />
-                      </Form.Group>
-                    </div>
-      
-                    <div>                      
-                      <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Voltar</button>
-                    </div> 
-              </div>
-            </Form>
-            </main>
-            </section>
-      
-            <footer>
-      
-            </footer>
+                </footer>
+            </div>
         </body>
-      </html>
-        )
-      }
-      
-      export default Visualizar;
+
+    );
+
+}
+
+export default Visualizar;

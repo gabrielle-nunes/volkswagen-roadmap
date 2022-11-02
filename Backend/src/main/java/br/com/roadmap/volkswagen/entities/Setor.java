@@ -13,14 +13,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity
 @Table(name = "tbl_setor")
 public class Setor {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
-	
+
 	@Column(unique=true)
 	private String nomeSetor;
-	
+
 	public Long getId() {
 		return Id;
 	}
