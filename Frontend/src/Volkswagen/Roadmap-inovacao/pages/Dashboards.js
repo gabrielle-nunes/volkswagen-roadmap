@@ -1,25 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ReactECharts from 'echarts-for-react';  // or var ReactECharts = require('echarts-for-react');
 import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
-
-//INICIO ICONES PERSONALIZADOS----------------->
-var dadus = ""
-var idDado = [];
-var nomeDado = [];
-var criadorDado = [];
-var setorDado = [];
-
-var aidDado = [];
-var anomeDado = [];
-var acriadorDado = [];
-var asetorDado = [];
 
 var option;
 
@@ -75,10 +62,7 @@ function Dashboards() {
     const [posts, setPosts] = useState([])
     const [busca, setBusca] = useState('')
 
-
-
     console.log(busca);
-
 
     useEffect(() => {
         axios.get("http://localhost:8080/inovacao/lista")
@@ -92,16 +76,6 @@ function Dashboards() {
             })
     }, [])
 
-
-
-    axios.get("http://localhost:8080/inovacao/lista")
-        .then((response) => {
-            dadus = (response.data)
-            return dadus
-        })
-
-
-    console.log(dadus)
 
 
     function deletePost(id) {
@@ -120,73 +94,7 @@ function Dashboards() {
     }
 
     //criando arrays dos valores json
-    for (var i = 0; i < dadus.length; i++) {
-        console.log(dadus[i]["id"]);
 
-        idDado += (dadus[i]["id"]) + "-"
-        aidDado = idDado.split('-')
-
-        nomeDado += (dadus[i]["title"]) + "-"
-        anomeDado = nomeDado.split('-')
-
-        criadorDado += (dadus[i]["responsible"]) + "-"
-        acriadorDado = criadorDado.split('-')
-
-        setorDado += (dadus[i]["area"]) + "-"
-        asetorDado = setorDado.split('-')
-
-
-    }
-
-    var counts = {};
-    asetorDado.forEach(function (x) { counts[x] = (counts[x] || 0) + 1; });
-    var filtrarTI = (counts["TI"]);
-    var filtrarSerie = (counts["Plan. De Série"]);
-    console.log(filtrarTI)
-
-
-    option = {
-        title: {
-            text: 'Inovações por Área',
-            subtext: 'Dados atuais',
-            left: 'center'
-        },
-        tooltip: {
-            trigger: 'item'
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left'
-        },
-        series: [
-            {
-                name: 'Access From',
-                type: 'pie',
-                radius: '50%',
-                data: [
-                    { value: filtrarTI, name: 'TI' },
-                    { value: filtrarSerie, name: 'Plan. De Série' },
-                    { value: 1, name: 'Fábrica Piloto' },
-                    { value: 1, name: 'Manutenção Site' },
-                    { value: 1, name: 'Estamparia' },
-                    { value: 1, name: 'Armação' },
-                    { value: 1, name: 'Pintura' },
-                    { value: 1, name: 'Montagem Final' },
-                    { value: 1, name: 'VW Componentes' },
-                    { value: 1, name: 'QA Processos' },
-                    { value: 1, name: 'Eng. Industrial' },
-                    { value: 1, name: 'Logística' },
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
 
     return (
 
@@ -300,7 +208,7 @@ function Dashboards() {
                                 {/* Gráficos*/}
                                 <div class="chart">
                                     <div class="chart1">
-                                        <ReactECharts option={option} />
+                                        <iframe src="http://localhost:5000/goto/WgbA2Iv4z?orgId=1"></iframe>
                                     </div>
                                     <div class="chart2">
 
