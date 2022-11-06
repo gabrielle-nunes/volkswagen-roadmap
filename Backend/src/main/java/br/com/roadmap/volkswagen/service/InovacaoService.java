@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import br.com.roadmap.volkswagen.constantes.ConstantesRoadmap;
 import br.com.roadmap.volkswagen.dto.InovacaoDTO;
 import br.com.roadmap.volkswagen.entities.Inovacao;
 import br.com.roadmap.volkswagen.repository.InovacaoRepository;
@@ -32,21 +33,52 @@ public class InovacaoService {
 
 		Inovacao inovacao = null;
 		try {
-			Date data1 = converteData(inovacaoDTO.getDataHg1());
-			Date data2 = converteData(inovacaoDTO.getDataHg2());
-			Date data3 = converteData(inovacaoDTO.getDataHg3());
-			Date data4 = converteData(inovacaoDTO.getDataHg4());
-			Date data5 = converteData(inovacaoDTO.getDataHg5());
 
-			long comparador1 = data1.getTime();
-			long comparador2 = data2.getTime();
-			long comparador3 = data3.getTime();
-			long comparador4 = data4.getTime();
-			long comparador5 = data5.getTime();
+			if (inovacaoDTO.getStatus().equals(ConstantesRoadmap.getConcluido())
+					|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getReprovado())) {
+				throw new Exception("Uma inovação não pode ser criada com o status: concluído ou reprovado");
+			}
 
-			if (comparador2 < comparador1 || comparador3 < comparador2 || comparador4 < comparador3
-					|| comparador5 < comparador4) {
-				throw new Exception("Data menor que da reunião anterior. Verifique a data inserida.");
+			if (!(inovacaoDTO.getDataHg9().isEmpty() && inovacaoDTO.getMotivoHg9().isEmpty())) {
+				converteData(inovacaoDTO.getDataHg9());
+				inovacaoDTO.setStatus("Reprovado");
+			} else {
+				if (!(inovacaoDTO.getDataHg1().equals("") || (inovacaoDTO.getDataHg2().equals(""))
+						|| (inovacaoDTO.getDataHg3().equals("")) || (inovacaoDTO.getDataHg4().equals(""))
+						|| (inovacaoDTO.getDataHg5().equals("")))) {
+					Date data1 = converteData(inovacaoDTO.getDataHg1());
+					Date data2 = converteData(inovacaoDTO.getDataHg2());
+					Date data3 = converteData(inovacaoDTO.getDataHg3());
+					Date data4 = converteData(inovacaoDTO.getDataHg4());
+					Date data5 = converteData(inovacaoDTO.getDataHg5());
+
+					long comparador1 = data1.getTime();
+					long comparador2 = data2.getTime();
+					long comparador3 = data3.getTime();
+					long comparador4 = data4.getTime();
+					long comparador5 = data5.getTime();
+
+					if (comparador2 < comparador1 || comparador3 < comparador2 || comparador4 < comparador3
+							|| comparador5 < comparador4) {
+						throw new Exception("Data menor que da reunião anterior. Verifique a data inserida.");
+					}
+				}
+
+				if (inovacaoDTO.getOkHg1().equals(true)) {
+					inovacaoDTO.setHg1("Concluído");
+					if (inovacaoDTO.getOkHg2().equals(true)) {
+						inovacaoDTO.setHg2("Concluído");
+						if (inovacaoDTO.getOkHg3().equals(true)) {
+							inovacaoDTO.setHg3("Concluído");
+							if (inovacaoDTO.getOkHg4().equals(true)) {
+								inovacaoDTO.setHg4("Concluído");
+								if (inovacaoDTO.getOkHg5().equals(true)) {
+									inovacaoDTO.setHg5("Concluído");
+								}
+							}
+						}
+					}
+				}
 			}
 
 			inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
@@ -155,7 +187,7 @@ public class InovacaoService {
 					in.setDataHg3(inovacaoDTO.getDataHg3());
 					in.setDataHg4(inovacaoDTO.getDataHg4());
 					in.setDataHg5(inovacaoDTO.getDataHg5());
-					 
+					in.setDataHg9(inovacaoDTO.getDataHg9());
 				}
 
 				inovacaoRepository.save(in);
