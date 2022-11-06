@@ -50,7 +50,6 @@ public class Inovacao {
 	private String hg4;
 	private String hg5;
 	
-	private String hg9;
 	private String motivoHg9;
 	
 	private String responsibleHg1;
@@ -70,6 +69,7 @@ public class Inovacao {
 	private String dataHg3;
 	private String dataHg4;
 	private String dataHg5;
+	private String dataHg9;
 
 	/*
 	 * @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -315,14 +315,6 @@ public class Inovacao {
 		this.responsibleHg5 = responsibleHg5;
 	}
 
-	public String getHg9() {
-		return hg9;
-	}
-
-	public void setHg9(String hg9) {
-		this.hg9 = hg9;
-	}
-
 	public String getMotivoHg9() {
 		return motivoHg9;
 	}
@@ -411,6 +403,14 @@ public class Inovacao {
 		this.dataHg5 = dataHg5;
 	}
 
+	public String getDataHg9() {
+		return dataHg9;
+	}
+
+	public void setDataHg9(String dataHg9) {
+		this.dataHg9 = dataHg9;
+	}
+
 	public static Inovacao convert(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = new Inovacao();
 
@@ -437,7 +437,6 @@ public class Inovacao {
 		inovacao.setHg3(inovacaoDTO.getHg3());
 		inovacao.setHg4(inovacaoDTO.getHg4());
 		inovacao.setHg5(inovacaoDTO.getHg5());
-		inovacao.setHg9(inovacaoDTO.getHg9());
 		inovacao.setResponsibleHg1(inovacaoDTO.getResponsibleHg1());
 		inovacao.setResponsibleHg2(inovacaoDTO.getResponsibleHg2());
 		inovacao.setResponsibleHg3(inovacaoDTO.getResponsibleHg3());
@@ -454,6 +453,7 @@ public class Inovacao {
 		inovacao.setDataHg3(inovacaoDTO.getDataHg3());
 		inovacao.setDataHg4(inovacaoDTO.getDataHg4());
 		inovacao.setDataHg5(inovacaoDTO.getDataHg5());
+		inovacao.setDataHg9(inovacaoDTO.getDataHg9());
 
 		if (inovacaoDTO.getStatus().equals(ConstantesRoadmap.getConcluido())
 				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getNoPrazo())
@@ -468,4 +468,5 @@ public class Inovacao {
 
 		return inovacao;
 	}
+
 }

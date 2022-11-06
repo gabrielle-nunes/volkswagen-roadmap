@@ -31,7 +31,6 @@ public class InovacaoDTO {
 	private String hg4;
 	private String hg5;
 	
-	private String hg9;
 	private String motivoHg9;
 	
 	private String responsibleHg1;
@@ -51,6 +50,7 @@ public class InovacaoDTO {
 	private String dataHg3;
 	private String dataHg4;
 	private String dataHg5;
+	private String dataHg9;
 
 	public Long getId() {
 		return id;
@@ -283,14 +283,6 @@ public class InovacaoDTO {
 	public void setResponsibleHg5(String responsibleHg5) {
 		this.responsibleHg5 = responsibleHg5;
 	}
-
-	public String getHg9() {
-		return hg9;
-	}
-
-	public void setHg9(String hg9) {
-		this.hg9 = hg9;
-	}
 	
 	public String getMotivoHg9() {
 		return motivoHg9;
@@ -379,6 +371,14 @@ public class InovacaoDTO {
 	public void setDataHg5(String dataHg5) {
 		this.dataHg5 = dataHg5;
 	}
+	
+	public String getDataHg9() {
+		return dataHg9;
+	}
+
+	public void setDataHg9(String dataHg9) {
+		this.dataHg9 = dataHg9;
+	}
 
 	public static InovacaoDTO convert(Inovacao inovacao) throws Exception {
 		
@@ -407,7 +407,6 @@ public class InovacaoDTO {
 		inovacaoDTO.setHg3(inovacao.getHg3());
 		inovacaoDTO.setHg4(inovacao.getHg4());
 		inovacaoDTO.setHg5(inovacao.getHg5());
-		inovacaoDTO.setHg9(inovacao.getHg9());
 		inovacaoDTO.setResponsibleHg1(inovacao.getResponsibleHg1());
 		inovacaoDTO.setResponsibleHg2(inovacao.getResponsibleHg2());
 		inovacaoDTO.setResponsibleHg3(inovacao.getResponsibleHg3());
@@ -424,6 +423,7 @@ public class InovacaoDTO {
 		inovacaoDTO.setDataHg3(inovacao.getDataHg3());
 		inovacaoDTO.setDataHg4(inovacao.getDataHg4());
 		inovacaoDTO.setDataHg5(inovacao.getDataHg5());
+		inovacaoDTO.setDataHg9(inovacao.getDataHg9());
 		return inovacaoDTO;
 
 	}
