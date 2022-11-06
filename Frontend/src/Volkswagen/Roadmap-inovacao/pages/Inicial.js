@@ -282,7 +282,7 @@ function Inicial() {
                           }
                         }).map((post, key) => (
                           <StyledTableRow>
-                            <Visibility class="iconesInicial" onClick={handleShow} />
+                            <Visibility class="iconesInicial" onClick={() => navegar({pathname: `/visualizar/${post.id}` })} />
                             {/*onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} */}
                             <StyledTableCell align="center">{post.status}</StyledTableCell>
                             <StyledTableCell align="center">{post.id}</StyledTableCell>
