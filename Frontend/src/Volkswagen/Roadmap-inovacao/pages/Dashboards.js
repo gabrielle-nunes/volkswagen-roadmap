@@ -208,7 +208,7 @@ function Dashboards() {
                                 {/* Gráficos*/}
                                 <div class="chart">
                                     <div class="chart1">
-                                        <iframe src="http://localhost:5000/goto/WgbA2Iv4z?orgId=1"></iframe>
+                                        <iframe src="http://localhost:5000/goto/zvXIqID4z?orgId=1" width="100%" height="500px"></iframe>
                                     </div>
                                     <div class="chart2">
 
