@@ -212,9 +212,6 @@ function Dashboards() {
                                     <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1667680047711&to=1667701647711&theme=light&panelId=2" width="450" height="200" frameborder="0"></iframe>
                                     <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?from=1667680682065&to=1667702282065&orgId=1&theme=light&panelId=6" width="450" height="200" frameborder="0"></iframe>
                                     </div>
-                                    <div class="chart2">
-
-                                    </div>
                                 </div>
                                 {/* Fim gráficos*/}
                             </div>
