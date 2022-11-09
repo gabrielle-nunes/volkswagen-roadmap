@@ -8,6 +8,7 @@ import Visualizar from "./Volkswagen/Roadmap-inovacao/pages/Visualizar";
 import Dashboards from "./Volkswagen/Roadmap-inovacao/pages/Dashboards";
 import Login from "./Volkswagen/Roadmap-inovacao/pages/login";
 import Register from "./Volkswagen/Roadmap-inovacao/pages/Register";
+import HG from "./Volkswagen/Roadmap-inovacao/pages/hgtest";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
@@ -23,6 +24,7 @@ return (
         <Route path="/edit/:id" element={<Edit />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/hg" element={<HG />} />
       </Routes>
     </Router>
   );
