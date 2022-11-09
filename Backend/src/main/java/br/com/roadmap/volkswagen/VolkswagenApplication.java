@@ -6,10 +6,12 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
 @EntityScan("br.com.roadmap.volkswagen.entities")
+
 public class VolkswagenApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(VolkswagenApplication.class, args);
+		
 	}
 
 }
