@@ -381,9 +381,8 @@ public class InovacaoDTO {
 	}
 
 	public static InovacaoDTO convert(Inovacao inovacao) throws Exception {
-		
+
 		InovacaoDTO inovacaoDTO = new InovacaoDTO();
-		
 		inovacaoDTO.setDivulgacao(inovacao.getDivulgacao());
 		inovacaoDTO.setGanhosPrevistos(inovacao.getGanhosPrevistos());
 		inovacaoDTO.setId(inovacao.getId());
@@ -427,5 +426,3 @@ public class InovacaoDTO {
 		return inovacaoDTO;
 
 	}
-
-}
