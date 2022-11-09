@@ -39,10 +39,11 @@ public class InovacaoService {
 				throw new Exception("Uma inovação não pode ser criada com o status: concluído ou reprovado");
 			}
 
-			if (!(inovacaoDTO.getDataHg9().isEmpty() && inovacaoDTO.getMotivoHg9().isEmpty())) {
-				converteData(inovacaoDTO.getDataHg9());
-				inovacaoDTO.setStatus("Reprovado");
-			} else {
+			//if (!(inovacaoDTO.getDataHg9().isEmpty() && inovacaoDTO.getMotivoHg9().isEmpty())) {
+				//converteData(inovacaoDTO.getDataHg9());
+			//	inovacaoDTO.setStatus("Reprovado");
+			//}
+		else {
 				if (!(inovacaoDTO.getDataHg1().equals("") || (inovacaoDTO.getDataHg2().equals(""))
 						|| (inovacaoDTO.getDataHg3().equals("")) || (inovacaoDTO.getDataHg4().equals(""))
 						|| (inovacaoDTO.getDataHg5().equals("")))) {
