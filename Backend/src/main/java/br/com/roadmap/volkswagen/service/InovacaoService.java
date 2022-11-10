@@ -43,25 +43,41 @@ public class InovacaoService {
 				converteData(inovacaoDTO.getDataHg9());
 				inovacaoDTO.setStatus("Reprovado");
 			} else {
-				if (!(inovacaoDTO.getDataHg1().equals("") || (inovacaoDTO.getDataHg2().equals(""))
-						|| (inovacaoDTO.getDataHg3().equals("")) || (inovacaoDTO.getDataHg4().equals(""))
-						|| (inovacaoDTO.getDataHg5().equals("")))) {
+
+				if (!(inovacaoDTO.getDataHg1().isEmpty())) {
 					Date data1 = converteData(inovacaoDTO.getDataHg1());
-					Date data2 = converteData(inovacaoDTO.getDataHg2());
-					Date data3 = converteData(inovacaoDTO.getDataHg3());
-					Date data4 = converteData(inovacaoDTO.getDataHg4());
-					Date data5 = converteData(inovacaoDTO.getDataHg5());
-
 					long comparador1 = data1.getTime();
-					long comparador2 = data2.getTime();
-					long comparador3 = data3.getTime();
-					long comparador4 = data4.getTime();
-					long comparador5 = data5.getTime();
-
-					if (comparador2 < comparador1 || comparador3 < comparador2 || comparador4 < comparador3
-							|| comparador5 < comparador4) {
-						throw new Exception("Data menor que da reunião anterior. Verifique a data inserida.");
+					if (!(inovacaoDTO.getDataHg2().isEmpty())) {
+						Date data2 = converteData(inovacaoDTO.getDataHg2());
+						long comparador2 = data2.getTime();
+						if (comparador2 < comparador1) {
+							throw new Exception("Data menor que da reunião anterior. Verifique a data escolhida.");
+						}
+						if (!(inovacaoDTO.getDataHg3().isEmpty())) {
+							Date data3 = converteData(inovacaoDTO.getDataHg3());
+							long comparador3 = data3.getTime();
+							if (comparador3 < comparador2) {
+								throw new Exception("Data menor que da reunião anterior. Verifique a data escolhida.");
+							}
+							if (!(inovacaoDTO.getDataHg4().isEmpty())) {
+								Date data4 = converteData(inovacaoDTO.getDataHg4());
+								long comparador4 = data4.getTime();
+								if (comparador4 < comparador3) {
+									throw new Exception(
+											"Data menor que da reunião anterior. Verifique a data escolhida.");
+								}
+								if (!(inovacaoDTO.getDataHg5().isEmpty())) {
+									Date data5 = converteData(inovacaoDTO.getDataHg5());
+									long comparador5 = data5.getTime();
+									if (comparador5 < comparador4) {
+										throw new Exception(
+												"Data menor que da reunião anterior. Verifique a data escolhida.");
+									}
+								}
+							}
+						}
 					}
+
 				}
 
 				if (inovacaoDTO.getOkHg1().equals(true)) {
@@ -79,9 +95,9 @@ public class InovacaoService {
 						}
 					}
 				}
-			}
 
-			inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
+				inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception("Erro ao cadastrar a inovação!");
