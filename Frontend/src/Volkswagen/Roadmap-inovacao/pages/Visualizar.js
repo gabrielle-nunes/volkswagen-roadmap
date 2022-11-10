@@ -15,6 +15,7 @@ import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle } from '@mui/icons-material';
+const { jsPDF } = require("jspdf");
 /*const schema = yup.object({
   staircase: yup.string().required(),
 })*/
@@ -83,6 +84,8 @@ function Visualizar() {
 
 
 
+
+
     /*const addPut = data => axios.put(`http://localhost:8080/inovacao/editar/${id}`, data)
     .then(() =>  {
         console.log("Deu certo")
@@ -103,6 +106,7 @@ function Visualizar() {
                 <div class="sidebar-menu">
                     <div class="sidebar-header">
                         <div class="logo">
+
                             <a><img src="https://logodownload.org/wp-content/uploads/2014/02/volkswagen-vw-logo-0.png" alt="logo" width="60px" height="60px" /></a>
                         </div>
                     </div>
@@ -205,6 +209,14 @@ function Visualizar() {
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-3">
                                     <h4 class="header-title mb-0">Visualizar Inovação</h4>
+                                    <Button size='medium' color='error' variant='contained' onClick={
+                                        function pdfe() {
+                                            var teste = toString({...register("status")}.name);
+                                            
+                                            const doc = new jsPDF();
+                                            doc.text(teste, 10, 10);
+                                            doc.save("a4.pdf")
+                                    }}> Gerar PDF</Button>
                                 </div>
                                 {/* TABELA*/}
                                 <div id="mainCreate">
@@ -291,7 +303,7 @@ function Visualizar() {
                                                                     </h6>
                                                                 )}
                                                             </PopupState>
-                                                            <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} disabled/>
+                                                            <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -348,7 +360,7 @@ function Visualizar() {
                                                                     </h6>
                                                                 )}
                                                             </PopupState>
-                                                            <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} disabled/>
+                                                            <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} disabled />
                                                             <p> OU: VWB : CUR : VWB </p>
                                                         </Form.Group>
                                                     </div>
@@ -377,7 +389,7 @@ function Visualizar() {
                                                                 </h6>
                                                             )}
                                                         </PopupState>
-                                                        <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} disabled/>
+                                                        <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} disabled />
                                                     </div>
                                                 </Col>
 
@@ -404,7 +416,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -433,7 +445,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                                            <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -498,7 +510,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -524,7 +536,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -553,7 +565,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -579,7 +591,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -608,7 +620,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -634,7 +646,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
