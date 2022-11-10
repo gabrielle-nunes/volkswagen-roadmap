@@ -426,3 +426,4 @@ public class InovacaoDTO {
 		return inovacaoDTO;
 
 	}
+}

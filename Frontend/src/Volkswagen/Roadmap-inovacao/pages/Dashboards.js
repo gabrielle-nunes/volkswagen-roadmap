@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import ReactECharts from 'echarts-for-react';  // or var ReactECharts = require('echarts-for-react');
 import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
@@ -9,8 +8,8 @@ import "../css/themify-icons.css";
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
 
+var option;
 
-//INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
         href='@mui/icons-material'
@@ -57,22 +56,27 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 
 function Dashboards() {
     const navegar = useNavigate();
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     const [posts, setPosts] = useState([])
     const [busca, setBusca] = useState('')
-    console.log(busca);
 
+    console.log(busca);
 
     useEffect(() => {
         axios.get("http://localhost:8080/inovacao/lista")
             .then((response) => {
                 setPosts(response.data)
+
             })
 
             .catch(() => {
                 console.log("Deu errado")
             })
-
     }, [])
+
+
 
     function deletePost(id) {
 
@@ -89,45 +93,10 @@ function Dashboards() {
 
     }
 
+    //criando arrays dos valores json
 
-    const option = {
-        title: {
-            text: 'Referer of a Website',
-            subtext: 'Fake Data',
-            left: 'center'
-        },
-        tooltip: {
-            trigger: 'item'
-        },
-        legend: {
-            orient: 'vertical',
-            left: 'left'
-        },
-        series: [
-            {
-                name: 'Access From',
-                type: 'pie',
-                radius: '50%',
-                data: [
-                    { value: 1048, name: 'Search Engine' },
-                    { value: 735, name: 'Direct' },
-                    { value: 580, name: 'Email' },
-                    { value: 484, name: 'Union Ads' },
-                    { value: 300, name: 'Video Ads' }
-                ],
-                emphasis: {
-                    itemStyle: {
-                        shadowBlur: 10,
-                        shadowOffsetX: 0,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                }
-            }
-        ]
-    };
 
     return (
-
 
         <body>
             <div class="page-container">
@@ -239,10 +208,9 @@ function Dashboards() {
                                 {/* Gráficos*/}
                                 <div class="chart">
                                     <div class="chart1">
-                                        <ReactECharts option={option} />
-                                    </div>
-                                    <div class="chart2">
-                                        <ReactECharts option={option} />
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1667679862071&to=1667701462071&theme=light&panelId=4" width="450" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1667680047711&to=1667701647711&theme=light&panelId=2" width="450" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?from=1667680682065&to=1667702282065&orgId=1&theme=light&panelId=6" width="450" height="200" frameborder="0"></iframe>
                                     </div>
                                 </div>
                                 {/* Fim gráficos*/}
