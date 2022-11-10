@@ -42,7 +42,7 @@ public class InovacaoService {
 			if (!(inovacaoDTO.getDataHg9().isEmpty() && inovacaoDTO.getMotivoHg9().isEmpty())) {
 				converteData(inovacaoDTO.getDataHg9());
 				inovacaoDTO.setStatus("Reprovado");
-			} else {
+		  } else {
 
 				if (!(inovacaoDTO.getDataHg1().isEmpty())) {
 					Date data1 = converteData(inovacaoDTO.getDataHg1());
@@ -242,7 +242,7 @@ public class InovacaoService {
 	}
 
 	public ResponseEntity<List<Inovacao>> searchStatus(String status) {
-		List<Inovacao> serviceStatus = inovacaoRepository.searchByTitle(status);
+		List<Inovacao> serviceStatus = inovacaoRepository.searchByStatus(status);
 		return new ResponseEntity<List<Inovacao>>(serviceStatus, HttpStatus.OK);
 	}
 
@@ -252,9 +252,18 @@ public class InovacaoService {
 	}
 
 	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
-		List<Inovacao> serviceTimeTrabalho = inovacaoRepository.searchByTitle(timeTrabalho);
+		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
 		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
+	}
 
+//	public ResponseEntity<List<Inovacao>> searchHg(Hg hg) {
+//		List<Inovacao> serviceHg= inovacaoRepository.searchByHg(hg);
+//		return new ResponseEntity<List<Inovacao>>(serviceHg, HttpStatus.OK);
+//	}
+
+	public ResponseEntity<List<Inovacao>> searchMweb(Integer mweb) {
+		List<Inovacao> serviceMweb= inovacaoRepository.searchByMweb(mweb);
+		return new ResponseEntity<List<Inovacao>>(serviceMweb, HttpStatus.OK);
 	}
 
 }
