@@ -12,11 +12,28 @@ import "react-datepicker/dist/react-datepicker.css";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 
+
+function disablehg()
+{document.getElementById('skill').disabled=true;
+ //document.getElementById('skill').checked=false;
+ 
+}
+
+function enablehg()
+{
+    document.getElementById('skill').disabled=false;
+}
 function HG() {
 
     const [value, onChange] = useState(new Date());
 
-    const [selectedDate, setSelectedDate] = useState(null);
+    
+
+    const [selectedDate1, setSelectedDate1] = useState(null);
+    const [selectedDate2, setSelectedDate2] = useState(null);
+    const [selectedDate3, setSelectedDate3] = useState(null);
+    const [selectedDate4, setSelectedDate4] = useState(null);
+    const [selectedDate5, setSelectedDate5] = useState(null);
 
 
     //transformar em formato BRB 
@@ -42,7 +59,7 @@ function HG() {
 
     }
 
-    dateFormat(selectedDate);
+    dateFormat(selectedDate1, selectedDate2, selectedDate3, selectedDate4, selectedDate5);
     
 
     return (
@@ -63,14 +80,15 @@ function HG() {
 
             <div class="MeasureStatusHG1" >
                 <FormControl>
-                    <FormLabel id="demo-row-radio-buttons-group-label" labelPlacement='start'>Status</FormLabel>
+                    <FormLabel  labelPlacement='start'>Status</FormLabel>
                     <RadioGroup
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
+                        defaultValue="NOK"
                     >
-                        <FormControlLabel value="NOK" control={<Radio />} label="NOK" />
-                        <FormControlLabel value="OK" control={<Radio />} label="OK" />
+                        <FormControlLabel name="c1" onFocus={disablehg} value="NOK" control={<Radio />} label="NOK" />
+                        <FormControlLabel name="c1" onFocus={enablehg} value="OK" control={<Radio />} label="OK" />
                     </RadioGroup>
                 </FormControl>
 
@@ -79,8 +97,8 @@ function HG() {
             <div class="MeasureDataHG1" >
 
                 <DatePicker
-                    selected={selectedDate}
-                    onChange={date => setSelectedDate(date)}
+                    selected={selectedDate1}
+                    onChange={date => setSelectedDate1(date)}
                     placeholderText="Data da Reunião"
                     //showTimeSelect (ativar opção de horario)
                     dateFormat="dd/MM/yyyy"
@@ -94,7 +112,7 @@ function HG() {
 
 
             <div class="MeasureRespHG2" >
-                <TextField required id="standard-basic" label="Responsable" variant="standard" />
+                <TextField id="skill" disabled="required" label="Responsable" variant="standard" />
             </div>
 
             <div class="MeasureStatusHG2" >
@@ -104,6 +122,7 @@ function HG() {
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
+                        
                     >
                         <FormControlLabel value="NOK" control={<Radio />} label="NOK" />
                         <FormControlLabel value="OK" control={<Radio />} label="OK" />
@@ -115,8 +134,8 @@ function HG() {
             <div class="MeasureDataHG2" >
 
                 <DatePicker
-                    selected={selectedDate}
-                    onChange={date => setSelectedDate(date)}
+                    selected={selectedDate2}
+                    onChange={date => setSelectedDate2(date)}
                     placeholderText="Data da Reunião"
                     //showTimeSelect (ativar opção de horario)
                     dateFormat="dd/MM/yyyy"
@@ -140,6 +159,7 @@ function HG() {
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
+                        
                     >
                         <FormControlLabel value="NOK" control={<Radio />} label="NOK" />
                         <FormControlLabel value="OK" control={<Radio />} label="OK" />
@@ -151,8 +171,8 @@ function HG() {
             <div class="MeasureDataHG3" >
 
                 <DatePicker
-                    selected={selectedDate}
-                    onChange={date => setSelectedDate(date)}
+                    selected={selectedDate3}
+                    onChange={date => setSelectedDate3(date)}
                     placeholderText="Data da Reunião"
                     //showTimeSelect (ativar opção de horario)
                     dateFormat="dd/MM/yyyy"
@@ -176,6 +196,7 @@ function HG() {
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
+                        
                     >
                         <FormControlLabel value="NOK" control={<Radio />} label="NOK" />
                         <FormControlLabel value="OK" control={<Radio />} label="OK" />
@@ -187,8 +208,8 @@ function HG() {
             <div class="MeasureDataHG4" >
 
                 <DatePicker
-                    selected={selectedDate}
-                    onChange={date => setSelectedDate(date)}
+                    selected={selectedDate4}
+                    onChange={date => setSelectedDate4(date)}
                     placeholderText="Data da Reunião"
                     //showTimeSelect (ativar opção de horario)
                     dateFormat="dd/MM/yyyy"
@@ -212,6 +233,7 @@ function HG() {
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
+                        
                     >
                         <FormControlLabel value="NOK" control={<Radio />} label="NOK" />
                         <FormControlLabel value="OK" control={<Radio />} label="OK" />
@@ -223,8 +245,8 @@ function HG() {
             <div class="MeasureDataHG5" >
 
                 <DatePicker
-                    selected={selectedDate}
-                    onChange={date => setSelectedDate(date)}
+                    selected={selectedDate5}
+                    onChange={date => setSelectedDate5(date)}
                     placeholderText="Data da Reunião"
                     //showTimeSelect (ativar opção de horario)
                     dateFormat="dd/MM/yyyy"
