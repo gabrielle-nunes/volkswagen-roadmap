@@ -7,6 +7,8 @@ import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
+import IconButton from '@mui/material/IconButton';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Typography from '@mui/material/Typography';
@@ -15,9 +17,16 @@ import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle } from '@mui/icons-material';
-/*const schema = yup.object({
-  staircase: yup.string().required(),
-})*/
+const { jsPDF } = require("jspdf");
+var dadus =""
+var idDado =""
+var aidDado  =""
+var nomeDado =""
+var anomeDado =""
+var criadorDado =""
+var acriadorDado =""
+var setorDado =""
+var asetorDado=""
 
 //INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -65,14 +74,20 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 //FIM ICONES PERSONALIZADOS----------------->
 
 function Visualizar() {
+    
 
     const { id } = useParams()
+
+     
+
+
 
     const navegar = useNavigate();
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         //resolver: yupResolver(schema),
     });
+
 
     useEffect(() => {
         axios.get(`http://localhost:8080/inovacao/lista/${id}`)
@@ -81,19 +96,17 @@ function Visualizar() {
             })
     }, [])
 
+    axios.get("http://localhost:8080/inovacao/lista")
+    .then((response) => {
+        dadus = (response.data)
 
+        return dadus
+        
+    })
 
-    /*const addPut = data => axios.put(`http://localhost:8080/inovacao/editar/${id}`, data)
-    .then(() =>  {
-        console.log("Deu certo")
-        navegar("/")
-  })
-  .catch(() => {
-        console.log("Deu errado")
-  
-  })*/
-    //render()
-    //{
+    
+
+    console.log(dadus)
 
     return (
 
@@ -103,6 +116,7 @@ function Visualizar() {
                 <div class="sidebar-menu">
                     <div class="sidebar-header">
                         <div class="logo">
+
                             <a><img src="https://logodownload.org/wp-content/uploads/2014/02/volkswagen-vw-logo-0.png" alt="logo" width="60px" height="60px" /></a>
                         </div>
                     </div>
@@ -205,6 +219,28 @@ function Visualizar() {
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-3">
                                     <h4 class="header-title mb-0">Visualizar Inovação</h4>
+                                    <IconButton aria-label="pictureAsPdfIcon" color="error" variant="outlined"onClick={
+                                        function pdfe() {
+
+                                            let numero = Number(id)-1
+
+                                            console.log(dadus[numero])
+                                            for (var i = 0; i < dadus.length; i++) {
+                                                idDado = (dadus[numero]["id"])
+                                                nomeDado = (dadus[numero]["title"])
+                                                criadorDado = (dadus[numero]["responsible"])
+                                                setorDado = (dadus[numero]["area"])
+                                            }
+
+                                            const doc = new jsPDF();
+                                            doc.text( "ID: " + idDado, 20, 20);
+                                            doc.text( "Responsável: " + criadorDado, 20, 30)
+                                            doc.text( "Nome: " + nomeDado, 20, 40);
+                                            doc.text( "Setor: " + setorDado, 20, 50);
+                                            doc.save("a4.pdf")
+                                    }}>
+                                        <PictureAsPdfIcon/>
+                                    </IconButton>
                                 </div>
                                 {/* TABELA*/}
                                 <div id="mainCreate">
@@ -291,7 +327,7 @@ function Visualizar() {
                                                                     </h6>
                                                                 )}
                                                             </PopupState>
-                                                            <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} disabled/>
+                                                            <Form.Control type="text" placeholder="Responsable" name="responsable" {...register("responsible")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -348,7 +384,7 @@ function Visualizar() {
                                                                     </h6>
                                                                 )}
                                                             </PopupState>
-                                                            <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} disabled/>
+                                                            <Form.Control type="text" placeholder="Nome of Measure" name="title" {...register("title")} disabled />
                                                             <p> OU: VWB : CUR : VWB </p>
                                                         </Form.Group>
                                                     </div>
@@ -377,7 +413,7 @@ function Visualizar() {
                                                                 </h6>
                                                             )}
                                                         </PopupState>
-                                                        <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} disabled/>
+                                                        <Form.Control type="text" as="textarea" name="actualState" {...register("actualState")} rows={3} disabled />
                                                     </div>
                                                 </Col>
 
@@ -404,7 +440,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="targetState" {...register("targetState")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -433,7 +469,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                                                            <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="calculationExplication" {...register("calculationExplication")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -498,7 +534,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="ganhosPrevistos" {...register("ganhosPrevistos")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -524,7 +560,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="recursosNecessarios" {...register("recursosNecessarios")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -553,7 +589,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="timeTrabalho" {...register("timeTrabalho")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -579,7 +615,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="parceriasNecessarias" {...register("parceriasNecessarias")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -608,7 +644,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="pontosEscalacao" {...register("pontosEscalacao")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -634,7 +670,7 @@ function Visualizar() {
                                                             )}
                                                         </PopupState>
                                                         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1" >
-                                                            <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} disabled/>
+                                                            <Form.Control as="textarea" rows={3} name="divulgacao" {...register("divulgacao")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
