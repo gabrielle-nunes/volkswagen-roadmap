@@ -77,8 +77,7 @@ function Visualizar() {
     
 
     const { id } = useParams()
-    let numero = Number(id)-1
-    console.log(dadus[numero])
+
      
 
 
@@ -105,14 +104,9 @@ function Visualizar() {
         
     })
 
-    for (var i = 0; i < dadus.length; i++) {
-        idDado = (dadus[numero]["id"])
-        nomeDado = (dadus[numero]["title"])
-        criadorDado = (dadus[numero]["responsible"])
-        setorDado = (dadus[numero]["area"])
-    }
+    
 
-    console.log(nomeDado)
+    console.log(dadus)
 
     return (
 
@@ -228,10 +222,21 @@ function Visualizar() {
                                     <IconButton aria-label="pictureAsPdfIcon" color="error" variant="outlined"onClick={
                                         function pdfe() {
 
-                                            handleSubmit()
+                                            let numero = Number(id)-1
+
+                                            console.log(dadus[numero])
+                                            for (var i = 0; i < dadus.length; i++) {
+                                                idDado = (dadus[numero]["id"])
+                                                nomeDado = (dadus[numero]["title"])
+                                                criadorDado = (dadus[numero]["responsible"])
+                                                setorDado = (dadus[numero]["area"])
+                                            }
+
                                             const doc = new jsPDF();
-                                            doc.text( nomeDado, 10, 10);
-                                            doc.text( setorDado, 50, 50);
+                                            doc.text( "ID: " + idDado, 20, 20);
+                                            doc.text( "Responsável: " + criadorDado, 20, 30)
+                                            doc.text( "Nome: " + nomeDado, 20, 40);
+                                            doc.text( "Setor: " + setorDado, 20, 50);
                                             doc.save("a4.pdf")
                                     }}>
                                         <PictureAsPdfIcon/>
