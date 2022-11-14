@@ -15,20 +15,17 @@ import React, { useEffect, useState } from "react";
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { CSVLink } from 'react-csv';
 import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
 import Modal from 'react-bootstrap/Modal';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
-import {Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings,
-ArrowDropDown, AccountCircle} from '@mui/icons-material';
-import exportFromJSON from 'export-from-json'
-var dadus
-
-
-// or require
-
+import {
+  Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings,
+  ArrowDropDown, AccountCircle
+} from '@mui/icons-material';
 
 
 
@@ -110,10 +107,17 @@ function Inicial() {
   const handleShow = () => setShow(true);
   const [posts, setPosts] = useState([])
   const [busca, setBusca] = useState('')
+  const [userdata, setUserdata] = useState([]);
   console.log(busca);
 
-
   useEffect(() => {
+    const getuserdata = async () => {
+      const userreq = await fetch("http://localhost:8080/inovacao/lista");
+      const userres = await userreq.json();
+      console.log(userres);
+      setUserdata(userres);
+    }
+    getuserdata();
     axios.get("http://localhost:8080/inovacao/lista")
       .then((response) => {
         setPosts(response.data)
@@ -140,17 +144,7 @@ function Inicial() {
 
   }
 
-  axios.get("http://localhost:8080/inovacao/lista")
-    .then((response) => {
-      dadus = (response.data)
-      return dadus
-    })
-
-
-  console.log(dadus)
-
   return (
-
 
     <body>
       <link
@@ -268,16 +262,12 @@ function Inicial() {
 
 
                   <div class="botao">
-                    <IconButton aria-label="filePresentIcon" color="success" onClick={
-                                        function excels() {
-                                          const data = [{dadus}]
-                                          const fileName = 'download'
-                                          const exportType =  exportFromJSON.types.xls
-                                          exportFromJSON({ data, fileName, exportType })
-                                    }}>
-                      <FilePresentIcon />
-                      
-                    </IconButton>
+
+                    <CSVLink data={userdata} filename="RegisterUserData">
+                      <IconButton aria-label="filePresentIcon" color="success">
+                        <FilePresentIcon />
+                      </IconButton>
+                    </CSVLink>
                     <Button size='medium' color='success' variant='contained' onClick={() => navegar("/cadastro")}> + Novo</Button>
                   </div>
                 </div>
