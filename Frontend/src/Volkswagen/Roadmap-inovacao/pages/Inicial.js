@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Col from 'react-bootstrap/Col';
+import IconButton from '@mui/material/IconButton';
+import FilePresentIcon from '@mui/icons-material/FilePresent';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import React, { useEffect, useState } from "react";
@@ -19,7 +21,15 @@ import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
 import Modal from 'react-bootstrap/Modal';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
-import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, AccountCircle } from '@mui/icons-material';
+import {Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings,
+ArrowDropDown, AccountCircle} from '@mui/icons-material';
+import exportFromJSON from 'export-from-json'
+var dadus
+
+
+// or require
+
+
 
 
 //INICIO TABELAS PERSONALIZADAS----------------->
@@ -92,6 +102,7 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 
 
 
+
 function Inicial() {
   const navegar = useNavigate();
   const [show, setShow] = useState(false);
@@ -128,6 +139,15 @@ function Inicial() {
     setBusca(posts.filter(post => post.startsWith(busca)))
 
   }
+
+  axios.get("http://localhost:8080/inovacao/lista")
+    .then((response) => {
+      dadus = (response.data)
+      return dadus
+    })
+
+
+  console.log(dadus)
 
   return (
 
@@ -245,7 +265,19 @@ function Inicial() {
               <div class="card-body">
                 <div class="d-flex justify-content-between mb-3">
                   <h4 class="header-title mb-0">Inovações em Andamento</h4>
+
+
                   <div class="botao">
+                    <IconButton aria-label="filePresentIcon" color="success" onClick={
+                                        function excels() {
+                                          const data = [{dadus}]
+                                          const fileName = 'download'
+                                          const exportType =  exportFromJSON.types.xls
+                                          exportFromJSON({ data, fileName, exportType })
+                                    }}>
+                      <FilePresentIcon />
+                      
+                    </IconButton>
                     <Button size='medium' color='success' variant='contained' onClick={() => navegar("/cadastro")}> + Novo</Button>
                   </div>
                 </div>
@@ -282,7 +314,7 @@ function Inicial() {
                           }
                         }).map((post, key) => (
                           <StyledTableRow>
-                            <Visibility class="iconesInicial" onClick={() => navegar({pathname: `/visualizar/${post.id}` })} />
+                            <Visibility class="iconesInicial" onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} />
                             {/*onClick={() => navegar({ pathname: `/visualizar/${post.id}` })} */}
                             <StyledTableCell align="center">{post.status}</StyledTableCell>
                             <StyledTableCell align="center">{post.id}</StyledTableCell>
@@ -351,7 +383,7 @@ function Inicial() {
                                     </Col>
                                   </Row>
                                 </Form>
-                              {/*<Form.Control placeholder="Disabled input" disabled /> */}
+                                {/*<Form.Control placeholder="Disabled input" disabled /> */}
                               </Modal.Body>
                               <Modal.Footer>
                                 <Button className='main-content-inner' size='medium' color='warning' variant='contained' onClick={() => deletePost(post.id)} >Salvar em PDF</Button>

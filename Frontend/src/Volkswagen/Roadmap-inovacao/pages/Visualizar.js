@@ -7,6 +7,8 @@ import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
+import IconButton from '@mui/material/IconButton';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Typography from '@mui/material/Typography';
@@ -16,9 +18,6 @@ import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle } from '@mui/icons-material';
 const { jsPDF } = require("jspdf");
-/*const schema = yup.object({
-  staircase: yup.string().required(),
-})*/
 
 //INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -82,21 +81,6 @@ function Visualizar() {
             })
     }, [])
 
-
-
-
-
-    /*const addPut = data => axios.put(`http://localhost:8080/inovacao/editar/${id}`, data)
-    .then(() =>  {
-        console.log("Deu certo")
-        navegar("/")
-  })
-  .catch(() => {
-        console.log("Deu errado")
-  
-  })*/
-    //render()
-    //{
 
     return (
 
@@ -209,14 +193,16 @@ function Visualizar() {
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-3">
                                     <h4 class="header-title mb-0">Visualizar Inovação</h4>
-                                    <Button size='medium' color='error' variant='contained' onClick={
+                                    <IconButton aria-label="pictureAsPdfIcon" color="error" variant="outlined"onClick={
                                         function pdfe() {
-                                            var teste = toString({...register("status")}.name);
+                                            var teste = toString({...register("status")});
                                             
                                             const doc = new jsPDF();
-                                            doc.text(teste, 10, 10);
+                                            doc.text( "dsad", 10, 10);
                                             doc.save("a4.pdf")
-                                    }}> Gerar PDF</Button>
+                                    }}>
+                                        <PictureAsPdfIcon/>
+                                    </IconButton>
                                 </div>
                                 {/* TABELA*/}
                                 <div id="mainCreate">
