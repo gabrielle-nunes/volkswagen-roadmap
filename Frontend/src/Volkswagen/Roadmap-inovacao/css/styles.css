@@ -2996,6 +2996,9 @@ a{
     height: 50px;
     margin-top: 380px;
     position: absolute;
-
 }
 
+.doneIcon{
+margin-top: 35px;
+margin-left: 10px;
+}
