@@ -18,6 +18,15 @@ import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle } from '@mui/icons-material';
 const { jsPDF } = require("jspdf");
+var dadus =""
+var idDado =""
+var aidDado  =""
+var nomeDado =""
+var anomeDado =""
+var criadorDado =""
+var acriadorDado =""
+var setorDado =""
+var asetorDado=""
 
 //INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -65,14 +74,21 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 //FIM ICONES PERSONALIZADOS----------------->
 
 function Visualizar() {
+    
 
     const { id } = useParams()
+    let numero = Number(id)-1
+    console.log(dadus[numero])
+     
+
+
 
     const navegar = useNavigate();
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm({
         //resolver: yupResolver(schema),
     });
+
 
     useEffect(() => {
         axios.get(`http://localhost:8080/inovacao/lista/${id}`)
@@ -81,6 +97,22 @@ function Visualizar() {
             })
     }, [])
 
+    axios.get("http://localhost:8080/inovacao/lista")
+    .then((response) => {
+        dadus = (response.data)
+
+        return dadus
+        
+    })
+
+    for (var i = 0; i < dadus.length; i++) {
+        idDado = (dadus[numero]["id"])
+        nomeDado = (dadus[numero]["title"])
+        criadorDado = (dadus[numero]["responsible"])
+        setorDado = (dadus[numero]["area"])
+    }
+
+    console.log(nomeDado)
 
     return (
 
@@ -195,10 +227,11 @@ function Visualizar() {
                                     <h4 class="header-title mb-0">Visualizar Inovação</h4>
                                     <IconButton aria-label="pictureAsPdfIcon" color="error" variant="outlined"onClick={
                                         function pdfe() {
-                                            var teste = toString({...register("status")});
-                                            
+
+                                            handleSubmit()
                                             const doc = new jsPDF();
-                                            doc.text( "dsad", 10, 10);
+                                            doc.text( nomeDado, 10, 10);
+                                            doc.text( setorDado, 50, 50);
                                             doc.save("a4.pdf")
                                     }}>
                                         <PictureAsPdfIcon/>

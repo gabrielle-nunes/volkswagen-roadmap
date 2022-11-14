@@ -26,7 +26,7 @@ import {
   Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings,
   ArrowDropDown, AccountCircle
 } from '@mui/icons-material';
-
+var dadus
 
 
 //INICIO TABELAS PERSONALIZADAS----------------->
@@ -143,6 +143,7 @@ function Inicial() {
     setBusca(posts.filter(post => post.startsWith(busca)))
 
   }
+
 
   return (
 
