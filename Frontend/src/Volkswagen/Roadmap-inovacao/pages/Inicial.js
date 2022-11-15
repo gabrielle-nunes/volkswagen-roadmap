@@ -32,11 +32,12 @@ var dadus
 //INICIO TABELAS PERSONALIZADAS----------------->
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: theme.palette.info.dark,
     color: theme.palette.common.white,
+    fontWeight: 'bold'
   },
   [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
+    fontSize: 12,
   },
 }));
 
@@ -264,11 +265,11 @@ function Inicial() {
 
                   <div class="botao">
 
-                    <CSVLink data={userdata} filename="RegisterUserData">
+                   {/* <CSVLink data={userdata} filename="RegisterUserData">
                       <IconButton aria-label="filePresentIcon" color="success">
                         <FilePresentIcon />
                       </IconButton>
-                    </CSVLink>
+                    </CSVLink>*/}
                     <Button size='medium' color='success' variant='contained' onClick={() => navegar("/cadastro")}> + Novo</Button>
                   </div>
                 </div>
