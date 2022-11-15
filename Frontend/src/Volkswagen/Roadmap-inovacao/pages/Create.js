@@ -14,7 +14,29 @@ import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
-import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle } from '@mui/icons-material';
+import { Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle, Functions } from '@mui/icons-material';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import TextField from '@mui/material/TextField';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Stack from '@mui/material/Stack';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+
+
+
+function pegarValue() {
+    var select = document.getElementById("setores");
+
+    var opcaoValor = select.options[select.selectedIndex].value;
+
+    console.log(opcaoValor);
+}
 
 //INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -63,6 +85,46 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 
 function Segundo() {
 
+    const [visivel1, setVisivel1] = useState(false);
+    const [visivel2, setVisivel2] = useState(false);
+    const [visivel3, setVisivel3] = useState(false);
+    const [visivel4, setVisivel4] = useState(false);
+    const [visivel5, setVisivel5] = useState(false);
+
+
+    const [selectedDate1, setSelectedDate1] = useState(null);
+    const [selectedDate2, setSelectedDate2] = useState(null);
+    const [selectedDate3, setSelectedDate3] = useState(null);
+    const [selectedDate4, setSelectedDate4] = useState(null);
+    const [selectedDate5, setSelectedDate5] = useState(null);
+
+
+
+    //transformar em formato BRB 
+    const dateFormatAux = (date) => {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        return [year, month, day].join('-');
+    }
+
+    const dateFormat = (date) => {
+
+        //console.log(new Date(date));
+
+        let formatYearMonthDay = dateFormatAux(date); //formate para tela (não vamos usar)
+
+        let formatISO8601 = new Date(date).toISOString(); //format para o banco
+
+        return [formatISO8601];
+
+
+    }
+
+    dateFormat(selectedDate1, selectedDate2, selectedDate3, selectedDate4, selectedDate5);
+
     const navegar = useNavigate();
 
     const { register, handleSubmit, formState: { errors } } = useForm({
@@ -79,8 +141,9 @@ function Segundo() {
 
         })
 
-    return (
 
+
+    return (
 
         <body>
             <div class="page-container">
@@ -287,7 +350,7 @@ function Segundo() {
                                                         <Form.Group controlId="exampleForm.ControlInput1">
                                                             <PopupState variant="popover" popupId="demo-popup-popover">
                                                                 {(popupState) => (
-                                                                    <h6 class="infoTitutlo"> Area <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <h6 class="infoTitutlo"> Setor <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                                         <Popover
                                                                             {...bindPopover(popupState)}
                                                                             anchorOrigin={{
@@ -304,7 +367,20 @@ function Segundo() {
                                                                     </h6>
                                                                 )}
                                                             </PopupState>
-                                                            <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
+                                                            <Form.Select aria-label="Default select example" id="setores" name="setor" {...register("setor")}>
+                                                                <option value="1">Plan. De Série</option>
+                                                                <option value="2">Fábrica Piloto</option>
+                                                                <option value="3">Manutenção Site</option>
+                                                                <option value="4">Estamparia</option>
+                                                                <option value="5">Armação</option>
+                                                                <option value="6">Pintura</option>
+                                                                <option value="7">Montagem Final</option>
+                                                                <option value="8">VW Componentes</option>
+                                                                <option value="9">QA Processos</option>
+                                                                <option value="10">Eng. Industrial</option>
+                                                                <option value="11">Logística</option>
+                                                                <option value="12">TI</option>
+                                                            </Form.Select>
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
@@ -621,12 +697,270 @@ function Segundo() {
                                                     </div>
                                                 </Col>
                                             </Row>
+                                            <h2> Realisation </h2>
+
+                                            <Row>
+                                                <div class="MeasureText" >
+                                                    <h6> 1. Measure/Potencial identified </h6>
+                                                </div>
+                                                <Col>
+                                                    <TextField required id="standard-basic" label="Responsable" variant="standard" />
+                                                </Col>
+                                                <Col>
+                                                    <div className="dataPicker">
+                                                        <DatePicker
+                                                            selected={selectedDate1}
+                                                            onChange={date => setSelectedDate1(date)}
+                                                            minDate={new Date()}
+                                                            placeholderText="Data da Reunião"
+                                                            //showTimeSelect (ativar opção de horario)
+                                                            dateFormat="dd/MM/yyyy"
+                                                        />
+                                                    </div>
+                                                </Col>
+                                                <Col>
+                                                    <div className="radioStatus">
+                                                        <FormControl>
+                                                            <FormLabel labelPlacement='start'>Status</FormLabel>
+                                                            <RadioGroup
+                                                                row
+                                                                aria-labelledby="demo-row-radio-buttons-group-label"
+                                                                name="row-radio-buttons-group"
+                                                                defaultValue="NOK"
+                                                            >
+                                                                <FormControlLabel value="NOK" onClick={() => setVisivel1(false)} control={<Radio />} label="NOK" />
+                                                                <FormControlLabel value="OK" onClick={() => setVisivel1(true)} control={<Radio />} label="OK" ></FormControlLabel>
+                                                            </RadioGroup>
+                                                        </FormControl>
+
+                                                        {visivel1 &&
+                                                            <DoneAllIcon className="doneIcon" fontSize="large" color="success"></DoneAllIcon>
+                                                        }
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                            {/*parte 2 começa aqui*/}
+                                            <Row>
+                                                {visivel1 &&
+
+                                                    <div class="MeasureTextHG2" >
+                                                        <h6> 2. Measure Valued </h6>
+                                                    </div>
+                                                }
+                                                <Col>
+                                                    {visivel1 &&
+                                                        <div class="MeasureRespHG2" >
+                                                            <TextField label="Responsable" variant="standard" />
+                                                        </div>
+                                                    }
+                                                </Col>
+                                                <Col>
+                                                    {visivel1 &&
+                                                        <div className="dataPicker" >
+                                                            <DatePicker
+                                                                startDate={new Date()}
+                                                                minDate={new Date(selectedDate1)}
+                                                                selected={selectedDate2}
+                                                                onChange={date => setSelectedDate2(date)}
+                                                                placeholderText="Data da Reunião"
+                                                                //showTimeSelect (ativar opção de horario)
+                                                                dateFormat="dd/MM/yyyy"
+                                                            />
+                                                        </div>
+                                                    }
+                                                </Col>
+                                                <Col>
+                                                    {visivel1 &&
+                                                        <div className="radioStatus" >
+                                                            <FormControl>
+                                                                <FormLabel id="demo-row-radio-buttons-group-label" labelPlacement='start'>Status</FormLabel>
+                                                                <RadioGroup
+                                                                    row
+                                                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                                                    name="row-radio-buttons-group"
+                                                                    defaultValue="NOK"
+
+                                                                >
+                                                                    <FormControlLabel value="NOK" onClick={() => setVisivel2(false)} control={<Radio />} label="NOK" />
+                                                                    <FormControlLabel value="OK" onClick={() => setVisivel2(true)} control={<Radio />} label="OK" />
+                                                                </RadioGroup>
+                                                            </FormControl>
+                                                            {visivel2 &&
+                                                                <DoneAllIcon className="doneIcon" fontSize="large" color="success"></DoneAllIcon>
+                                                            }
+                                                        </div>
+                                                    }
+                                                </Col>
+
+
+
+                                            </Row>
+                                            {/*parte 3 começa aqui*/}
+                                            <Row>
+                                                {visivel2 &&
+
+                                                    <div class="MeasureTextHG3" >
+                                                        <h6> 3. Measure Decided </h6>
+                                                    </div>
+                                                }
+                                                <Col>
+                                                    {visivel2 &&
+                                                        <div class="MeasureRespHG3" >
+                                                            <TextField label="Responsable" variant="standard" />
+                                                        </div>
+                                                    }
+                                                </Col>
+                                                <Col>
+                                                    {visivel2 &&
+                                                        <div className="dataPicker" >
+                                                            <DatePicker
+                                                                startDate={new Date()}
+                                                                minDate={new Date(selectedDate2)}
+                                                                selected={selectedDate3}
+                                                                onChange={date => setSelectedDate3(date)}
+                                                                placeholderText="Data da Reunião"
+                                                                //showTimeSelect (ativar opção de horario)
+                                                                dateFormat="dd/MM/yyyy"
+                                                            />
+                                                        </div>
+                                                    }
+                                                </Col>
+                                                <Col>
+                                                    {visivel2 &&
+                                                        <div className="radioStatus" >
+                                                            <FormControl>
+                                                                <FormLabel id="demo-row-radio-buttons-group-label" labelPlacement='start'>Status</FormLabel>
+                                                                <RadioGroup
+                                                                    row
+                                                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                                                    name="row-radio-buttons-group"
+                                                                    defaultValue="NOK"
+
+                                                                >
+                                                                    <FormControlLabel value="NOK" onClick={() => setVisivel3(false)} control={<Radio />} label="NOK" />
+                                                                    <FormControlLabel value="OK" onClick={() => setVisivel3(true)} control={<Radio />} label="OK" />
+                                                                </RadioGroup>
+                                                            </FormControl>
+                                                            {visivel3 &&
+                                                                <DoneAllIcon className="doneIcon" fontSize="large" color="success"></DoneAllIcon>
+                                                            }
+                                                        </div>
+                                                    }
+                                                </Col>
+                                            </Row>
+                                            {/*parte 4 começa aqui*/}
+                                            <Row>
+                                                {visivel3 &&
+
+                                                    <div class="MeasureTextHG4" >
+                                                        <h6> 4. Measure Realizes </h6>
+                                                    </div>
+                                                }
+                                                <Col>
+                                                    {visivel3 &&
+                                                        <div class="MeasureRespHG4" >
+                                                            <TextField label="Responsable" variant="standard" />
+                                                        </div>
+                                                    }
+                                                </Col>
+                                                <Col>
+                                                    {visivel3 &&
+                                                        <div className="dataPicker" >
+                                                            <DatePicker
+                                                                startDate={new Date()}
+                                                                minDate={new Date(selectedDate3)}
+                                                                selected={selectedDate4}
+                                                                onChange={date => setSelectedDate4(date)}
+                                                                placeholderText="Data da Reunião"
+                                                                //showTimeSelect (ativar opção de horario)
+                                                                dateFormat="dd/MM/yyyy"
+                                                            />
+                                                        </div>
+                                                    }
+                                                </Col>
+                                                <Col>
+                                                    {visivel3 &&
+                                                        <div className="radioStatus" >
+                                                            <FormControl>
+                                                                <FormLabel id="demo-row-radio-buttons-group-label" labelPlacement='start'>Status</FormLabel>
+                                                                <RadioGroup
+                                                                    row
+                                                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                                                    name="row-radio-buttons-group"
+                                                                    defaultValue="NOK"
+
+                                                                >
+                                                                    <FormControlLabel value="NOK" onClick={() => setVisivel4(false)} control={<Radio />} label="NOK" />
+                                                                    <FormControlLabel value="OK" onClick={() => setVisivel4(true)} control={<Radio />} label="OK" />
+                                                                </RadioGroup>
+                                                            </FormControl>
+                                                            {visivel4 &&
+                                                                <DoneAllIcon className="doneIcon" fontSize="large" color="success"></DoneAllIcon>
+                                                            }
+                                                        </div>
+                                                    }
+                                                </Col>
+                                            </Row>
+                                            {/*parte 5 começa aqui*/}
+                                            <Row>
+                                                {visivel4 &&
+
+                                                    <div class="MeasureTextHG5" >
+                                                        <h6> 5. Finance Effect </h6>
+                                                    </div>
+                                                }
+                                                <Col>
+                                                    {visivel4 &&
+                                                        <div class="MeasureRespHG5" >
+                                                            <TextField label="Responsable" variant="standard" />
+                                                        </div>
+                                                    }
+                                                </Col>
+                                                <Col>
+                                                    {visivel4 &&
+                                                        <div className="dataPicker" >
+                                                            <DatePicker
+                                                                startDate={new Date()}
+                                                                minDate={new Date(selectedDate4)}
+                                                                selected={selectedDate5}
+                                                                onChange={date => setSelectedDate5(date)}
+                                                                placeholderText="Data da Reunião"
+                                                                //showTimeSelect (ativar opção de horario)
+                                                                dateFormat="dd/MM/yyyy"
+                                                            />
+                                                        </div>
+                                                    }
+                                                </Col>
+                                                <Col>
+                                                    {visivel4 &&
+                                                        <div className="radioStatus" >
+                                                            <FormControl>
+                                                                <FormLabel id="demo-row-radio-buttons-group-label" labelPlacement='start'>Status</FormLabel>
+                                                                <RadioGroup
+                                                                    row
+                                                                    aria-labelledby="demo-row-radio-buttons-group-label"
+                                                                    name="row-radio-buttons-group"
+                                                                    defaultValue="NOK"
+
+                                                                >
+                                                                    <FormControlLabel value="NOK" onClick={() => setVisivel5(false)} control={<Radio />} label="NOK" />
+                                                                    <FormControlLabel value="OK" onClick={() => setVisivel5(true)} control={<Radio />} label="OK" />
+                                                                </RadioGroup>
+                                                            </FormControl>
+                                                            {visivel5 &&
+                                                                <DoneAllIcon className="doneIcon" fontSize="large" color="success"></DoneAllIcon>
+                                                            }
+                                                        </div>
+                                                    }
+                                                </Col>
+                                            </Row>
 
                                             <div>
                                                 <button type="submit" class="btn btn-primary" name="submit" {...register("submit")}> Salvar </button>
                                                 <button type="button" class="btn btn-danger" onClick={() => navegar("/")}>Cancelar</button>
                                             </div>
                                         </div>
+
                                     </Form>
                                 </div>
                                 {/* FIM TABELA*/}
@@ -642,6 +976,8 @@ function Segundo() {
             </div >
         </body >
     );
+
+
 }
 
 export default Segundo;

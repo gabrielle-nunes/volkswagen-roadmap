@@ -284,7 +284,7 @@ function Inicial() {
                           <StyledTableCell align="center">Number</StyledTableCell>
                           <StyledTableCell align="center">Title</StyledTableCell>
                           <StyledTableCell align="center">Responsible</StyledTableCell>
-                          <StyledTableCell align="center">Area</StyledTableCell>
+                          <StyledTableCell align="center">Setor</StyledTableCell>
                           <StyledTableCell align="center">m@web</StyledTableCell>
                           <StyledTableCell align="center">HG</StyledTableCell>
                           <StyledTableCell align="left"></StyledTableCell>
@@ -299,9 +299,9 @@ function Inicial() {
                             return post
                           } else if (post.responsible.toLowerCase().includes(busca.toLowerCase())) {
                             return post
-                          } else if (post.area.toLowerCase().includes(busca.toLowerCase())) {
+                          } /*else if (post.setor.toLowerCase().includes(busca.toLowerCase())) {
                             return post
-                          } else if (post.title.toLowerCase().includes(busca.toLowerCase())) {
+                          }*/ else if (post.title.toLowerCase().includes(busca.toLowerCase())) {
                             return post
                           }
                         }).map((post, key) => (
@@ -312,12 +312,13 @@ function Inicial() {
                             <StyledTableCell align="center">{post.id}</StyledTableCell>
                             <StyledTableCell align="center">{post.title}</StyledTableCell>
                             <StyledTableCell align="center">{post.responsible}</StyledTableCell>
-                            <StyledTableCell align="center">{post.area}</StyledTableCell>
+                            <StyledTableCell align="center">{post.responsible}</StyledTableCell>
+                            {/*<StyledTableCell align="center">{post.setor}</StyledTableCell>*/}
                             <StyledTableCell align="center">{post.mweb}</StyledTableCell>
                             <StyledTableCell align="center">{ }</StyledTableCell>
-                            <Edit class="iconesInicial" onClick={() => navegar({ pathname: `/edit/${post.id}` })} />
-                            <TableCell class="iconesInicial" text-align="center">{ }</TableCell>
-                            <Delete class="iconesInicial" onClick={() => deletePost(post.id)} />
+                            <Edit className="iconesInicial" onClick={() => navegar({ pathname: `/edit/${post.id}` })} />
+                            <TableCell className="iconesInicial" text-align="center">{ }</TableCell>
+                            <Delete className="iconesInicial" color="error" onClick={() => deletePost(post.id)} />
 
                             {/*MODAL PARA DELETAR
                             <Modal

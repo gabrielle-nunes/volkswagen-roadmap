@@ -2847,158 +2847,21 @@ a{
 
 /* alinhando HG na tela */
 
-.MeasureRespHG1{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 10px;
+
+
+
+
+
+.dataPicker{
+    padding: 0px;
+    margin-top: 20px;
 }
 
-.MeasureDataHG1{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 230px;
-    margin-top: 28px;
-}
-
-.MeasureStatusHG1{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 450px;
-}
-.MeasureRespHG2{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 10px;
-    margin-top: 110px;
-}
-
-.MeasureDataHG2{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 230px;
-    margin-top: 138px;
-}
-
-.MeasureStatusHG2{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 450px;
-    margin-top: 110px;
-}
-.MeasureRespHG3{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 10px;
-    margin-top: 210px;
-}
-
-.MeasureDataHG3{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 230px;
-    margin-top: 238px;
-}
-
-.MeasureStatusHG3{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 450px;
-    margin-top: 210px;
-}
-.MeasureRespHG4{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 10px;
-    margin-top: 310px;
-}
-
-.MeasureDataHG4{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 230px;
-    margin-top: 338px;
-}
-
-.MeasureStatusHG4{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 450px;
-    margin-top: 310px;
-}
-.MeasureRespHG5{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 10px;
-    margin-top: 410px;
-}
-
-.MeasureDataHG5{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 230px;
-    margin-top: 438px;
-    
-}
-
-.MeasureStatusHG5{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-    margin-left: 450px;
-    margin-top: 410px;
-}
-
-/* Cabeçalho dos HGs */
-
-.MeasureTextHG1{
-    width: 200x;
-    height: 50px;
-    position: absolute;
-
-}
-.MeasureTextHG2{
-    width: 200x;
-    height: 50px;
-    margin-top: 80px;
-    position: absolute;
-
-}
-.MeasureTextHG3{
-    width: 200x;
-    height: 50px;
-    margin-top: 180px;
-    position: absolute;
-
-}
-.MeasureTextHG4{
-    width: 200x;
-    height: 50px;
-    margin-top: 280px;
-    position: absolute;
-
-}
-.MeasureTextHG5{
-    width: 200x;
-    height: 50px;
-    margin-top: 380px;
-    position: absolute;
+.radioStatus{
+    padding: 0px;
+    margin-top: -15px;
 }
 
 .doneIcon{
-margin-top: 35px;
-margin-left: 10px;
+    margin-top: 20px;
 }
