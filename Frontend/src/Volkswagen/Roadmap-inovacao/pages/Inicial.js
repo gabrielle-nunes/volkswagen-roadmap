@@ -44,10 +44,10 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
-  },
+  }, 
   // hide last border
   '&:last-child td, &:last-child th': {
-    border: 0,
+    border: 0, 
   },
 }));
 //FIM TABELAS PERSONALIZADAS----------------->
@@ -265,11 +265,11 @@ function Inicial() {
 
                   <div class="botao">
 
-                   {/* <CSVLink data={userdata} filename="RegisterUserData">
+                   <CSVLink data={userdata} filename="RegisterUserData">
                       <IconButton aria-label="filePresentIcon" color="success">
                         <FilePresentIcon />
                       </IconButton>
-                    </CSVLink>*/}
+                    </CSVLink>
                     <Button size='medium' color='success' variant='contained' onClick={() => navegar("/cadastro")}> + Novo</Button>
                   </div>
                 </div>
