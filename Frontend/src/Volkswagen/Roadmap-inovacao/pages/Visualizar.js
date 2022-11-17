@@ -1,6 +1,6 @@
 import Form from "react-bootstrap/Form";
 import { useForm } from 'react-hook-form';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, PropTypes, Component } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import "../css/styles.css";
@@ -18,15 +18,10 @@ import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle } from '@mui/icons-material';
 const { jsPDF } = require("jspdf");
-var dadus =""
-var idDado =""
-var aidDado  =""
-var nomeDado =""
-var anomeDado =""
-var criadorDado =""
-var acriadorDado =""
-var setorDado =""
-var asetorDado=""
+
+var dadus = ""
+
+
 
 //INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -74,13 +69,9 @@ const CustomToggleC = React.forwardRef(({ children, onClick }, ref) => (
 //FIM ICONES PERSONALIZADOS----------------->
 
 function Visualizar() {
-    
+
 
     const { id } = useParams()
-
-     
-
-
 
     const navegar = useNavigate();
 
@@ -95,18 +86,6 @@ function Visualizar() {
                 reset(response.data)
             })
     }, [])
-
-    axios.get("http://localhost:8080/inovacao/lista")
-    .then((response) => {
-        dadus = (response.data)
-
-        return dadus
-        
-    })
-
-    
-
-    console.log(dadus)
 
     return (
 
@@ -219,27 +198,19 @@ function Visualizar() {
                             <div class="card-body">
                                 <div class="d-flex justify-content-between mb-3">
                                     <h4 class="header-title mb-0">Visualizar Inovação</h4>
-                                    <IconButton aria-label="pictureAsPdfIcon" color="error" variant="outlined"onClick={
+
+                                    <IconButton aria-label="pictureAsPdfIcon" color="error" variant="outlined" onClick={
                                         function pdfe() {
-
-                                            let numero = Number(id)-1
-
-                                            console.log(dadus[numero])
-                                            for (var i = 0; i < dadus.length; i++) {
-                                                idDado = (dadus[numero]["id"])
-                                                nomeDado = (dadus[numero]["title"])
-                                                criadorDado = (dadus[numero]["responsible"])
-                                                setorDado = (dadus[numero]["area"])
-                                            }
-
+                                            handleSubmit()
+                                            var select = document.getElementById("staircaseElement").value;
                                             const doc = new jsPDF();
-                                            doc.text( "ID: " + idDado, 20, 20);
-                                            doc.text( "Responsável: " + criadorDado, 20, 30)
-                                            doc.text( "Nome: " + nomeDado, 20, 40);
-                                            doc.text( "Setor: " + setorDado, 20, 50);
+                                            doc.text("ID: " + select, 20, 20);
+                                            doc.text("Responsável: " , 20, 30)
+                                            doc.text("Nome: ", 20, 40);
+                                            doc.text("Setor: ", 20, 50);
                                             doc.save("a4.pdf")
-                                    }}>
-                                        <PictureAsPdfIcon/>
+                                        }}>
+                                        <PictureAsPdfIcon />
                                     </IconButton>
                                 </div>
                                 {/* TABELA*/}
@@ -300,7 +271,7 @@ function Visualizar() {
                                                                     </h6>
                                                                 )}
                                                             </PopupState>
-                                                            <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" {...register("staircaseElement")} disabled />
+                                                            <Form.Control type="text" placeholder="Staircase element" name="staircaseElement" id="staircaseElement" {...register("staircaseElement")} disabled />
                                                         </Form.Group>
                                                     </div>
                                                 </Col>
