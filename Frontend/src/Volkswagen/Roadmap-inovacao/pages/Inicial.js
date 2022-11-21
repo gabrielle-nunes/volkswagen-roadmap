@@ -26,8 +26,6 @@ import {
   Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings,
   ArrowDropDown, AccountCircle
 } from '@mui/icons-material';
-var dadus
-
 
 //INICIO TABELAS PERSONALIZADAS----------------->
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -293,7 +291,7 @@ function Inicial() {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        {/* Função por filtra busca no campo buscas :p*/}
+                        {/* Função por filtra busca no campo buscas*/}
                         {posts.filter((post) => {
                           if (busca == "") {
                             return post
