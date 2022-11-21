@@ -15,7 +15,6 @@ import React, { useEffect, useState } from "react";
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { CSVLink } from 'react-csv';
 import "../css/styles.css";
 import "../css/default-css.css";
 import "../css/font-awesome.min.css";
@@ -264,11 +263,12 @@ function Inicial() {
 
                   <div class="botao">
 
-                    <CSVLink data={userdata} filename="RegisterUserData">
+                    {/*<CSVLink data={userdata} filename="RegisterUserData">
                       <IconButton aria-label="filePresentIcon" color="success">
                         <FilePresentIcon />
                       </IconButton>
                     </CSVLink>
+  */}
                     <Button size='medium' color='success' variant='contained' onClick={() => navegar("/cadastro")}> + Novo</Button>
                   </div>
                 </div>
