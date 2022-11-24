@@ -72,14 +72,14 @@ public class InovacaoController {
 		return inovacaoService.searchResponsible(responsible);
 	}
 
-	@GetMapping(value ="searchArea")
+	@GetMapping(value ="searchSetor")
 	@ResponseBody
 	@Transactional
-	public ResponseEntity<List<Inovacao>> searchPorArea(@RequestParam(name = "area") String area) {
-		return inovacaoService.searchArea(area);
+	public ResponseEntity<List<Inovacao>> searchPorSetor(@RequestParam(name = "setor") String setor) {
+		return inovacaoService.searchSetor(setor);
 	}
 
-	@GetMapping(value ="searchStatus")
+	@GetMapping(value ="/searchStatus")
 	@ResponseBody
 	@Transactional
 	public ResponseEntity<List<Inovacao>> searchPorStatus(@RequestParam(name = "status") String status) {

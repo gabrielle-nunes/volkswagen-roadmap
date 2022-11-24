@@ -48,7 +48,7 @@
 					"response": []
 				},
 				{
-					"name": "busca-area",
+					"name": "busca-setor",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -59,14 +59,14 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "area",
+									"key": "setor",
 									"value": "",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/inovacao/searchArea",
+							"raw": "http://localhost:8080/inovacao/searchSetor",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -74,7 +74,7 @@
 							"port": "8080",
 							"path": [
 								"inovacao",
-								"searchArea"
+								"searchSetor"
 							]
 						}
 					},
@@ -119,13 +119,13 @@
 							"formdata": [
 								{
 									"key": "status",
-									"value": "",
+									"value": "Em atraso",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/inovacao/searchStatus?status",
+							"raw": "http://localhost:8080/inovacao/searchStatus?status=Em atraso",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -138,7 +138,7 @@
 							"query": [
 								{
 									"key": "status",
-									"value": null
+									"value": "Em atraso"
 								}
 							]
 						}
@@ -197,7 +197,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://localhost:8080/inovacao/searchTimeTrabalho",
+							"raw": "http://localhost:8080/inovacao/searchTimeTrabalho?timeTrabalho=TI e Engenharia",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -206,6 +206,12 @@
 							"path": [
 								"inovacao",
 								"searchTimeTrabalho"
+							],
+							"query": [
+								{
+									"key": "timeTrabalho",
+									"value": "TI e Engenharia"
+								}
 							]
 						}
 					},
@@ -220,7 +226,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\":\"Inovação Importante\",\n    \"responsible\": \"Gabrielle Nunes\",\n    \"area\": \"Tecnologia\",\n    \"mweb\": 1234,\n    \"ganhosPrevistos\": \"Redução de custo, produtividade e qualidade.\",\n    \"saving\": 300000,\n    \"recursosNecessarios\": \"Material ABC\",\n    \"invest\": 12000,\n    \"timeTrabalho\": \"TI e Engenharia\",\n    \"parceriasNecessarias\": \"Parceria empresa ABC Tecnologia\",\n    \"pontosEscalacao\": \"Pontos CDE\",\n    \"divulgacao\": \"Divulgação XPTO\",\n    \"actualState\": \"Hoje o processo funciona assim...\",\n    \"targetState\": \"Com essa mudança pretendemos ficar dessa forma...\",\n    \"calculationExplication\": \"Teste\",\n    \"staircaseElement\": \"Teste\",\n    \"handlungsfeld\": \"Sustainable Structures\",\n    \"status\": \"Escalação\",\n    \"setor\": {\n        \"id\": 6\n    },\n    \"hg1\": \"\",\n    \"hg2\": \"\",\n    \"hg3\": \"\",\n    \"hg4\": \"\",\n    \"hg5\": \"\",\n    \"responsibleHg1\": \"José\",\n    \"responsibleHg2\": \"\",\n    \"responsibleHg3\": \"\",\n    \"responsibleHg4\": \"\",\n    \"responsibleHg5\": \"\",\n    \"motivoHg9\": \"\",\n    \"okHg1\": false,\n    \"okHg2\": false,\n    \"okHg3\": false,\n    \"okHg4\": false,\n    \"okHg5\": false,\n    \"dataHg1\": \"25/04/2022\", \n    \"dataHg2\": \"\",\n    \"dataHg3\": \"\",\n    \"dataHg4\": \"\",\n    \"dataHg5\": \"\",\n    \"dataHg9\": \"\"\n}\n\n//2020-07-16T10:00:00.123456",
+					"raw": "{\n    \"title\":\"Inovação Importante\",\n    \"responsible\": \"Gabrielle Nunes\",\n    \"mweb\": 1234,\n    \"ganhosPrevistos\": \"Redução de custo, produtividade e qualidade.\",\n    \"saving\": 300000,\n    \"recursosNecessarios\": \"Material ABC\",\n    \"invest\": 12000,\n    \"timeTrabalho\": \"TI e Engenharia\",\n    \"parceriasNecessarias\": \"Parceria empresa ABC Tecnologia\",\n    \"pontosEscalacao\": \"Pontos CDE\",\n    \"divulgacao\": \"Divulgação XPTO\",\n    \"actualState\": \"Hoje o processo funciona assim...\",\n    \"targetState\": \"Com essa mudança pretendemos ficar dessa forma...\",\n    \"calculationExplication\": \"Teste\",\n    \"staircaseElement\": \"Teste\",\n    \"handlungsfeld\": \"Sustainable Structures\",\n    \"status\": \"Em atraso\",\n    \"setor\": \"TI\",\n    \"hg1\": \"\",\n    \"hg2\": \"\",\n    \"hg3\": \"\",\n    \"hg4\": \"\",\n    \"hg5\": \"\",\n    \"responsibleHg1\": \"\",\n    \"responsibleHg2\": \"\",\n    \"responsibleHg3\": \"\",\n    \"responsibleHg4\": \"\",\n    \"responsibleHg5\": \"\",\n    \"motivoHg9\": \"\",\n    \"okHg1\": false,\n    \"okHg2\": false,\n    \"okHg3\": false,\n    \"okHg4\": false,\n    \"okHg5\": false,\n    \"dataHg1\": \"24/11/2022\", \n    \"dataHg2\": \"24/11/2022\",\n    \"dataHg3\": \"24/11/2022\",\n    \"dataHg4\": \"25/11/2022\",\n    \"dataHg5\": \"26/11/2022\",\n    \"dataHg9\": \"\"\n}\n\n//2020-07-16T10:00:00.123456",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -281,7 +287,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"title\":\"TESTE ALTERANDO UMA INOVAÇÃO QUE JÁ EXISTE\",\n    \"responsible\": \"Gabrielle Nunes\",\n    \"area\": \"TI\",\n    \"mweb\": 1234,\n    \"ganhosPrevistos\": \"Redução de custo, produtividade e qualidade.\",\n    \"saving\": 300000,\n    \"recursosNecessarios\": \"Material ABC\",\n    \"invest\": 12000,\n    \"timeTrabalho\": \"TI e Engenharia\",\n    \"parceriasNecessarias\": \"Parceria empresa ABC Tecnologia\",\n    \"pontosEscalacao\": \"Pontos CDE\",\n    \"divulgacao\": \"Divulgação XPTO\",\n    \"actualState\": \"Hoje o processo funciona assim...\",\n    \"targetState\": \"Com essa mudança pretendemos ficar dessa forma...\",\n    \"calculationExplication\": \"Teste\",\n    \"staircaseElement\": \"Teste\",\n    \"handlungsfeld\": \"Sustainable Structures\",\n    \"status\": \"Escalação\",\n    \"setor\": {\n        \"id\": 6\n    },\n        \"hg1\": \"\",\n    \"hg2\": \"\",\n    \"hg3\": \"\",\n    \"hg4\": \"\",\n    \"hg5\": \"\",\n    \"hg9\": \"\",\n    \"responsibleHg1\": \"\",\n    \"responsibleHg2\": \"\",\n    \"responsibleHg3\": \"\",\n    \"responsibleHg4\": \"\",\n    \"responsibleHg5\": \"\",\n    \"motivoHg9\": \"\",\n    \"okHg1\": \"\",\n    \"okHg2\": \"\",\n    \"okHg3\": \"\",\n    \"okHg4\": \"\",\n    \"okHg5\": \"\",\n    \"dataHg1\": \"\",\n    \"dataHg2\": \"\",\n    \"dataHg3\": \"\",\n    \"dataHg4\": \"\"\n}",
+					"raw": "{\n    \"title\":\"TESTE ALTERAÇÃO\",\n    \"responsible\": \"Gabrielle Nunes\",\n    \"mweb\": 1234,\n    \"ganhosPrevistos\": \"Redução de custo, produtividade e qualidade.\",\n    \"saving\": 300000,\n    \"recursosNecessarios\": \"Material ABC\",\n    \"invest\": 12000,\n    \"timeTrabalho\": \"TI e Engenharia\",\n    \"parceriasNecessarias\": \"Parceria empresa ABC Tecnologia\",\n    \"pontosEscalacao\": \"Pontos CDE\",\n    \"divulgacao\": \"Divulgação XPTO\",\n    \"actualState\": \"Hoje o processo funciona assim...\",\n    \"targetState\": \"Com essa mudança pretendemos ficar dessa forma...\",\n    \"calculationExplication\": \"Teste\",\n    \"staircaseElement\": \"Teste\",\n    \"handlungsfeld\": \"Sustainable Structures\",\n    \"status\": \"Escalação\",\n    \"setor\": \"TI\",\n    \"hg1\": \"\",\n    \"hg2\": \"\",\n    \"hg3\": \"\",\n    \"hg4\": \"\",\n    \"hg5\": \"\",\n    \"responsibleHg1\": \"\",\n    \"responsibleHg2\": \"\",\n    \"responsibleHg3\": \"\",\n    \"responsibleHg4\": \"\",\n    \"responsibleHg5\": \"\",\n    \"motivoHg9\": \"\",\n    \"okHg1\": false,\n    \"okHg2\": false,\n    \"okHg3\": false,\n    \"okHg4\": false,\n    \"okHg5\": false,\n    \"dataHg1\": \"24/11/2022\", \n    \"dataHg2\": \"24/11/2022\",\n    \"dataHg3\": \"24/11/2022\",\n    \"dataHg4\": \"25/11/2022\",\n    \"dataHg5\": \"26/11/2022\",\n    \"dataHg9\": \"\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -289,7 +295,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/inovacao/editar/2",
+					"raw": "http://localhost:8080/inovacao/editar/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -298,7 +304,7 @@
 					"path": [
 						"inovacao",
 						"editar",
-						"2"
+						"1"
 					]
 				}
 			},
@@ -319,7 +325,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/inovacao/excluir/4",
+					"raw": "http://localhost:8080/inovacao/excluir/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -328,7 +334,7 @@
 					"path": [
 						"inovacao",
 						"excluir",
-						"4"
+						"1"
 					]
 				}
 			},

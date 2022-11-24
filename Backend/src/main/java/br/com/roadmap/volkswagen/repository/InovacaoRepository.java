@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import br.com.roadmap.volkswagen.entities.Inovacao;
@@ -23,11 +24,11 @@ public interface InovacaoRepository extends JpaRepository<Inovacao, Long> {
 	@Query(value = "select inovacao from Inovacao inovacao where inovacao.responsible like %?1%")
 	List<Inovacao> searchByResponsible(String responsible);
 
-	@Query(value = "select inovacao from Inovacao inovacao where inovacao.setor.nomeSetor like %?1%")
+	@Query(value = "select inovacao from Inovacao inovacao where inovacao.setor like %?1%")
 	List<Inovacao> searchBySetor(String setor);
 
-	@Query(value = "select inovacao from Inovacao inovacao where inovacao.status like %?1%")
-	List<Inovacao> searchByStatus(String status);
+	@Query(value = "select inovacao from Inovacao inovacao where inovacao.status like %:status%")
+	List<Inovacao> searchByStatus(@Param("status")String status);
 
 	@Query(value = "select inovacao from Inovacao inovacao where inovacao.pontosEscalacao like %?1%")
 	List<Inovacao> searchByPontosEscalacao(String pontosEscalacao);
