@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
-function Login() {
+function Register() {
     const navegar = useNavigate();
     const [ posts, setPosts ] = useState([])
 
@@ -27,12 +27,18 @@ function Login() {
             <div class="login-box ptb--100">
                 <form>
                     <div class="login-form-head">
-                        <h4>ENTRAR</h4>
-                        <p>Olá, entre por aqui para visualizar as inovações!</p>
+                        <h4>REGISTRO</h4>
+                        <p>Olá, efetue seu Registro por aqui!</p>
                     </div>
                     <div class="login-form-body">
                         <div class="form-gp">
-                            <label for="exampleInputEmail1">Email</label>
+                            <label for="exampleInputName1">Nome completo</label>
+                            <input type="text" id="exampleInputName1"/>
+                            <i class="ti-user"></i>
+                            <div class="text-danger"></div>
+                        </div>
+                        <div class="form-gp">
+                            <label for="exampleInputEmail1">Endereço de email</label>
                             <input type="email" id="exampleInputEmail1"/>
                             <i class="ti-email"></i>
                             <div class="text-danger"></div>
@@ -43,22 +49,17 @@ function Login() {
                             <i class="ti-lock"></i>
                             <div class="text-danger"></div>
                         </div>
-                        <div class="row mb-4 rmber-area">
-                            <div class="col-6">
-                                <div class="custom-control custom-checkbox mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing"/>
-                                    <label class="custom-control-label" for="customControlAutosizing">Lembrar-se</label>
-                                </div>
-                            </div>
-                            <div class="col-6 text-right">
-                                <a href="#">Esqueceu a senha?</a>
-                            </div>
+                        <div class="form-gp">
+                            <label for="exampleInputPassword2">Confirmar senha</label>
+                            <input type="password" id="exampleInputPassword2"/>
+                            <i class="ti-lock"></i>
+                            <div class="text-danger"></div>
                         </div>
                         <div class="submit-btn-area">
-                            <button id="form_submit" type="submit">Entrar <i class="ti-arrow-right"></i></button>
+                            <button id="form_submit" type="submit">Cadastrar <i class="ti-arrow-right"></i></button>
                         </div>
                         <div class="form-footer text-center mt-5">
-                            <p class="text-muted">Não tem uma conta? <a href="register.html">Cadastre-se!</a></p>
+                            <p class="text-muted">Já tem uma conta? <a href="login.html">Entre!</a></p>
                         </div>
                     </div>
                 </form>
@@ -69,4 +70,4 @@ function Login() {
   )
 }
 
-export default Login;
+export default Register;

@@ -8,8 +8,8 @@ public class ConstantesRoadmap {
 	private static final String EM_ATRASO = "Em atraso";
 	private static final String ESCALACAO = "Escalação";
 	private static final String REPROVADO = "Reprovado";
-	
-	//setores
+
+	// setores
 	private static final String PLAN_SERIE = "Plan. De Série";
 	private static final String FABRICA_PILOTO = "Fábrica Piloto";
 	private static final String MANUTENCAO_SITE = "Manutenção Site";

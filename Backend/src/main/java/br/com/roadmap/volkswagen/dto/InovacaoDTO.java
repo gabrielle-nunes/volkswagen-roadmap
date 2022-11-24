@@ -380,7 +380,7 @@ public class InovacaoDTO {
 	}
 
 	public static InovacaoDTO convert(Inovacao inovacao) throws Exception {
-		
+
 		InovacaoDTO inovacaoDTO = new InovacaoDTO();
 		
 		inovacaoDTO.setSetor(inovacao.getSetor());
@@ -427,5 +427,4 @@ public class InovacaoDTO {
 		return inovacaoDTO;
 
 	}
-
 }

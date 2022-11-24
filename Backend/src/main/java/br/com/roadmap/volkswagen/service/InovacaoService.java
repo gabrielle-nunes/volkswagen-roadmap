@@ -42,7 +42,7 @@ public class InovacaoService {
 			if (!(inovacaoDTO.getDataHg9().isEmpty() && inovacaoDTO.getMotivoHg9().isEmpty())) {
 				converteData(inovacaoDTO.getDataHg9());
 				inovacaoDTO.setStatus("Reprovado");
-			} else {
+		  } else {
 
 				if (!(inovacaoDTO.getDataHg1().isEmpty())) {
 					Date data1 = converteData(inovacaoDTO.getDataHg1());
@@ -257,10 +257,12 @@ public class InovacaoService {
 
 	public ResponseEntity<List<Inovacao>> searchStatus(String status) {
 		List<Inovacao> serviceStatus = inovacaoRepository.searchByStatus(status);
+
 		if (!(serviceStatus.isEmpty()))
 			return new ResponseEntity<List<Inovacao>>(serviceStatus, HttpStatus.OK);
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 	}
 
 	public ResponseEntity<List<Inovacao>> searchPontosEscalacao(String pontosEscalacao) {
@@ -272,11 +274,19 @@ public class InovacaoService {
 	}
 
 	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
+
 		List<Inovacao> serviceTimeTrabalho = inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
 		if (!(serviceTimeTrabalho.isEmpty()))
 			return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
 		else
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
+	}
+
+
+	public ResponseEntity<List<Inovacao>> searchMweb(Integer mweb) {
+		List<Inovacao> serviceMweb= inovacaoRepository.searchByMweb(mweb);
+		return new ResponseEntity<List<Inovacao>>(serviceMweb, HttpStatus.OK);
 	}
 
 }

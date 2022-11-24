@@ -58,6 +58,25 @@ public class InovacaoController {
 
 	}
 
+	@GetMapping(value="/lista/concluidos")
+	@Transactional
+	public List<Inovacao> listarInovacoesConcluidas() throws Exception{
+		return inovacaoService.listarInovacoesConcluidas("Concluído");
+	}
+
+	@GetMapping(value="/lista/reprovados")
+	@Transactional
+	public List<Inovacao> listarInovacoesReprovadas() throws Exception{
+		return inovacaoService.listarInovacoesReprovadas("Reprovado");
+	}
+
+	@GetMapping(value="/lista/emAndamento")
+	@Transactional
+	public List<Inovacao> listarInovacoesEmAndamento() throws Exception{
+		String status = "Escalação\", \"No prazo\", \"Em atraso\"";
+		return inovacaoService.listarInovacoesEmAndamento(status);
+	}
+
 	@GetMapping(value ="searchTitle")
 	@ResponseBody
 	@Transactional
@@ -93,30 +112,16 @@ public class InovacaoController {
 		return inovacaoService.searchPontosEscalacao(pontosEscalacao);
 	}
 
-	@GetMapping(value ="timeTrabalho")
+	@GetMapping(value ="searchTimeTrabalho")
 	@ResponseBody
 	@Transactional
 	public ResponseEntity<List<Inovacao>> searchPorTimeTrabalho(@RequestParam(name = "timeTrabalho") String timeTrabalho) {
 		return inovacaoService.searchTimeTrabalho(timeTrabalho);
 	}
-	
-	@GetMapping(value="/lista/concluidos")
-	@Transactional
-	public List<Inovacao> listarInovacoesConcluidas() throws Exception{
-		return inovacaoService.listarInovacoesConcluidas("Concluído");
+
+	@GetMapping(value ="searchMweb")
+	@ResponseBody
+	public ResponseEntity<List<Inovacao>> searchPorMweb(@RequestParam(name = "mweb") Integer mweb) {
+		return inovacaoService.searchMweb(mweb);
 	}
-	
-	@GetMapping(value="/lista/reprovados")
-	@Transactional
-	public List<Inovacao> listarInovacoesReprovadas() throws Exception{
-		return inovacaoService.listarInovacoesReprovadas("Reprovado");
-	}
-	
-	@GetMapping(value="/lista/emAndamento")
-	@Transactional
-	public List<Inovacao> listarInovacoesEmAndamento() throws Exception{
-		String status = "Escalação\", \"No prazo\", \"Em atraso\"";
-		return inovacaoService.listarInovacoesEmAndamento(status);
-	}
-	
 }
