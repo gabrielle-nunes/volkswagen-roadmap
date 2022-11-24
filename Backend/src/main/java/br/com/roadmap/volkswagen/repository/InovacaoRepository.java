@@ -23,8 +23,8 @@ public interface InovacaoRepository extends JpaRepository<Inovacao, Long> {
     @Query(value = "select inovacao from Inovacao inovacao where inovacao.responsible like %?1%")
     List<Inovacao> searchByResponsible(String responsible);
 
-    @Query(value = "select inovacao from Inovacao inovacao where inovacao.setor.nomeSetor like %?1%")
-	  List<Inovacao> searchBySetor(String setor);
+	@Query(value = "select inovacao from Inovacao inovacao where inovacao.setor like %?1%")
+	List<Inovacao> searchBySetor(String setor);
 
     @Query(value = "select inovacao from Inovacao inovacao where inovacao.status like %?1%")
     List<Inovacao> searchByStatus(String status);
