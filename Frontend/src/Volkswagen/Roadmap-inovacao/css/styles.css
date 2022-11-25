@@ -2845,23 +2845,10 @@ a{
 }
 
 
-/* alinhando HG na tela */
-
-
-
-
-
-
-.dataPicker{
-    padding: 0px;
-    margin-top: 20px;
+.chart1 {
+    padding: 10px 20px;
 }
 
-.radioStatus{
-    padding: 0px;
-    margin-top: -15px;
-}
-
-.doneIcon{
-    margin-top: 20px;
+iframe{
+    margin-top: -5px;
 }
