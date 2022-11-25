@@ -1,41 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_MYSQL",
-      "label": "MySQL",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "mysql",
-      "pluginName": "MySQL"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "9.2.3"
-    },
-    {
-      "type": "datasource",
-      "id": "mysql",
-      "name": "MySQL",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "piechart",
-      "name": "Pie chart",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -61,14 +24,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "mysql",
-        "uid": "${DS_MYSQL}"
+        "uid": "t7iQDIDVk"
       },
       "description": "",
       "fieldConfig": {
@@ -161,11 +124,11 @@
           "dataset": "banco",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "builder",
           "format": "table",
-          "rawSql": "SELECT COUNT(area), MAX(responsible) FROM banco.tbl_inovacao WHERE responsible <> '' GROUP BY responsible LIMIT 50 ",
+          "rawSql": "SELECT COUNT(setor), MAX(responsible) FROM banco.tbl_inovacao WHERE responsible <> '' GROUP BY responsible LIMIT 50 ",
           "refId": "A",
           "sql": {
             "columns": [
@@ -173,7 +136,7 @@
                 "name": "COUNT",
                 "parameters": [
                   {
-                    "name": "area",
+                    "name": "setor",
                     "type": "functionParameter"
                   }
                 ],
@@ -240,7 +203,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "${DS_MYSQL}"
+        "uid": "t7iQDIDVk"
       },
       "fieldConfig": {
         "defaults": {
@@ -348,11 +311,11 @@
           "dataset": "banco",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "builder",
           "format": "table",
-          "rawSql": "SELECT COUNT(id), area FROM banco.tbl_inovacao GROUP BY area LIMIT 50 ",
+          "rawSql": "SELECT COUNT(id), setor FROM banco.tbl_inovacao GROUP BY setor LIMIT 50 ",
           "refId": "A",
           "sql": {
             "columns": [
@@ -369,7 +332,7 @@
               {
                 "parameters": [
                   {
-                    "name": "area",
+                    "name": "setor",
                     "type": "functionParameter"
                   }
                 ],
@@ -379,7 +342,7 @@
             "groupBy": [
               {
                 "property": {
-                  "name": "area",
+                  "name": "setor",
                   "type": "string"
                 },
                 "type": "groupBy"
@@ -397,7 +360,7 @@
     {
       "datasource": {
         "type": "mysql",
-        "uid": "${DS_MYSQL}"
+        "uid": "t7iQDIDVk"
       },
       "fieldConfig": {
         "defaults": {
@@ -607,12 +570,12 @@
           "dataset": "banco",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT COUNT(area) FROM banco.tbl_inovacao WHERE area = 'TI' GROUP BY area LIMIT 50 ",
+          "rawSql": "SELECT COUNT(setor) FROM banco.tbl_inovacao WHERE setor = 'TI' GROUP BY setor LIMIT 50 ",
           "refId": "TI",
           "sql": {
             "columns": [
@@ -620,7 +583,7 @@
                 "name": "COUNT",
                 "parameters": [
                   {
-                    "name": "area",
+                    "name": "setor",
                     "type": "functionParameter"
                   }
                 ],
@@ -630,7 +593,7 @@
             "groupBy": [
               {
                 "property": {
-                  "name": "area",
+                  "name": "setor",
                   "type": "string"
                 },
                 "type": "groupBy"
@@ -676,13 +639,13 @@
           "dataset": "banco",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Plan. De Série'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Plan. De Série'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Plan. De Série",
           "sql": {
             "columns": [
@@ -706,13 +669,13 @@
           "dataset": "banco",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Fábrica Piloto'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Fábrica Piloto'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Fábrica Piloto",
           "sql": {
             "columns": [
@@ -736,13 +699,13 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Manutenção Site'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Manutenção Site'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Manutenção Site",
           "sql": {
             "columns": [
@@ -765,13 +728,13 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Estamparia'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Estamparia'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Estamparia",
           "sql": {
             "columns": [
@@ -794,13 +757,13 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Armação'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Armação'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Armação",
           "sql": {
             "columns": [
@@ -824,13 +787,13 @@
           "dataset": "banco",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Pintura'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Pintura'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Pintura",
           "sql": {
             "columns": [
@@ -854,13 +817,13 @@
           "dataset": "banco",
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Montagem Final'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Montagem Final'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Montagem Final",
           "sql": {
             "columns": [
@@ -883,13 +846,13 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'VW Componentes'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'VW Componentes'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "VW Componentes",
           "sql": {
             "columns": [
@@ -912,13 +875,13 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'QA Processos'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'QA Processos'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "QA Processos",
           "sql": {
             "columns": [
@@ -941,13 +904,13 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Eng. Industrial'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Eng. Industrial'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Eng. Industrial",
           "sql": {
             "columns": [
@@ -970,13 +933,13 @@
         {
           "datasource": {
             "type": "mysql",
-            "uid": "${DS_MYSQL}"
+            "uid": "t7iQDIDVk"
           },
           "editorMode": "code",
           "format": "table",
           "hide": false,
           "rawQuery": true,
-          "rawSql": "SELECT\r\n  COUNT(area)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  area = 'Logística'\r\nGROUP BY\r\n  area\r\nLIMIT\r\n  50",
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Logística'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
           "refId": "Logística",
           "sql": {
             "columns": [
@@ -1017,6 +980,6 @@
   "timezone": "",
   "title": "DASH",
   "uid": "WQZo2Iv4k",
-  "version": 16,
+  "version": 17,
   "weekStart": ""
 }
