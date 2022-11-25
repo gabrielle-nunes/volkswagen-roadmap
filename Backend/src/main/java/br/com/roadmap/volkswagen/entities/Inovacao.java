@@ -1,16 +1,11 @@
 package br.com.roadmap.volkswagen.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import br.com.roadmap.volkswagen.constantes.ConstantesRoadmap;
 import br.com.roadmap.volkswagen.dto.InovacaoDTO;
@@ -43,27 +38,27 @@ public class Inovacao {
 	private String calculationExplication;
 	private String staircaseElement;
 	private String handlungsfeld;
-	
+
 	private String hg1;
 	private String hg2;
 	private String hg3;
 	private String hg4;
 	private String hg5;
-	
+
 	private String motivoHg9;
-	
+
 	private String responsibleHg1;
 	private String responsibleHg2;
 	private String responsibleHg3;
 	private String responsibleHg4;
 	private String responsibleHg5;
-	
+
 	private Boolean okHg1;
 	private Boolean okHg2;
 	private Boolean okHg3;
 	private Boolean okHg4;
 	private Boolean okHg5;
-	
+
 	private String dataHg1;
 	private String dataHg2;
 	private String dataHg3;
@@ -71,18 +66,9 @@ public class Inovacao {
 	private String dataHg5;
 	private String dataHg9;
 
-
-	/*
-	 * @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	 *
-	 * @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) private Hg hg;
-	 */
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "setor_id")
-	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-	private Setor setor;
+	private String setor;
 	private String status;
+	
 	public Long getId() {
 		return id;
 	}
@@ -109,11 +95,11 @@ public class Inovacao {
 		this.mweb = mweb;
 	}
 
-	public Setor getSetor() {
+	public String getSetor() {
 		return setor;
 	}
 
-	public void setSetor(Setor setor) {
+	public void setSetor(String setor) {
 		this.setor = setor;
 	}
 
@@ -316,7 +302,7 @@ public class Inovacao {
 	public void setMotivoHg9(String motivoHg9) {
 		this.motivoHg9 = motivoHg9;
 	}
-	
+
 	public Boolean getOkHg1() {
 		return okHg1;
 	}
@@ -356,7 +342,7 @@ public class Inovacao {
 	public void setOkHg5(Boolean okHg5) {
 		this.okHg5 = okHg5;
 	}
-	
+
 	public String getDataHg1() {
 		return dataHg1;
 	}
@@ -408,6 +394,7 @@ public class Inovacao {
 	public static Inovacao convert(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = new Inovacao();
 
+		inovacao.setSetor(inovacaoDTO.getSetor());
 		inovacao.setDivulgacao(inovacaoDTO.getDivulgacao());
 		inovacao.setGanhosPrevistos(inovacaoDTO.getGanhosPrevistos());
 		inovacao.setId(inovacaoDTO.getId());
@@ -418,7 +405,6 @@ public class Inovacao {
 		inovacao.setRecursosNecessarios(inovacaoDTO.getRecursosNecessarios());
 		inovacao.setResponsible(inovacaoDTO.getResponsible());
 		inovacao.setSaving(inovacaoDTO.getSaving());
-		inovacao.setSetor(inovacaoDTO.getSetor());
 		inovacao.setTimeTrabalho(inovacaoDTO.getTimeTrabalho());
 		inovacao.setTitle(inovacaoDTO.getTitle());
 
@@ -459,6 +445,25 @@ public class Inovacao {
 					inovacao.setStatus(inovacaoDTO.getStatus());
 		} else {
 			throw new Exception("Selecione um status válido.");
+		}
+
+		if (inovacaoDTO.getSetor().equals(ConstantesRoadmap.getArmacao())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getEstamparia())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getEngIndustrial())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getFabricaPiloto())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getLogistica())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getManutencaoSite())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getMontagemFinal())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getPintura())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getPlanSerie())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getQaProcessos())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getTi())
+				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getVwComponentes())) {
+
+			inovacao.setSetor(inovacaoDTO.getSetor());
+
+		} else {
+			throw new Exception("Selecione um setor válido.");
 		}
 
 		return inovacao;

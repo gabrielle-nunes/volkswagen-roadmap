@@ -1,7 +1,6 @@
 package br.com.roadmap.volkswagen.dto;
 
 import br.com.roadmap.volkswagen.entities.Inovacao;
-import br.com.roadmap.volkswagen.entities.Setor;
 
 public class InovacaoDTO {
 
@@ -17,7 +16,7 @@ public class InovacaoDTO {
 	private String parceriasNecessarias;
 	private String pontosEscalacao;
 	private String divulgacao;
-	private static Setor setor;
+	private String setor;
 	private String status;
 	private String actualState;
 	private String targetState;
@@ -148,11 +147,11 @@ public class InovacaoDTO {
 		this.divulgacao = divulgacao;
 	}
 
-	public Setor getSetor() {
+	public String getSetor() {
 		return setor;
 	}
 
-	public void setSetor(Setor setor) {
+	public void setSetor(String setor) {
 		this.setor = setor;
 	}
 
@@ -383,6 +382,8 @@ public class InovacaoDTO {
 	public static InovacaoDTO convert(Inovacao inovacao) throws Exception {
 
 		InovacaoDTO inovacaoDTO = new InovacaoDTO();
+		
+		inovacaoDTO.setSetor(inovacao.getSetor());
 		inovacaoDTO.setDivulgacao(inovacao.getDivulgacao());
 		inovacaoDTO.setGanhosPrevistos(inovacao.getGanhosPrevistos());
 		inovacaoDTO.setId(inovacao.getId());

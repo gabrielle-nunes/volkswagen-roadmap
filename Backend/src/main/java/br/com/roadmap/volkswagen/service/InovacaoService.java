@@ -79,25 +79,26 @@ public class InovacaoService {
 					}
 
 				}
+			}
 
-				if (inovacaoDTO.getOkHg1().equals(true)) {
-					inovacaoDTO.setHg1("Concluído");
-					if (inovacaoDTO.getOkHg2().equals(true)) {
-						inovacaoDTO.setHg2("Concluído");
-						if (inovacaoDTO.getOkHg3().equals(true)) {
-							inovacaoDTO.setHg3("Concluído");
-							if (inovacaoDTO.getOkHg4().equals(true)) {
-								inovacaoDTO.setHg4("Concluído");
-								if (inovacaoDTO.getOkHg5().equals(true)) {
-									inovacaoDTO.setHg5("Concluído");
-								}
+			if (inovacaoDTO.getOkHg1().equals(true)) {
+				inovacaoDTO.setHg1("Concluído");
+				if (inovacaoDTO.getOkHg2().equals(true)) {
+					inovacaoDTO.setHg2("Concluído");
+					if (inovacaoDTO.getOkHg3().equals(true)) {
+						inovacaoDTO.setHg3("Concluído");
+						if (inovacaoDTO.getOkHg4().equals(true)) {
+							inovacaoDTO.setHg4("Concluído");
+							if (inovacaoDTO.getOkHg5().equals(true)) {
+								inovacaoDTO.setHg5("Concluído");
 							}
 						}
 					}
 				}
-
-				inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
 			}
+
+			inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new Exception("Erro ao cadastrar a inovação!");
@@ -169,6 +170,7 @@ public class InovacaoService {
 						|| in.getParceriasNecessarias() != null || in.getPontosEscalacao() != null
 						|| in.getDivulgacao() != null || in.getSetor() != null || in.getStatus() != null) {
 
+					in.setSetor(inovacaoDTO.getSetor());
 					in.setTitle(inovacaoDTO.getTitle());
 					in.setResponsible(inovacaoDTO.getResponsible());
 					in.setMweb(inovacaoDTO.getMweb());
@@ -228,38 +230,59 @@ public class InovacaoService {
 
 	public ResponseEntity<List<Inovacao>> searchTitle(String title) {
 		List<Inovacao> serviceTitle = inovacaoRepository.searchByTitle(title);
-		return new ResponseEntity<List<Inovacao>>(serviceTitle, HttpStatus.OK);
+
+		if (!(serviceTitle.isEmpty()))
+			return new ResponseEntity<List<Inovacao>>(serviceTitle, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 	}
 
 	public ResponseEntity<List<Inovacao>> searchResponsible(String responsible) {
 		List<Inovacao> serviceResponsible = inovacaoRepository.searchByResponsible(responsible);
-		return new ResponseEntity<List<Inovacao>>(serviceResponsible, HttpStatus.OK);
+		if (!(serviceResponsible.isEmpty()))
+			return new ResponseEntity<List<Inovacao>>(serviceResponsible, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 	}
 
-	public ResponseEntity<List<Inovacao>> searchArea(String area) {
-		List<Inovacao> serviceArea = inovacaoRepository.searchBySetor(area);
-		return new ResponseEntity<List<Inovacao>>(serviceArea, HttpStatus.OK);
+	public ResponseEntity<List<Inovacao>> searchSetor(String setor) {
+		List<Inovacao> serviceSetor = inovacaoRepository.searchBySetor(setor);
+		if (!(serviceSetor.isEmpty()))
+			return new ResponseEntity<List<Inovacao>>(serviceSetor, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	public ResponseEntity<List<Inovacao>> searchStatus(String status) {
 		List<Inovacao> serviceStatus = inovacaoRepository.searchByStatus(status);
-		return new ResponseEntity<List<Inovacao>>(serviceStatus, HttpStatus.OK);
+
+		if (!(serviceStatus.isEmpty()))
+			return new ResponseEntity<List<Inovacao>>(serviceStatus, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 	}
 
 	public ResponseEntity<List<Inovacao>> searchPontosEscalacao(String pontosEscalacao) {
 		List<Inovacao> servicePontosEscalacao = inovacaoRepository.searchByPontosEscalacao(pontosEscalacao);
-		return new ResponseEntity<List<Inovacao>>(servicePontosEscalacao, HttpStatus.OK);
+		if (!(servicePontosEscalacao.isEmpty()))
+			return new ResponseEntity<List<Inovacao>>(servicePontosEscalacao, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	public ResponseEntity<List<Inovacao>> searchTimeTrabalho(String timeTrabalho) {
-		List<Inovacao> serviceTimeTrabalho= inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
-		return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
+
+		List<Inovacao> serviceTimeTrabalho = inovacaoRepository.searchByTimeTrabalho(timeTrabalho);
+		if (!(serviceTimeTrabalho.isEmpty()))
+			return new ResponseEntity<List<Inovacao>>(serviceTimeTrabalho, HttpStatus.OK);
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 	}
 
-//	public ResponseEntity<List<Inovacao>> searchHg(Hg hg) {
-//		List<Inovacao> serviceHg= inovacaoRepository.searchByHg(hg);
-//		return new ResponseEntity<List<Inovacao>>(serviceHg, HttpStatus.OK);
-//	}
 
 	public ResponseEntity<List<Inovacao>> searchMweb(Integer mweb) {
 		List<Inovacao> serviceMweb= inovacaoRepository.searchByMweb(mweb);
