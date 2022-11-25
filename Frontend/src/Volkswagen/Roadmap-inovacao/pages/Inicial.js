@@ -297,9 +297,9 @@ function Inicial() {
                             return post
                           } else if (post.responsible.toLowerCase().includes(busca.toLowerCase())) {
                             return post
-                          } /*else if (post.setor.toLowerCase().includes(busca.toLowerCase())) {
+                          } else if (post.setor.toLowerCase().includes(busca.toLowerCase())) {
                             return post
-                          }*/ else if (post.title.toLowerCase().includes(busca.toLowerCase())) {
+                          } else if (post.title.toLowerCase().includes(busca.toLowerCase())) {
                             return post
                           }
                         }).map((post, key) => (
@@ -310,8 +310,7 @@ function Inicial() {
                             <StyledTableCell align="center">{post.id}</StyledTableCell>
                             <StyledTableCell align="center">{post.title}</StyledTableCell>
                             <StyledTableCell align="center">{post.responsible}</StyledTableCell>
-                            <StyledTableCell align="center">{post.responsible}</StyledTableCell>
-                            {/*<StyledTableCell align="center">{post.setor}</StyledTableCell>*/}
+                            <StyledTableCell align="center">{post.setor}</StyledTableCell>
                             <StyledTableCell align="center">{post.mweb}</StyledTableCell>
                             <StyledTableCell align="center">{ }</StyledTableCell>
                             <Edit className="iconesInicial" onClick={() => navegar({ pathname: `/edit/${post.id}` })} />
