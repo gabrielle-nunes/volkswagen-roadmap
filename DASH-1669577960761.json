@@ -1,0 +1,1878 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "t7iQDIDVk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [
+            {
+              "options": {
+                "COUNT(area)": {
+                  "index": 0
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "TI"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "TI"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Plan. De Série"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Plan. De Série"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Fábrica Piloto"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Fábrica Piloto"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Manutenção Site"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Manutenção Site"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Estamparia"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Estamparia"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Armação"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Armação"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Pintura"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Pintura"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Montagem Final"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Montagem Final"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "VW Componentes"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "VW Componentes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "QA Processos"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "QA Processos"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Eng. Industrial"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Eng. Industrial"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Logística"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Logística"
+              }
+            ]
+          },
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "TI",
+                  "Plan. De Série",
+                  "Fábrica Piloto",
+                  "Manutenção Site",
+                  "Estamparia",
+                  "Armação",
+                  "Pintura",
+                  "Montagem Final",
+                  "QA Processos",
+                  "Eng. Industrial",
+                  "Logística"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "id": 4,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "percent"
+          ],
+          "width": 21
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(setor) FROM banco.tbl_inovacao WHERE setor = 'TI' GROUP BY setor LIMIT 50 ",
+          "refId": "TI",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "setor",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "setor",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50,
+            "orderBy": {
+              "property": {
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "whereJsonTree": {
+              "children1": {
+                "899bb8a8-cdef-4012-b456-71844ada7483": {
+                  "properties": {
+                    "field": "area",
+                    "operator": "equal",
+                    "value": [
+                      "TI"
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "text"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              },
+              "id": "9b9ba99a-89ab-4cde-b012-318449638be2",
+              "properties": {
+                "conjunction": "AND"
+              },
+              "type": "group"
+            },
+            "whereString": "area = 'TI'"
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Plan. De Série'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Plan. De Série",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Fábrica Piloto'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Fábrica Piloto",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Manutenção Site'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Manutenção Site",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Estamparia'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Estamparia",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Armação'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Armação",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Pintura'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Pintura",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Montagem Final'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Montagem Final",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'VW Componentes'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "VW Componentes",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'QA Processos'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "QA Processos",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Eng. Industrial'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Eng. Industrial",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        },
+        {
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(setor)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  setor = 'Logística'\r\nGROUP BY\r\n  setor\r\nLIMIT\r\n  50",
+          "refId": "Logística",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Inovações por Setor",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "t7iQDIDVk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 9,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "9.2.3",
+      "targets": [
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT COUNT(setor), setor FROM banco.tbl_inovacao GROUP BY setor ORDER BY setor DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "setor",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "setor",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "setor",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "setor",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "tbl_inovacao"
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "t7iQDIDVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-orange",
+            "mode": "fixed"
+          },
+          "displayName": "Escalação",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 15,
+        "y": 0
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "/.*/",
+          "values": true
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "9.2.3",
+      "targets": [
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT COUNT(status) FROM banco.tbl_inovacao WHERE status = 'Escalação' GROUP BY status ORDER BY COUNT(status) DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "status",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "status",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "COUNT(status)",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC",
+            "whereJsonTree": {
+              "children1": {
+                "8b8999a9-4567-489a-bcde-f184ba33a5a5": {
+                  "properties": {
+                    "field": "status",
+                    "operator": "equal",
+                    "value": [
+                      "Escalação"
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "text"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              },
+              "id": "99bba888-89ab-4cde-b012-3184ba33a5a5",
+              "type": "group"
+            },
+            "whereString": "status = 'Escalação'"
+          },
+          "table": "tbl_inovacao"
+        }
+      ],
+      "title": "Em Escalação",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "t7iQDIDVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-BlYlRd"
+          },
+          "displayName": "No prazo",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 15,
+        "y": 5
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "/.*/",
+          "values": true
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "9.2.3",
+      "targets": [
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT COUNT(status) FROM banco.tbl_inovacao WHERE status = 'No prazo' GROUP BY status ORDER BY COUNT(status) DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "status",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "status",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "COUNT(status)",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC",
+            "whereJsonTree": {
+              "children1": {
+                "8b8999a9-4567-489a-bcde-f184ba33a5a5": {
+                  "properties": {
+                    "field": "status",
+                    "operator": "equal",
+                    "value": [
+                      "No prazo"
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "text"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              },
+              "id": "99bba888-89ab-4cde-b012-3184ba33a5a5",
+              "type": "group"
+            },
+            "whereString": "status = 'No prazo'"
+          },
+          "table": "tbl_inovacao"
+        }
+      ],
+      "title": "No Prazo",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "t7iQDIDVk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "SGK"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "SGK"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Ramp-up Excellence"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Ramp-up Excellence"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Low-Expenditure Factories of the Future"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Low-Expenditure Factories of the Future"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Stable Customer Order Process"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Stable Customer Order Process"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Team of the Future"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Team of the Future"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Sustainable Structures"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Sustainable Structures"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Produtivity"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Produtivity"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Rework-free Products and Processes"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Rework-free Products and Processes"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "Zero Impact Factory"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Zero Impact Factory"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 9,
+        "x": 0,
+        "y": 7
+      },
+      "id": 13,
+      "options": {
+        "displayLabels": [
+          "percent"
+        ],
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "percent"
+          ],
+          "width": 21
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "9.2.3",
+      "targets": [
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT COUNT(handlungsfeld) FROM banco.tbl_inovacao WHERE handlungsfeld = 'SGK' GROUP BY handlungsfeld LIMIT 50 ",
+          "refId": "SGK",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "setor",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "setor",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50,
+            "orderBy": {
+              "property": {
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "whereJsonTree": {
+              "children1": {
+                "899bb8a8-cdef-4012-b456-71844ada7483": {
+                  "properties": {
+                    "field": "area",
+                    "operator": "equal",
+                    "value": [
+                      "TI"
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "text"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              },
+              "id": "9b9ba99a-89ab-4cde-b012-318449638be2",
+              "properties": {
+                "conjunction": "AND"
+              },
+              "type": "group"
+            },
+            "whereString": "area = 'TI'"
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(handlungsfeld)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  handlungsfeld = 'Ramp-up Excellence'\r\nGROUP BY\r\n  handlungsfeld\r\nLIMIT\r\n  50",
+          "refId": "Ramp-up Excellence",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(handlungsfeld)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  handlungsfeld = 'Low-Expenditure Factories of the Future'\r\nGROUP BY\r\n  handlungsfeld\r\nLIMIT\r\n  50",
+          "refId": "Low-Expenditure Factories of the Future",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(handlungsfeld)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  handlungsfeld = 'Stable Customer Order Process'\r\nGROUP BY\r\n  handlungsfeld\r\nLIMIT\r\n  50",
+          "refId": "Stable Customer Order Process",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(handlungsfeld)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  handlungsfeld = 'Team of the Future'\r\nGROUP BY\r\n  handlungsfeld\r\nLIMIT\r\n  50",
+          "refId": "Team of the Future",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(handlungsfeld)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  handlungsfeld = 'Sustainable Structures'\r\nGROUP BY\r\n  handlungsfeld\r\nLIMIT\r\n  50",
+          "refId": "Sustainable Structures",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(handlungsfeld)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  handlungsfeld = 'Produtivity'\r\nGROUP BY\r\n  handlungsfeld\r\nLIMIT\r\n  50",
+          "refId": "Produtivity",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(handlungsfeld)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  handlungsfeld = 'Rework-free Products and Processes'\r\nGROUP BY\r\n  handlungsfeld\r\nLIMIT\r\n  50",
+          "refId": "Rework-free Products and Processes",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        },
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "code",
+          "format": "table",
+          "hide": false,
+          "rawQuery": true,
+          "rawSql": "SELECT\r\n  COUNT(handlungsfeld)\r\nFROM\r\n  banco.tbl_inovacao\r\nWHERE\r\n  handlungsfeld = 'Zero Impact Factory'\r\nGROUP BY\r\n  handlungsfeld\r\nLIMIT\r\n  50",
+          "refId": "Zero Impact Factory",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "area",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [],
+            "limit": 50
+          },
+          "table": "tbl_inovacao"
+        }
+      ],
+      "title": "Handlungsfeld",
+      "transparent": true,
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "t7iQDIDVk"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 6,
+        "x": 9,
+        "y": 7
+      },
+      "id": 14,
+      "options": {
+        "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "9.2.3",
+      "targets": [
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT COUNT(handlungsfeld), handlungsfeld FROM banco.tbl_inovacao GROUP BY handlungsfeld ORDER BY COUNT(handlungsfeld) DESC LIMIT 50 ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "handlungsfeld",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "parameters": [
+                  {
+                    "name": "handlungsfeld",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "handlungsfeld",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50,
+            "orderBy": {
+              "property": {
+                "name": "COUNT(handlungsfeld)",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC"
+          },
+          "table": "tbl_inovacao"
+        }
+      ],
+      "transparent": true,
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "t7iQDIDVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-RdYlGr"
+          },
+          "displayName": "Em atraso",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 15,
+        "y": 10
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "/.*/",
+          "values": true
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "9.2.3",
+      "targets": [
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT COUNT(status) FROM banco.tbl_inovacao WHERE status = 'Em atraso' GROUP BY status ORDER BY COUNT(status) DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "status",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "status",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "COUNT(status)",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC",
+            "whereJsonTree": {
+              "children1": {
+                "8b8999a9-4567-489a-bcde-f184ba33a5a5": {
+                  "properties": {
+                    "field": "status",
+                    "operator": "equal",
+                    "value": [
+                      "Em atraso"
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "text"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              },
+              "id": "99bba888-89ab-4cde-b012-3184ba33a5a5",
+              "type": "group"
+            },
+            "whereString": "status = 'Em atraso'"
+          },
+          "table": "tbl_inovacao"
+        }
+      ],
+      "title": "Em atraso",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "mysql",
+        "uid": "t7iQDIDVk"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "semi-dark-blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 19,
+        "x": 0,
+        "y": 15
+      },
+      "id": 6,
+      "options": {
+        "displayMode": "basic",
+        "minVizHeight": 15,
+        "minVizWidth": 0,
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [],
+          "fields": "",
+          "values": true
+        },
+        "showUnfilled": true,
+        "text": {}
+      },
+      "pluginVersion": "9.2.3",
+      "targets": [
+        {
+          "dataset": "banco",
+          "datasource": {
+            "type": "mysql",
+            "uid": "t7iQDIDVk"
+          },
+          "editorMode": "builder",
+          "format": "table",
+          "rawSql": "SELECT COUNT(setor), MAX(responsible) FROM banco.tbl_inovacao WHERE responsible <> '' GROUP BY responsible ORDER BY COUNT(setor) DESC ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "name": "COUNT",
+                "parameters": [
+                  {
+                    "name": "setor",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              },
+              {
+                "name": "MAX",
+                "parameters": [
+                  {
+                    "name": "responsible",
+                    "type": "functionParameter"
+                  }
+                ],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "name": "responsible",
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "orderBy": {
+              "property": {
+                "name": "COUNT(setor)",
+                "type": "string"
+              },
+              "type": "property"
+            },
+            "orderByDirection": "DESC",
+            "whereJsonTree": {
+              "children1": {
+                "abbaab98-4567-489a-bcde-f18449638be2": {
+                  "properties": {
+                    "field": "responsible",
+                    "operator": "not_equal",
+                    "value": [
+                      ""
+                    ],
+                    "valueSrc": [
+                      "value"
+                    ],
+                    "valueType": [
+                      "text"
+                    ]
+                  },
+                  "type": "rule"
+                }
+              },
+              "id": "9b9ba99a-89ab-4cde-b012-318449638be2",
+              "type": "group"
+            },
+            "whereString": "responsible <> ''"
+          },
+          "table": "tbl_inovacao"
+        }
+      ],
+      "title": "Inovações por pessoa",
+      "transparent": true,
+      "type": "bargauge"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "DASH",
+  "uid": "WQZo2Iv4k",
+  "version": 26,
+  "weekStart": ""
+}
