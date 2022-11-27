@@ -21,6 +21,7 @@ import "../css/default-css.css";
 import "../css/font-awesome.min.css";
 import "../css/themify-icons.css";
 import Modal from 'react-bootstrap/Modal';
+import { createTheme } from '@mui/material/styles';
 import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import {
   Dashboard, Visibility, Delete, Edit, Person, Home, Task, Block, Notifications, Mail, Settings,
@@ -28,9 +29,10 @@ import {
 } from '@mui/icons-material';
 
 //INICIO TABELAS PERSONALIZADAS----------------->
+
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.info.dark,
+    backgroundColor: '#2e6086',
     color: theme.palette.common.white,
     fontWeight: 'bold'
   },

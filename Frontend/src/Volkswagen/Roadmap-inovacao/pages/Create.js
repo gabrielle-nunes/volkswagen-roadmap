@@ -97,6 +97,7 @@ function Segundo() {
     const [selectedDate3, setSelectedDate3] = useState(null);
     const [selectedDate4, setSelectedDate4] = useState(null);
     const [selectedDate5, setSelectedDate5] = useState(null);
+    const [selectedDate6, setSelectedDate6] = useState(null);
 
 
 
@@ -123,7 +124,7 @@ function Segundo() {
 
     }
 
-    dateFormat(selectedDate1, selectedDate2, selectedDate3, selectedDate4, selectedDate5);
+    dateFormat(selectedDate1, selectedDate2, selectedDate3, selectedDate4, selectedDate5, selectedDate6);
 
     const navegar = useNavigate();
 
@@ -707,14 +708,16 @@ function Segundo() {
                                                     <TextField required id="standard-basic" label="Responsable" variant="standard" {...register("responsibleHg1")}/>
                                                 </Col>
                                                 <Col>
-                                                    <div className="dataPicker" {...register("dataHg1")}>
+                                                    <div className="dataPicker" >
                                                         <DatePicker
+                                                             {...register("dataHg1")}
                                                             selected={selectedDate1}
                                                             onChange={date => setSelectedDate1(date)}
                                                             minDate={new Date()}
                                                             placeholderText="Data da Reunião"
                                                             //showTimeSelect (ativar opção de horario)
                                                             dateFormat="dd/MM/yyyy"
+                                                           
                                                         />
                                                     </div>
                                                 </Col>
@@ -757,8 +760,9 @@ function Segundo() {
                                                 </Col>
                                                 <Col>
                                                     {visivel1 &&
-                                                        <div className="dataPicker" {...register("dataHg2")}>
+                                                        <div className="dataPicker" >
                                                             <DatePicker
+                                                            {...register("dataHg2")}
                                                                 startDate={new Date()}
                                                                 minDate={new Date(selectedDate1)}
                                                                 selected={selectedDate2}
@@ -815,8 +819,9 @@ function Segundo() {
                                                 </Col>
                                                 <Col>
                                                     {visivel2 &&
-                                                        <div className="dataPicker" {...register("dataHg3")}>
+                                                        <div className="dataPicker">
                                                             <DatePicker
+                                                                {...register("dataHg3")}
                                                                 startDate={new Date()}
                                                                 minDate={new Date(selectedDate2)}
                                                                 selected={selectedDate3}
@@ -869,8 +874,9 @@ function Segundo() {
                                                 </Col>
                                                 <Col>
                                                     {visivel3 &&
-                                                        <div className="dataPicker" {...register("dataHg4")}>
+                                                        <div className="dataPicker" >
                                                             <DatePicker
+                                                                {...register("dataHg4")}
                                                                 startDate={new Date()}
                                                                 minDate={new Date(selectedDate3)}
                                                                 selected={selectedDate4}
@@ -924,8 +930,9 @@ function Segundo() {
                                                 </Col>
                                                 <Col>
                                                     {visivel4 &&
-                                                        <div className="dataPicker" {...register("dataHg5")} {...register("dataHg9")} {...register("motivoHg9")} {...register("hg1")} {...register("hg2")} {...register("hg3")} {...register("hg4")}{...register("hg5")}>
+                                                        <div className="dataPicker">
                                                             <DatePicker
+                                                                {...register("dataHg5")}
                                                                 startDate={new Date()}
                                                                 minDate={new Date(selectedDate4)}
                                                                 selected={selectedDate5}
@@ -960,6 +967,24 @@ function Segundo() {
                                                             }
                                                         </div>
                                                     }
+                                                </Col>
+                                                <Col>
+                                                        <div class="MeasureRespHG5" >
+                                                            <TextField label="Responsable" variant="standard" {...register("motivoHg9")}/>
+                                                        </div>
+                                                        <div className="dataPicker">
+                                                            <DatePicker
+                                                                {...register("dataHg9")}
+                                                                startDate={new Date()}
+                                                                minDate={new Date()}
+                                                                selected={selectedDate6}
+                                                                onChange={date => setSelectedDate6(date)}
+                                                                placeholderText="Data da Reunião"
+                                                                //showTimeSelect (ativar opção de horario)
+                                                                dateFormat="dd/MM/yyyy"
+                                                                
+                                                            />
+                                                        </div >
                                                 </Col>
                                             </Row>
 
