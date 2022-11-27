@@ -697,17 +697,17 @@ function Segundo() {
                                                     </div>
                                                 </Col>
                                             </Row>
-                                            <h2> Realisation </h2>
+                                            <h2 className="realization"> Realisation </h2>
 
                                             <Row>
                                                 <div class="MeasureText" >
                                                     <h6> 1. Measure/Potencial identified </h6>
                                                 </div>
                                                 <Col>
-                                                    <TextField required id="standard-basic" label="Responsable" variant="standard" />
+                                                    <TextField required id="standard-basic" label="Responsable" variant="standard" {...register("responsibleHg1")}/>
                                                 </Col>
                                                 <Col>
-                                                    <div className="dataPicker">
+                                                    <div className="dataPicker" {...register("dataHg1")}>
                                                         <DatePicker
                                                             selected={selectedDate1}
                                                             onChange={date => setSelectedDate1(date)}
@@ -726,10 +726,11 @@ function Segundo() {
                                                                 row
                                                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                                                 name="row-radio-buttons-group"
-                                                                defaultValue="NOK"
+                                                                defaultValue="false"
+                                                                {...register("okHg1")}
                                                             >
-                                                                <FormControlLabel value="NOK" onClick={() => setVisivel1(false)} control={<Radio />} label="NOK" />
-                                                                <FormControlLabel value="OK" onClick={() => setVisivel1(true)} control={<Radio />} label="OK" ></FormControlLabel>
+                                                                <FormControlLabel value="false" onClick={() => setVisivel1(false)} control={<Radio />} label="NOK" />
+                                                                <FormControlLabel value="true" onClick={() => setVisivel1(true)} control={<Radio />} label="OK" ></FormControlLabel>
                                                             </RadioGroup>
                                                         </FormControl>
 
@@ -750,13 +751,13 @@ function Segundo() {
                                                 <Col>
                                                     {visivel1 &&
                                                         <div class="MeasureRespHG2" >
-                                                            <TextField label="Responsable" variant="standard" />
+                                                            <TextField label="Responsable" variant="standard" {...register("responsibleHg2")} />
                                                         </div>
                                                     }
                                                 </Col>
                                                 <Col>
                                                     {visivel1 &&
-                                                        <div className="dataPicker" >
+                                                        <div className="dataPicker" {...register("dataHg2")}>
                                                             <DatePicker
                                                                 startDate={new Date()}
                                                                 minDate={new Date(selectedDate1)}
@@ -765,6 +766,7 @@ function Segundo() {
                                                                 placeholderText="Data da Reunião"
                                                                 //showTimeSelect (ativar opção de horario)
                                                                 dateFormat="dd/MM/yyyy"
+                                                                
                                                             />
                                                         </div>
                                                     }
@@ -778,11 +780,12 @@ function Segundo() {
                                                                     row
                                                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                                                     name="row-radio-buttons-group"
-                                                                    defaultValue="NOK"
+                                                                    defaultValue="false"
+                                                                    {...register("okHg2")}
 
                                                                 >
-                                                                    <FormControlLabel value="NOK" onClick={() => setVisivel2(false)} control={<Radio />} label="NOK" />
-                                                                    <FormControlLabel value="OK" onClick={() => setVisivel2(true)} control={<Radio />} label="OK" />
+                                                                    <FormControlLabel value="false" onClick={() => setVisivel2(false)} control={<Radio />} label="NOK" />
+                                                                    <FormControlLabel value="true" onClick={() => setVisivel2(true)} control={<Radio />} label="OK" />
                                                                 </RadioGroup>
                                                             </FormControl>
                                                             {visivel2 &&
@@ -806,13 +809,13 @@ function Segundo() {
                                                 <Col>
                                                     {visivel2 &&
                                                         <div class="MeasureRespHG3" >
-                                                            <TextField label="Responsable" variant="standard" />
+                                                            <TextField label="Responsable" variant="standard" {...register("responsibleHg3")} />
                                                         </div>
                                                     }
                                                 </Col>
                                                 <Col>
                                                     {visivel2 &&
-                                                        <div className="dataPicker" >
+                                                        <div className="dataPicker" {...register("dataHg3")}>
                                                             <DatePicker
                                                                 startDate={new Date()}
                                                                 minDate={new Date(selectedDate2)}
@@ -821,6 +824,7 @@ function Segundo() {
                                                                 placeholderText="Data da Reunião"
                                                                 //showTimeSelect (ativar opção de horario)
                                                                 dateFormat="dd/MM/yyyy"
+                                                                
                                                             />
                                                         </div>
                                                     }
@@ -834,11 +838,11 @@ function Segundo() {
                                                                     row
                                                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                                                     name="row-radio-buttons-group"
-                                                                    defaultValue="NOK"
-
+                                                                    defaultValue="false"
+                                                                    {...register("okHg3")}
                                                                 >
-                                                                    <FormControlLabel value="NOK" onClick={() => setVisivel3(false)} control={<Radio />} label="NOK" />
-                                                                    <FormControlLabel value="OK" onClick={() => setVisivel3(true)} control={<Radio />} label="OK" />
+                                                                    <FormControlLabel value="false" onClick={() => setVisivel3(false)} control={<Radio />} label="NOK" />
+                                                                    <FormControlLabel value="true" onClick={() => setVisivel3(true)} control={<Radio />} label="OK" />
                                                                 </RadioGroup>
                                                             </FormControl>
                                                             {visivel3 &&
@@ -859,13 +863,13 @@ function Segundo() {
                                                 <Col>
                                                     {visivel3 &&
                                                         <div class="MeasureRespHG4" >
-                                                            <TextField label="Responsable" variant="standard" />
+                                                            <TextField label="Responsable" variant="standard" {...register("responsibleHg4")}/>
                                                         </div>
                                                     }
                                                 </Col>
                                                 <Col>
                                                     {visivel3 &&
-                                                        <div className="dataPicker" >
+                                                        <div className="dataPicker" {...register("dataHg4")}>
                                                             <DatePicker
                                                                 startDate={new Date()}
                                                                 minDate={new Date(selectedDate3)}
@@ -874,6 +878,7 @@ function Segundo() {
                                                                 placeholderText="Data da Reunião"
                                                                 //showTimeSelect (ativar opção de horario)
                                                                 dateFormat="dd/MM/yyyy"
+                                                                
                                                             />
                                                         </div>
                                                     }
@@ -887,11 +892,12 @@ function Segundo() {
                                                                     row
                                                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                                                     name="row-radio-buttons-group"
-                                                                    defaultValue="NOK"
+                                                                    defaultValue="false"
+                                                                    {...register("okHg4")}
 
                                                                 >
-                                                                    <FormControlLabel value="NOK" onClick={() => setVisivel4(false)} control={<Radio />} label="NOK" />
-                                                                    <FormControlLabel value="OK" onClick={() => setVisivel4(true)} control={<Radio />} label="OK" />
+                                                                    <FormControlLabel value="false" onClick={() => setVisivel4(false)} control={<Radio />} label="NOK" />
+                                                                    <FormControlLabel value="true" onClick={() => setVisivel4(true)} control={<Radio />} label="OK" />
                                                                 </RadioGroup>
                                                             </FormControl>
                                                             {visivel4 &&
@@ -912,13 +918,13 @@ function Segundo() {
                                                 <Col>
                                                     {visivel4 &&
                                                         <div class="MeasureRespHG5" >
-                                                            <TextField label="Responsable" variant="standard" />
+                                                            <TextField label="Responsable" variant="standard" {...register("responsibleHg5")}/>
                                                         </div>
                                                     }
                                                 </Col>
                                                 <Col>
                                                     {visivel4 &&
-                                                        <div className="dataPicker" >
+                                                        <div className="dataPicker" {...register("dataHg5")} {...register("dataHg9")} {...register("motivoHg9")} {...register("hg1")} {...register("hg2")} {...register("hg3")} {...register("hg4")}{...register("hg5")}>
                                                             <DatePicker
                                                                 startDate={new Date()}
                                                                 minDate={new Date(selectedDate4)}
@@ -927,8 +933,9 @@ function Segundo() {
                                                                 placeholderText="Data da Reunião"
                                                                 //showTimeSelect (ativar opção de horario)
                                                                 dateFormat="dd/MM/yyyy"
+                                                                
                                                             />
-                                                        </div>
+                                                        </div >
                                                     }
                                                 </Col>
                                                 <Col>
@@ -940,11 +947,12 @@ function Segundo() {
                                                                     row
                                                                     aria-labelledby="demo-row-radio-buttons-group-label"
                                                                     name="row-radio-buttons-group"
-                                                                    defaultValue="NOK"
+                                                                    defaultValue="false"
+                                                                    {...register("okHg5")}
 
                                                                 >
-                                                                    <FormControlLabel value="NOK" onClick={() => setVisivel5(false)} control={<Radio />} label="NOK" />
-                                                                    <FormControlLabel value="OK" onClick={() => setVisivel5(true)} control={<Radio />} label="OK" />
+                                                                    <FormControlLabel value="false" onClick={() => setVisivel5(false)} control={<Radio />} label="NOK" />
+                                                                    <FormControlLabel value="true" onClick={() => setVisivel5(true)} control={<Radio />} label="OK" />
                                                                 </RadioGroup>
                                                             </FormControl>
                                                             {visivel5 &&
