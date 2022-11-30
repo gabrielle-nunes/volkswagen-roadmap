@@ -1,8 +1,5 @@
 package br.com.roadmap.volkswagen.service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,12 +19,12 @@ public class InovacaoService {
 	@Autowired
 	private InovacaoRepository inovacaoRepository;
 
-	private Date converteData(String date) throws ParseException {
+	/*private Date converteData(String date) throws ParseException {
 		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 		formato.setLenient(false);
 		Date finalDate = formato.parse(date);
 		return finalDate;
-	}
+	}*/
 
 	public InovacaoDTO cadastrarInovacao(InovacaoDTO inovacaoDTO) throws Exception {
 
@@ -39,7 +36,7 @@ public class InovacaoService {
 				throw new Exception("Uma inovação não pode ser criada com o status: concluído ou reprovado");
 			}
 
-			if (!(inovacaoDTO.getDataHg9().isEmpty() && inovacaoDTO.getMotivoHg9().isEmpty())) {
+			/*if (!(inovacaoDTO.getDataHg9().isEmpty() && inovacaoDTO.getMotivoHg9().isEmpty())) {
 				converteData(inovacaoDTO.getDataHg9());
 				inovacaoDTO.setStatus("Reprovado");
 		  } else {
@@ -79,9 +76,9 @@ public class InovacaoService {
 					}
 
 				}
-			}
+			}*/
 
-			if (inovacaoDTO.getOkHg1().equals(true)) {
+			/*if (inovacaoDTO.getOkHg1().equals(true)) {
 				inovacaoDTO.setHg1("Concluído");
 				if (inovacaoDTO.getOkHg2().equals(true)) {
 					inovacaoDTO.setHg2("Concluído");
@@ -95,7 +92,7 @@ public class InovacaoService {
 						}
 					}
 				}
-			}
+			}*/
 
 			inovacao = inovacaoRepository.save(Inovacao.convert(inovacaoDTO));
 
@@ -184,7 +181,7 @@ public class InovacaoService {
 					in.setDivulgacao(inovacaoDTO.getDivulgacao());
 					in.setSetor(inovacaoDTO.getSetor());
 					in.setStatus(inovacaoDTO.getStatus());
-					in.setHg1(inovacaoDTO.getHg1());
+				/*	in.setHg1(inovacaoDTO.getHg1());
 					in.setHg2(inovacaoDTO.getHg2());
 					in.setHg3(inovacaoDTO.getHg3());
 					in.setHg4(inovacaoDTO.getHg4());
@@ -205,7 +202,7 @@ public class InovacaoService {
 					in.setDataHg3(inovacaoDTO.getDataHg3());
 					in.setDataHg4(inovacaoDTO.getDataHg4());
 					in.setDataHg5(inovacaoDTO.getDataHg5());
-					in.setDataHg9(inovacaoDTO.getDataHg9());
+					in.setDataHg9(inovacaoDTO.getDataHg9());*/
 				}
 
 				inovacaoRepository.save(in);
