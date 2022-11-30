@@ -39,7 +39,7 @@ public class Inovacao {
 	private String staircaseElement;
 	private String handlungsfeld;
 
-	private String hg1;
+	/*private String hg1;
 	private String hg2;
 	private String hg3;
 	private String hg4;
@@ -64,7 +64,7 @@ public class Inovacao {
 	private String dataHg3;
 	private String dataHg4;
 	private String dataHg5;
-	private String dataHg9;
+	private String dataHg9;*/
 
 	private String setor;
 	private String status;
@@ -215,7 +215,7 @@ public class Inovacao {
 		this.status = status;
 	}
 
-	public String getHg1() {
+/*	public String getHg1() {
 		return hg1;
 	}
 
@@ -389,7 +389,7 @@ public class Inovacao {
 
 	public void setDataHg9(String dataHg9) {
 		this.dataHg9 = dataHg9;
-	}
+	}*/
 
 	public static Inovacao convert(InovacaoDTO inovacaoDTO) throws Exception {
 		Inovacao inovacao = new Inovacao();
@@ -413,7 +413,7 @@ public class Inovacao {
 		inovacao.setTargetState(inovacaoDTO.getTargetState());
 		inovacao.setCalculationExplication(inovacaoDTO.getCalculationExplication());
 		inovacao.setHandlungsfeld(inovacaoDTO.getHandlungsfeld());
-		inovacao.setHg1(inovacaoDTO.getHg1());
+		/*inovacao.setHg1(inovacaoDTO.getHg1());
 		inovacao.setHg2(inovacaoDTO.getHg2());
 		inovacao.setHg3(inovacaoDTO.getHg3());
 		inovacao.setHg4(inovacaoDTO.getHg4());
@@ -434,7 +434,7 @@ public class Inovacao {
 		inovacao.setDataHg3(inovacaoDTO.getDataHg3());
 		inovacao.setDataHg4(inovacaoDTO.getDataHg4());
 		inovacao.setDataHg5(inovacaoDTO.getDataHg5());
-		inovacao.setDataHg9(inovacaoDTO.getDataHg9());
+		inovacao.setDataHg9(inovacaoDTO.getDataHg9());*/
 
 		if (inovacaoDTO.getStatus().equals(ConstantesRoadmap.getConcluido())
 				|| inovacaoDTO.getStatus().equals(ConstantesRoadmap.getNoPrazo())
