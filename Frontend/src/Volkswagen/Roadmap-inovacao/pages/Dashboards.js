@@ -208,22 +208,23 @@ function Dashboards() {
                                 {/* Gráficos*/}
                                 <div class="chart">
                                     <div class="chart1">
-                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669757115060&to=1669778715060&theme=light&panelId=4" width="335" height="200" frameborder="0"></iframe>
-                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669757159143&to=1669778759143&theme=light&panelId=2" width="335" height="200" frameborder="0"></iframe>
-                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669757181836&to=1669778781836&theme=light&panelId=8" width="335" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669801992634&to=1669823592634&theme=light&panelId=4" width="335" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669802024427&to=1669823624427&theme=light&panelId=2" width="335" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669802042683&to=1669823642683&theme=light&panelId=8"  width="335" height="200" frameborder="0"></iframe>
                                     
                                     </div>
 
                                     <div class="chart1">
-                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669757334776&to=1669778934776&theme=light&panelId=13" width="335" height="200" frameborder="0"></iframe>
-                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669757346132&to=1669778946132&theme=light&panelId=14" width="335" height="200" frameborder="0"></iframe>
-                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669757359093&to=1669778959093&theme=light&panelId=9" width="335" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669802067315&to=1669823667315&theme=light&panelId=13" width="335" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669802096541&to=1669823696541&theme=light&panelId=14" width="335" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669802127687&to=1669823727687&theme=light&panelId=9" width="335" height="200" frameborder="0"></iframe>
                                     
                                     </div>
 
                                     <div class="chart1">
-                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669757384750&to=1669778984750&theme=light&panelId=6" width="670" height="200" frameborder="0"></iframe>
-                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669757402821&to=1669779002821&theme=light&panelId=10" width="335" height="200" frameborder="0"></iframe>
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669802148880&to=1669823748880&theme=light&panelId=6"  width="670" height="200" frameborder="0"></iframe>
+                                    
+                                    <iframe src="http://localhost:5000/d-solo/WQZo2Iv4k/dash?orgId=1&from=1669802186301&to=1669823786301&theme=light&panelId=10"  width="335" height="200" frameborder="0"></iframe>
                                     
                                     </div>
                                 </div>
