@@ -38,6 +38,8 @@
     "json-as-xlsx": "^2.4.6",
     "json2xls": "^0.1.2",
     "jspdf": "^2.5.1",
+    "jspdf-invoice-template": "^1.4.3",
+    "jspdf-invoice-template-nodejs": "^1.4.30",
     "material-ui-popup-state": "^4.0.2",
     "modernizr": "^3.12.0",
     "mysql": "^2.18.1",

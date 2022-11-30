@@ -19,10 +19,6 @@ import { Navbar, Jumbotron, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Dashboard, Visibility, Delete, Person, Home, Task, Block, Notifications, Mail, Settings, ArrowDropDown, HelpOutline, AccountCircle } from '@mui/icons-material';
 const { jsPDF } = require("jspdf");
 
-var dadus = ""
-
-
-
 //INICIO ICONES PERSONALIZADOS----------------->
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
@@ -173,6 +169,8 @@ function Visualizar() {
                                                     <Dropdown.Item eventKey="3" active>Orange</Dropdown.Item>
                                                 </Dropdown.Menu>
                                             </Dropdown>
+                                            <span id="id" name="id" {...register("id")}>
+                                            </span>
                                         </i>
                                     </li>
                                 </ul>
@@ -202,23 +200,94 @@ function Visualizar() {
                                     <IconButton aria-label="pictureAsPdfIcon" color="error" variant="outlined" onClick={
                                         function pdfe() {
                                             handleSubmit()
-                                            const doc = new jsPDF();
-                                            doc.text("Status: " + document.getElementById("status").value, 20, 20);
-                                            doc.text("Responsável: " + document.getElementById("responsable").value , 20, 30)
-                                            doc.text("Staircase Element: " + document.getElementById("staircase").value, 20, 40);
-                                            doc.text("Setor: " + document.getElementById("setor").value, 20, 50);
-                                            doc.text("Name of Measure: " + document.getElementById("title").value, 20, 60);
-                                            doc.text("Actual State: " + document.getElementById("actualState").value, 20, 70);
-                                            doc.text("Targer state with measure description: " + document.getElementById("targetState").value, 20, 80);
-                                            doc.text("Calculation/Explication: " + document.getElementById("calculationExplication").value, 20, 90);
-                                            doc.text("Handlungsfeld: " + document.getElementById("handlungsfeld").value, 20, 100);
-                                            doc.text("Ganhos Previstos: " + document.getElementById("ganhosPrevistos").value, 20, 110);
-                                            doc.text("Recursos Necessários: " + document.getElementById("recursosNecessarios").value, 20, 120);
-                                            doc.text("Time de Trabalho: " + document.getElementById("timeTrabalho").value, 20, 130);
-                                            doc.text("Parcerias Necessárias: " + document.getElementById("parceriasNecessarias").value, 20, 140);
-                                            doc.text("Pontos de Escalação: " + document.getElementById("pontosEscalacao").value, 20, 150);
-                                            doc.text("Divulgação: " + document.getElementById("divulgacao").value, 20, 160);
-                                            doc.save("a4.pdf")
+                                            const doc = new jsPDF('l');
+                                            doc.setLineWidth(1 / 75);
+                                            doc.line(20, 25, 280, 25);
+                                            doc.setFontSize(18);
+
+                                            doc.text("Status: " + document.getElementById("status").value, 220, 20);
+
+                                            doc.text(document.getElementById("title").value, 20, 20);
+
+                                            doc.setFontSize(8);
+
+                                            doc.text("Inovação desenvolvida por:", 20, 30);
+
+                                            doc.setFontSize(12);
+
+                                            doc.text(document.getElementById("handlungsfeld").value, 235, 30);
+                                            
+                                            
+                                            doc.text(document.getElementById("responsable").value, 20, 35);
+                                            
+                                            
+
+                                            doc.setFontSize(8);
+
+                                            doc.text("ID: " + document.getElementById("id").value, 270, 40);
+
+                                            doc.text("Setor: " + document.getElementById("setor").value, 20, 40);
+
+                                            var staircaseVar = doc.splitTextToSize("Staircase: " + document.getElementById("staircase").value, 280);
+
+                                            doc.text(staircaseVar, 255, 35);
+
+                                            doc.setFontSize(12);
+
+                                            doc.text('Actual State:', 20, 55);
+
+                                            doc.text('Targer state with measure description:', 20, 75);
+                                            
+                                            doc.text("Ganhos Previstos:", 20, 95);
+
+                                            doc.text("Recursos Necessários:", 20, 115);
+
+                                            doc.text("Time de Trabalho: ", 20, 135);
+
+                                            doc.text("Calculation/Explication: ", 20, 155);
+
+                                            doc.text("Parcerias Necessárias: " , 20, 175);
+
+                                            doc.text("Pontos de Escalação: " , 20, 195);
+
+
+                                            //doc.text("Divulgação: " , 200, 55);
+
+                                            
+
+                                            
+
+                                            
+
+                                            
+
+                                            doc.setFontSize(10);
+
+                                            var actualStateVar = doc.splitTextToSize(document.getElementById("actualState").value, 280);
+
+                                            var targetStateVar = doc.splitTextToSize(document.getElementById("targetState").value, 280)
+                                            
+                                            doc.text(actualStateVar, 20, 60);
+
+                                            doc.text(targetStateVar, 20, 80);
+
+                                            doc.text(document.getElementById("ganhosPrevistos").value, 20, 100);
+
+                                            doc.text(document.getElementById("recursosNecessarios").value, 20, 120);
+
+                                            doc.text(document.getElementById("timeTrabalho").value, 20, 140);
+
+                                            doc.text(document.getElementById("calculationExplication").value, 20, 160);
+
+                                            doc.text(document.getElementById("parceriasNecessarias").value, 20, 180);
+
+                                            doc.text(document.getElementById("pontosEscalacao").value, 20, 200);
+
+
+
+                                            {/*doc.text(document.getElementById("divulgacao").value, 200, 60);*/}
+                                            
+                                            doc.save("inovação.pdf")
 
                                         }}>
                                         <PictureAsPdfIcon />
@@ -676,6 +745,7 @@ function Visualizar() {
                         <p>© Copyright 2022. Todos os direitos reservados. Desenvolvido pela <a href="https://github.com/gabrielle-nunes/volkswagen-roadmap">Equipe Roadmap de Inovação</a>.</p>
                     </div>
                 </footer>
+
             </div>
         </body>
 
