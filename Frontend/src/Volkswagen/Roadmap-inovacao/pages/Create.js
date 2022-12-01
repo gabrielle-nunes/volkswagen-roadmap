@@ -369,18 +369,18 @@ function Segundo() {
                                                                 )}
                                                             </PopupState>
                                                             <Form.Select aria-label="Default select example" id="setores" name="setor" {...register("setor")}>
-                                                                <option value="1">Plan. De Série</option>
-                                                                <option value="2">Fábrica Piloto</option>
-                                                                <option value="3">Manutenção Site</option>
-                                                                <option value="4">Estamparia</option>
-                                                                <option value="5">Armação</option>
-                                                                <option value="6">Pintura</option>
-                                                                <option value="7">Montagem Final</option>
-                                                                <option value="8">VW Componentes</option>
-                                                                <option value="9">QA Processos</option>
-                                                                <option value="10">Eng. Industrial</option>
-                                                                <option value="11">Logística</option>
-                                                                <option value="12">TI</option>
+                                                                <option >Plan. De Série</option>
+                                                                <option >Fábrica Piloto</option>
+                                                                <option >Manutenção Site</option>
+                                                                <option >Estamparia</option>
+                                                                <option >Armação</option>
+                                                                <option >Pintura</option>
+                                                                <option >Montagem Final</option>
+                                                                <option>VW Componentes</option>
+                                                                <option >QA Processos</option>
+                                                                <option >Eng. Industrial</option>
+                                                                <option >Logística</option>
+                                                                <option >TI</option>
                                                             </Form.Select>
                                                         </Form.Group>
                                                     </div>
@@ -968,24 +968,7 @@ function Segundo() {
                                                         </div>
                                                     }
                                                 </Col>
-                                                <Col>
-                                                        <div class="MeasureRespHG5" >
-                                                            <TextField label="Responsable" variant="standard" {...register("motivoHg9")}/>
-                                                        </div>
-                                                        <div className="dataPicker">
-                                                            <DatePicker
-                                                                {...register("dataHg9")}
-                                                                startDate={new Date()}
-                                                                minDate={new Date()}
-                                                                selected={selectedDate6}
-                                                                onChange={date => setSelectedDate6(date)}
-                                                                placeholderText="Data da Reunião"
-                                                                //showTimeSelect (ativar opção de horario)
-                                                                dateFormat="dd/MM/yyyy"
-                                                                
-                                                            />
-                                                        </div >
-                                                </Col>
+                                                
                                             </Row>
 
                                             <div>

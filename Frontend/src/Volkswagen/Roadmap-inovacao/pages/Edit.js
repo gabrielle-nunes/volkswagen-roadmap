@@ -300,7 +300,7 @@ function Edit() {
                                                         <Form.Group controlId="exampleForm.ControlInput1">
                                                             <PopupState variant="popover" popupId="demo-popup-popover">
                                                                 {(popupState) => (
-                                                                    <h6 class="infoTitutlo"> Area <HelpOutline variant="contained" {...bindTrigger(popupState)} />
+                                                                    <h6 class="infoTitutlo"> Setor <HelpOutline variant="contained" {...bindTrigger(popupState)} />
                                                                         <Popover
                                                                             {...bindPopover(popupState)}
                                                                             anchorOrigin={{
@@ -317,7 +317,20 @@ function Edit() {
                                                                     </h6>
                                                                 )}
                                                             </PopupState>
-                                                            <Form.Control type="text" placeholder="Area" name="area" {...register("area")} />
+                                                            <Form.Select aria-label="Default select example" id="setores" name="setor" {...register("setor")}>
+                                                                <option >Plan. De Série</option>
+                                                                <option >Fábrica Piloto</option>
+                                                                <option >Manutenção Site</option>
+                                                                <option >Estamparia</option>
+                                                                <option >Armação</option>
+                                                                <option >Pintura</option>
+                                                                <option >Montagem Final</option>
+                                                                <option>VW Componentes</option>
+                                                                <option >QA Processos</option>
+                                                                <option >Eng. Industrial</option>
+                                                                <option >Logística</option>
+                                                                <option >TI</option>
+                                                            </Form.Select>
                                                         </Form.Group>
                                                     </div>
                                                 </Col>

@@ -285,8 +285,8 @@ function Inicial() {
                           <StyledTableCell align="center">Title</StyledTableCell>
                           <StyledTableCell align="center">Responsible</StyledTableCell>
                           <StyledTableCell align="center">Setor</StyledTableCell>
-                          <StyledTableCell align="center">m@web</StyledTableCell>
-                          <StyledTableCell align="center">HG</StyledTableCell>
+                          
+                          <StyledTableCell align="left"></StyledTableCell>
                           <StyledTableCell align="left"></StyledTableCell>
                           <StyledTableCell align="left"></StyledTableCell>
                           <StyledTableCell align="left"></StyledTableCell>
@@ -313,7 +313,7 @@ function Inicial() {
                             <StyledTableCell align="center">{post.title}</StyledTableCell>
                             <StyledTableCell align="center">{post.responsible}</StyledTableCell>
                             <StyledTableCell align="center">{post.setor}</StyledTableCell>
-                            <StyledTableCell align="center">{post.mweb}</StyledTableCell>
+                           
                             <StyledTableCell align="center">{ }</StyledTableCell>
                             <Edit className="iconesInicial" onClick={() => navegar({ pathname: `/edit/${post.id}` })} />
                             <TableCell className="iconesInicial" text-align="center">{ }</TableCell>

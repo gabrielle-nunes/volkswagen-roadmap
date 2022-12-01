@@ -447,7 +447,7 @@ public class Inovacao {
 			throw new Exception("Selecione um status válido.");
 		}
 
-		if (inovacaoDTO.getSetor().equals(ConstantesRoadmap.getArmacao())
+		/*if (inovacaoDTO.getSetor().equals(ConstantesRoadmap.getArmacao())
 				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getEstamparia())
 				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getEngIndustrial())
 				|| inovacaoDTO.getSetor().equals(ConstantesRoadmap.getFabricaPiloto())
@@ -464,7 +464,7 @@ public class Inovacao {
 
 		} else {
 			throw new Exception("Selecione um setor válido.");
-		}
+		}*/
 
 		return inovacao;
 	}
